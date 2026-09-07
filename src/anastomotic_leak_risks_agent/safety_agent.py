@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+
 from dataclasses import dataclass
 from typing import Any
 
@@ -12,7 +14,8 @@ from .naive_rag import NaiveRAG
 from .normalize import find_entity_a, find_entity_b
 from .report import render_report
 from .risk_rules import RiskRuleEngine
-from .schemas import ClinicalCaseInput, SafetyReport
+from .rule_policy_v1_4 import FrozenRiskRuleEngineV14
+from .schemas import ClinicalCaseInput, RiskLevel, SafetyReport
 
 
 @dataclass
@@ -45,7 +48,7 @@ class SafetyAgent:
         self.lightrag = lightrag
         self.llm_client = llm_client or LLMClient(provider="stub")
         self.config = config or SafetyAgentConfig()
-        self.rule_engine = rule_engine or RiskRuleEngine()
+        self.rule_engine = rule_engine or FrozenRiskRuleEngineV14()
 
     def evaluate(
         self,
@@ -94,6 +97,87 @@ class SafetyAgent:
             },
         )
 
+    @staticmethod
+    def _select_anchor(evidence):
+        for item in evidence:
+            if item.evidence_level or item.pmid:
+                return item
+        return evidence[0] if evidence else None
+
+    def _audit_evidence_anchor(self, *, assessment, evidence, lightrag_context):
+        """LLM advisory audit of the evidence anchor (Methods; Fig. 5a step 4).
+
+        Reviews the frozen triggered rules together with the retrieved anchor
+        evidence and returns an audit score between 0 and 1 plus an
+        accept/disagree outcome. Advisory only: it never alters the
+        rule-derived score, alert or risk grade; disagreements are returned
+        for logging alongside the rule-derived classification.
+        """
+        if not assessment.signals:
+            return {
+                "audit_score": None,
+                "outcome": "no_conflicting_rule_signal",
+                "advisory_only": True,
+                "anchor": None,
+                "note": "No conflicting rule signal; score-band result retained.",
+            }
+        if self.config.use_llm_arbiter is False or getattr(self.llm_client, "degraded", True):
+            return None
+        anchor = self._select_anchor(evidence)
+        rules_desc = ", ".join(
+            f"{signal.rule_id}({signal.risk_level.value})" for signal in assessment.signals
+        ) or "无"
+        anchor_desc = ""
+        if anchor is not None:
+            anchor_desc = (
+                f"[{anchor.evidence_level or 'level unspecified'}] {anchor.title}"
+                f" (PMID: {anchor.pmid or 'N/A'})\n{anchor.text[:800]}"
+            )
+        prompt = (
+            "你是医学决策支持系统的证据锚点审计器。规则引擎已按冻结规则产生风险分级，"
+            "请审阅冻结的触发规则与检索到的锚点证据，给出你自己的风险评估与审核结论。\n"
+            "必须严格按以下格式输出：\n"
+            "audit_score: <0到1之间的小数，代表你在这些信息下的自评风险>\n"
+            "outcome: <accept 或 disagree>\n"
+            "随后附不超过120字的理由。该审核仅供建议，不得改变规则分级。\n\n"
+            f"冻结触发规则（引擎分级）：{rules_desc}\n"
+            f"引擎风险分级：{assessment.risk_level.value}"
+            f"（累计分 {assessment.risk_score}/{assessment.primary_alert_threshold}）\n"
+            f"锚点证据：\n{anchor_desc or '无'}\n"
+            f"补充检索语境：\n{(lightrag_context or '无')[:800]}"
+        )
+        response = self.llm_client.complete(
+            prompt,
+            system="你是医学决策支持助手，必须忠实于给定规则与证据。",
+        )
+        if getattr(response, "degraded", True):
+            return None
+        text = response.text.strip()
+        score_m = re.search(r"audit_score\D{0,6}([01](?:\.\d+)?)", text)
+        outcome_m = re.search(r"outcome\D{0,6}(accept|disagree)", text, flags=re.I)
+        score = float(score_m.group(1)) if score_m else None
+        if outcome_m:
+            outcome = outcome_m.group(1).lower()
+        elif score is not None:
+            outcome = "accept" if score >= 0.5 else "disagree"
+        else:
+            return None
+        return {
+            "audit_score": score,
+            "outcome": outcome,
+            "advisory_only": True,
+            "anchor": (
+                {
+                    "evidence_level": anchor.evidence_level,
+                    "pmid": anchor.pmid,
+                    "title": anchor.title,
+                }
+                if anchor is not None
+                else None
+            ),
+            "raw_excerpt": text[:400],
+        }
+
     def _evaluate_flags(
         self,
         *,
@@ -110,6 +194,16 @@ class SafetyAgent:
             surgery_flags,
             input_completeness=input_completeness,
         )
+
+        # 显示分级（与主预警计算分离，论文 Methods）：≥12 高；4–11 中；0–3 低（完整度 ≥80%）/UNKNOWN
+        if assessment.primary_alert:
+            display_level = RiskLevel.HIGH
+        elif assessment.risk_score >= 4:
+            display_level = RiskLevel.MEDIUM
+        else:
+            display_level = RiskLevel.LOW if assessment.input_completeness >= 0.8 else RiskLevel.UNKNOWN
+        if display_level != assessment.risk_level:
+            assessment = assessment.model_copy(update={"risk_level": display_level})
 
         rule_keys = [self.rule_engine.evidence_key(signal.rule_id) for signal in assessment.signals]
         evidence_rows = self.naive_rag.retrieve(
@@ -142,6 +236,11 @@ class SafetyAgent:
             except Exception:
                 lightrag_context = ""
 
+        anchor_audit = self._audit_evidence_anchor(
+            assessment=assessment,
+            evidence=evidence,
+            lightrag_context=lightrag_context,
+        )
         structured_context = "\n".join(f"[{item.evidence_level}] {item.title}: {item.text}" for item in evidence)[
             : self.config.max_context_chars
         ]
@@ -171,6 +270,12 @@ class SafetyAgent:
             evidence=evidence,
             llm_note=llm_note,
         )
+        if anchor_audit:
+            report_text += (
+                "\n\n- LLM 证据锚点审核（advisory only / 仅建议，不改变分级）："
+                f"audit_score={anchor_audit.get('audit_score')}, "
+                f"outcome={anchor_audit.get('outcome')}"
+            )
         context_char_count = len(structured_context) + len(lightrag_context)
         metadata = {
             "patient_flags": patient_flags,
@@ -188,6 +293,8 @@ class SafetyAgent:
             "llm_role": "explanation_only" if llm_note else "disabled",
             "llm_label": getattr(self.llm_client, "model", "stub"),
             "lightrag_used": bool(lightrag_context),
+            "llm_anchor_audit": anchor_audit,
+            "evidence_anchor": (anchor_audit or {}).get("anchor"),
             "synthetic_or_clinical": "unspecified",
             **extra_metadata,
         }
