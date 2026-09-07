@@ -7,10 +7,10 @@
       "patient_factor_rule_count": 3
     },
     "phase2": {
-      "active_evidence_chunks": 253,
+      "active_evidence_chunks": 275,
       "level_distribution": {
         "A": 30,
-        "B": 62,
+        "B": 84,
         "C": 155,
         "D": 1,
         "E": 5

@@ -74,10 +74,10 @@ safety:
   minimum_input_completeness_for_low_output: 0.8
 
 freeze:
-  frozen_on: "2026-08-27"
+  frozen_on: "2026-07-27"
   authorized_by: "current_project_investigator_user"
   authorization_scope: "replace_frozen_rule_policy_1_1_for_local_research_validation"
-  validation_dataset_attestation: "v7_is_new_independent_data_do_not_reverify"
+  validation_dataset_attestation: "v7 = final locked QC export (n=1,646); policy unchanged since the 2026-07-27 freeze"
   source_candidate: "configs/rule_policy_v1_4_candidate.yaml"
   source_candidate_semantics_unchanged: true
 
