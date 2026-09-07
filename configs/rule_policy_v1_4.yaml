@@ -1,0 +1,91 @@
+policy_version: "1.4"
+policy_status: "frozen_research_validation_policy"
+base_policy_version: "1.1"
+base_rules_sha256: "27f58cf2c3fef1b40049e9a0a7788834f8697a7e32a05c445111cbfc44822926"
+lr15_enabled: false
+external_api_required: false
+primary_alert_minimum_score: 12
+
+base_rule_weights:
+  patient_factor.age_over_75: 1
+  prolonged_surgery_risk: 6
+  major_blood_loss_risk: 2
+  multivisceral_resection_risk: 5
+  low_anastomosis_risk: 1
+  patient_factor.urgent_emergency: 4
+  immediate_anastomotic_defect: 5
+  diabetes_poor_control_risk: 3
+  poor_performance_status_risk: 4
+  obesity_risk: 1
+
+derived_groups:
+  nutrition_any:
+    any_rules:
+      - malnutrition_albumin_risk
+      - patient_factor.severe_malnutrition
+    weight: 4
+
+interactions:
+  - id: low_anastomosis_x_prolonged_surgery
+    all_rules: [low_anastomosis_risk, prolonged_surgery_risk]
+    bonus: 1
+  - id: low_anastomosis_x_major_blood_loss
+    all_rules: [low_anastomosis_risk, major_blood_loss_risk]
+    bonus: 2
+  - id: prolonged_surgery_x_major_blood_loss
+    all_rules: [prolonged_surgery_risk, major_blood_loss_risk]
+    bonus: 0
+  - id: anastomotic_defect_x_low_anastomosis
+    all_rules: [immediate_anastomotic_defect, low_anastomosis_risk]
+    bonus: 1
+
+technical_integrity_closed_loop:
+  shared_rule_id: immediate_anastomotic_defect
+  resolved_review_only_flags:
+    - air_leak_test_repaired
+  unresolved_immediate_action_flags:
+    - air_leak_test_persistent
+    - doughnut_incomplete
+    - anastomotic_defect
+  resolved_review_only_score: 0
+  unresolved_score_from_base_rule_weights: true
+
+graded_context_bands:
+  operative_duration:
+    ordered_flags:
+      - surgery_duration_over_3h
+      - surgery_duration_over_4h
+      - surgery_duration_over_5h
+  blood_loss:
+    ordered_flags:
+      - blood_loss_over_300ml
+      - blood_loss_over_500ml
+      - blood_loss_over_1000ml
+    parallel_flags:
+      - blood_transfusion_intraop
+  anatomy:
+    ordered_groups:
+      - [rectal_cancer, colorectal_anastomosis]
+      - [lower_rectal_cancer, anastomosis_6_10cm]
+      - [ultra_low_anastomosis, coloanal_anastomosis, anastomosis_at_or_below_5cm]
+
+safety:
+  immediate_action_independent_of_score: true
+  minimum_input_completeness_for_low_output: 0.8
+
+freeze:
+  frozen_on: "2026-08-27"
+  authorized_by: "current_project_investigator_user"
+  authorization_scope: "replace_frozen_rule_policy_1_1_for_local_research_validation"
+  validation_dataset_attestation: "v7_is_new_independent_data_do_not_reverify"
+  source_candidate: "configs/rule_policy_v1_4_candidate.yaml"
+  source_candidate_semantics_unchanged: true
+
+governance:
+  active_local_research_policy: true
+  replaces_primary_alert_policy_v1_1: true
+  base_boolean_trigger_rules_unchanged: true
+  new_trigger_rules_added: false
+  lightrag_rebuild_required: false
+  probability_model_produced: false
+  clinical_deployment_authorized: false

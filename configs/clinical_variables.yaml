@@ -1,0 +1,92 @@
+schema_version: "1.1"
+missing_value_semantics: "null means unknown or not assessed; null is never normal or negative"
+low_risk_minimum_completeness: 0.8
+
+patient:
+  age_years: {type: integer, unit: years, range: [18, 120], flags: [age_over_65, age_over_75]}
+  sex: {type: categorical, allowed: [male, female], flags: [male_gender]}
+  bmi: {type: number, unit: kg/m2, range: [10, 80], flags: [bmi_under_18_5, bmi_over_25, bmi_over_30]}
+  asa_grade: {type: categorical, allowed: [I, II, III, IV, V], flags: [asa_ge_III]}
+  ecog_status: {type: integer, range: [0, 4], flags: [ecog_ge_2]}
+  diabetes_status: {type: categorical, allowed: [no, type1, type2], flags: [diabetes]}
+  hba1c_percent: {type: number, unit: percent, range: [3, 20], flags: [diabetes_poor_control], dependency: diabetes_status}
+  albumin_g_l: {type: number, unit: g/L, range: [10, 70], flags: [albumin_low_35, albumin_low_30, severe_malnutrition]}
+  prealbumin_mg_l: {type: number, unit: mg/L, range: [20, 700], flags: [prealbumin_low_200]}
+  nlr: {type: number, range: [0, 100], flags: [nlr_elevated_over_5]}
+  pni: {type: number, range: [0, 100], flags: [pni_low_45, pni_low_40, severe_malnutrition]}
+  nrs2002_score: {type: integer, range: [0, 7], flags: [malnutrition_risk, severe_malnutrition]}
+  cancer_site: {type: categorical, allowed: [colon, rectum, lower_rectum], flags: [rectal_cancer, lower_rectal_cancer]}
+  bowel_obstruction: {type: boolean, flags: [bowel_obstruction]}
+  bowel_perforation: {type: boolean, flags: [bowel_perforation]}
+  # v1.1 candidate variables activated 2026-08-18 (collect_only: descriptive flags are
+  # registered here for rule-condition validation but are NOT derived by case_features,
+  # so rules referencing them never trigger a standalone anastomotic-leak alert).
+  preop_hemoglobin_g_l: {type: number, unit: g/L, range: [40, 200], flags: [preop_hemoglobin_recorded], rule_behavior: collect_only}
+  smoking_status: {type: categorical, allowed: [never, former, current], flags: [smoking_status_recorded], rule_behavior: collect_only}
+  smoking_pack_years: {type: number, unit: pack-years, range: [0, 300], dependency: smoking_status, flags: [smoking_pack_years_recorded], rule_behavior: collect_only}
+  clinical_frailty_scale: {type: integer, range: [1, 9], flags: [clinical_frailty_scale_recorded], rule_behavior: collect_only}
+  preop_crp_mg_l: {type: number, unit: mg/L, range: [0, 500], flags: [preop_crp_recorded], rule_behavior: collect_only}
+  coronary_artery_disease: {type: boolean, flags: [coronary_artery_disease], rule_behavior: collect_only}
+  chronic_lung_disease: {type: categorical, allowed: [no, copd, asthma, other], flags: [chronic_lung_disease], rule_behavior: collect_only}
+  renal_dysfunction: {type: categorical, allowed: [no, ckd_stage3, ckd_stage4, ckd_stage5_dialysis], flags: [renal_dysfunction], rule_behavior: collect_only}
+  tumor_distance_from_anal_verge_cm: {type: number, unit: cm, range: [0, 40], flags: [tumor_distance_recorded], rule_behavior: collect_only}
+  clinical_t_stage: {type: categorical, allowed: [cTis, cT1, cT2, cT3, cT4a, cT4b], flags: [clinical_t_stage_recorded], rule_behavior: collect_only}
+  neoadjuvant_treatment_type: {type: categorical, allowed: [none, radiotherapy_only, chemotherapy_only, chemoradiotherapy, total_neoadjuvant_therapy, other], flags: [neoadjuvant_treatment_recorded], rule_behavior: collect_only}
+  previous_abdominal_or_pelvic_surgery: {type: categorical, allowed: [no, abdominal, pelvic, both], flags: [previous_abdominal_pelvic_surgery], rule_behavior: collect_only}
+  preop_sepsis_status: {type: categorical, allowed: [none, sepsis, septic_shock], flags: [preop_sepsis_status], rule_behavior: collect_only}
+  ct_visceral_fat_area_cm2: {type: number, unit: cm2, range: [0, 1000], flags: [ct_visceral_fat_recorded], rule_behavior: collect_only}
+
+surgery:
+  urgency: {type: categorical, allowed: [elective, emergency], flags: [emergency_surgery]}
+  multivisceral_resection: {type: boolean, flags: [multivisceral_resection]}
+  duration_minutes: {type: integer, unit: minutes, range: [15, 1440], flags: [surgery_duration_over_3h, surgery_duration_over_4h, surgery_duration_over_5h]}
+  blood_loss_ml: {type: number, unit: ml, range: [0, 20000], flags: [blood_loss_over_300ml, blood_loss_over_500ml, blood_loss_over_1000ml]}
+  transfusion_units: {type: number, unit: units, range: [0, 100], flags: [blood_transfusion_intraop]}
+  anastomosis_site: {type: categorical, allowed: [none, ileocolic, colocolic, colorectal, ultra_low, coloanal], flags: [colorectal_anastomosis, ultra_low_anastomosis, coloanal_anastomosis]}
+  anastomosis_height_cm: {type: number, unit: cm, range: [0, 30], flags: [anastomosis_at_or_below_5cm, anastomosis_under_6cm, anastomosis_6_10cm]}
+  doughnut_integrity: {type: categorical, allowed: [not_assessed, complete, incomplete], flags: [doughnut_incomplete]}
+  air_leak_test: {type: categorical, allowed: [not_performed, negative, positive_repaired, positive_persistent], flags: [air_leak_test_positive, air_leak_needed_repair, air_leak_test_repaired, air_leak_test_persistent]}
+  anastomotic_defect: {type: boolean, flags: [anastomotic_defect]}
+  lowest_map_mmhg: {type: number, unit: mmHg, range: [20, 160], flags: [map_below_65, map_below_55, hypotension_over_30min]}
+  map_below_65_minutes: {type: integer, unit: minutes, range: [0, 1440], flags: [hypotension_over_30min]}
+  icg_used: {type: boolean, flags: []}
+  icg_perfusion_result: {type: categorical, allowed: [adequate, borderline, inadequate], flags: [icg_perfusion_borderline, icg_perfusion_inadequate], dependency: icg_used}
+  icg_action_after_inadequate_perfusion: {type: categorical, allowed: [not_applicable, transection_line_changed, anastomosis_reconstructed, no_corrective_action, unknown], flags: [icg_no_corrective_action], dependency: icg_perfusion_result}
+  peritoneal_contamination: {type: categorical, allowed: [none, mild, severe], flags: [peritoneal_contamination_severe]}
+  # v1.1 candidate variables activated 2026-08-18 (collect_only: descriptive flags are
+  # registered here for rule-condition validation but are NOT derived by case_features,
+  # so rules referencing them never trigger a standalone anastomotic-leak alert).
+  planned_surgical_approach: {type: categorical, allowed: [open, laparoscopic, robotic, transanal, hybrid], flags: [planned_surgical_approach], rule_behavior: collect_only}
+  conversion_status: {type: categorical, allowed: [none, to_open, to_other_mis], flags: [conversion_status], rule_behavior: collect_only}
+  procedure_name: {type: categorical, allowed: [right_hemicolectomy, transverse_colectomy, left_hemicolectomy, sigmoidectomy, anterior_resection, low_anterior_resection, abdominoperineal_resection, total_colectomy, proctocolectomy, other], flags: [procedure_name_recorded], rule_behavior: collect_only}
+  rectal_transection_stapler_firing_count: {type: integer, unit: firings, range: [0, 10], flags: [rectal_transection_stapler_firing_count], rule_behavior: collect_only}
+  anastomotic_tension: {type: categorical, allowed: [not_assessed, none, mild, moderate, severe], flags: [anastomotic_tension], rule_behavior: collect_only}
+  primary_anastomosis_performed: {type: boolean, flags: [primary_anastomosis_performed], rule_behavior: collect_only}
+  diverting_stoma_type: {type: categorical, allowed: [none, loop_ileostomy, loop_colostomy, other], dependency: primary_anastomosis_performed, flags: [diverting_stoma_type], rule_behavior: collect_only}
+  vasopressor_used: {type: boolean, flags: [vasopressor_used], rule_behavior: collect_only}
+  norepinephrine_equivalent_max_ug_kg_min: {type: number, unit: ug/kg/min, range: [0, 10], dependency: vasopressor_used, flags: [norepinephrine_equivalent_max_recorded], rule_behavior: collect_only}
+  lowest_core_temperature_c: {type: number, unit: degC, range: [30, 42], flags: [lowest_core_temperature_recorded], rule_behavior: collect_only}
+  net_fluid_balance_ml: {type: number, unit: ml, range: [-10000, 30000], flags: [net_fluid_balance_recorded], rule_behavior: collect_only}
+  mechanical_bowel_prep_status: {type: categorical, allowed: [none, completed, incomplete, contraindicated, not_applicable], flags: [mechanical_bowel_prep_status], rule_behavior: collect_only}
+  oral_antibiotic_bowel_prep_status: {type: categorical, allowed: [none, completed, incomplete, contraindicated, not_applicable], flags: [oral_antibiotic_bowel_prep_status], rule_behavior: collect_only}
+  iv_antibiotic_prophylaxis_given: {type: boolean, flags: [iv_antibiotic_prophylaxis_given], rule_behavior: collect_only}
+  iv_antibiotic_prophylaxis_minutes_before_incision: {type: integer, unit: minutes, range: [-240, 240], dependency: iv_antibiotic_prophylaxis_given, flags: [iv_antibiotic_prophylaxis_timing_recorded], rule_behavior: collect_only}
+  iv_antibiotic_redosing_status: {type: categorical, allowed: [not_indicated, appropriate, missed_or_late], flags: [iv_antibiotic_redosing_status], rule_behavior: collect_only}
+  glucose_near_anastomosis_mmol_l: {type: number, unit: mmol/L, range: [1, 40], flags: [glucose_near_anastomosis_recorded], rule_behavior: collect_only}
+  intraoperative_technical_adverse_event: {type: categorical, allowed: [none, stapler_misfire, tissue_tear, ischemia, unplanned_resection, other], flags: [intraoperative_technical_adverse_event], rule_behavior: collect_only}
+  technical_adverse_event_corrected: {type: categorical, allowed: [yes, no, not_applicable], dependency: intraoperative_technical_adverse_event, flags: [technical_adverse_event_corrected], rule_behavior: collect_only}
+  lead_surgeon_independent_colorectal_years: {type: integer, unit: years, range: [0, 60], flags: [lead_surgeon_colorectal_years_recorded], rule_behavior: collect_only}
+  lead_surgeon_rectal_resections_12m: {type: integer, unit: cases, range: [0, 300], flags: [lead_surgeon_rectal_volume_12m_recorded], rule_behavior: collect_only}
+  lead_surgeon_cumulative_robotic_rectal_cases: {type: integer, unit: cases, range: [0, 1000], flags: [lead_surgeon_robotic_cases_recorded], rule_behavior: collect_only}
+
+assessment_domains:
+  - tumor_site
+  - metabolic
+  - nutrition
+  - performance
+  - inflammation_nutrition
+  - anastomosis
+  - technical_integrity
+  - hemodynamics
+  - operative_burden
+  - icg_perfusion

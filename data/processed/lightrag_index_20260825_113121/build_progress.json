@@ -1,0 +1,18 @@
+{
+  "status": "building",
+  "updated_at": "2026-08-25T15:09:01.979264+08:00",
+  "documents_processed": 275,
+  "documents_total": 275,
+  "partial_audit": {
+    "expected_documents": 275,
+    "status_counts": {
+      "processed": 275
+    },
+    "expected_chunks": 275,
+    "current_extraction_responses": 275,
+    "cached_extraction_responses": 275,
+    "missing_extraction_responses": 0,
+    "incomplete_extraction_responses": 0,
+    "malformed_extraction_responses": 0
+  }
+}

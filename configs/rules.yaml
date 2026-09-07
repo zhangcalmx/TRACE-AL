@@ -1,0 +1,1022 @@
+risk_levels:
+  high: 3
+  medium: 2
+  low: 1
+  unknown: 0
+rules:
+- id: low_anastomosis_risk
+  severity: high
+  risk_type: surgical_anatomical
+  when:
+    all:
+    - patient: rectal_cancer
+    - surgery: colorectal_anastomosis
+    - surgery: anastomosis_at_or_below_5cm
+  entity_a_flags:
+  - rectal_cancer
+  - lower_rectal_cancer
+  entity_b_flags:
+  - anastomosis_at_or_below_5cm
+  - anastomosis_under_6cm
+  - colorectal_anastomosis
+  rationale: 低位直肠吻合与吻合口漏增加稳定相关。项目采用文献直接支持的距肛缘≤5 cm作为风险触发点；指南管理语境还覆盖约5–8 cm的低位吻合，阈值仍需本地校准。
+  recommendation: 复核吻合口高度、灌注、张力和完整性；按指南考虑保护性造口。ICG和漏试验应结合术式与患者风险使用，不写成对所有患者均能消除漏风险。
+  citations:
+  - source_type: guideline
+    source_id: pmid_33216491
+    claim_id: claim_exp26_gl_ascrs2020_low_diversion
+    supports:
+    - trigger
+    - management
+    ref: 'The American Society of Colon and Rectal Surgeons Clinical Practice Guidelines for the Management of Rectal Cancer. https://www.ascrsu.com/ascrs/view/ASCRS-Toolkit/2851064/0/Management_of_Rectal_Cancer__2020_;
+      section: Operative Treatment—Technical Aspects, recommendations 12–13; access_date: 2026-07-28'
+  - source_type: literature
+    source_id: pmid_25743996
+    claim_id: claim_r1_03
+    supports:
+    - trigger
+    - threshold
+    ref: 'Clinical risk factors for anastomotic leakage after laparoscopic anterior resection for rectal cancer: a systematic review and meta-analysis.. PMID:25743996; DOI:10.1007/s00464-015-4117-x; https://pubmed.ncbi.nlm.nih.gov/25743996/'
+  - source_type: literature
+    source_id: phase2_lit_36187056
+    claim_id: claim_phase2_pub_36187056
+    supports:
+    - trigger
+    - threshold
+    - uncertainty
+    ref: Intracorporeal reinforcing sutures reduce anastomotic leakage in double-stapling anastomosis for laparoscopic rectal surgery.. PMID:36187056; DOI:10.5114/wiitm.2022.115168; https://pubmed.ncbi.nlm.nih.gov/36187056/
+  evidence_scope:
+    claim_kind: risk_association_and_management
+    threshold_status: directly_supported_local_calibration_still_required
+    boolean_logic_status: evidence_aligned
+    clinical_expert_signoff: false
+  signal_class: risk_marker
+- id: malnutrition_albumin_risk
+  severity: medium
+  risk_type: nutritional_risk
+  when:
+    patient: albumin_low_35
+  entity_a_flags:
+  - albumin_low_35
+  entity_b_flags: []
+  rationale: 部分结直肠队列支持术前白蛋白<35 g/L与吻合口漏相关，但ERAS队列也报告术前白蛋白预测能力有限。白蛋白应作为营养/炎症风险提示，而不是营养不良的单一诊断或因果指标。
+  recommendation: 触发后完成NRS-2002等结构化营养评估并寻找炎症、肝肾疾病等混杂因素；由营养团队制定经口/肠内优先的优化方案。不得仅为纠正化验值常规输注白蛋白。
+  citations:
+  - source_type: literature
+    source_id: phase2_lit_31621086
+    claim_id: claim_phase2_cli_31621086
+    supports:
+    - trigger
+    - threshold
+    ref: Novel nomogram with microvascular density in the surgical margins can accurately predict the risk for anastomotic leakage after anterior resection for rectal cancer.. PMID:31621086; DOI:10.1002/jso.25730;
+      https://pubmed.ncbi.nlm.nih.gov/31621086/
+  - source_type: literature
+    source_id: phase2_lit_20404288
+    claim_id: claim_phase2_cli_20404288
+    supports:
+    - trigger
+    - threshold
+    ref: 'Risk factors for anastomotic leak following colorectal surgery: a case-control study.. PMID:20404288; DOI:10.1001/archsurg.2010.40; https://pubmed.ncbi.nlm.nih.gov/20404288/'
+  - source_type: literature
+    source_id: pmid_37256440
+    claim_id: claim_r2_01
+    supports:
+    - uncertainty
+    ref: Is preoperative hypoalbuminemia or hypoproteinemia a reliable marker for anastomotic leakage risk in patients undergoing elective colorectal surgery in an enhanced recovery after surgery (ERAS)
+      program?. PMID:37256440; DOI:10.1007/s00384-023-04450-5; https://pubmed.ncbi.nlm.nih.gov/37256440/
+  evidence_scope:
+    claim_kind: risk_marker_with_conflicting_evidence
+    threshold_status: directly_supported_in_observational_cohorts
+    boolean_logic_status: evidence_aligned
+    clinical_expert_signoff: false
+  signal_class: risk_marker
+- id: immediate_anastomotic_defect
+  severity: medium
+  risk_type: intraoperative_quality
+  when:
+    any:
+    - surgery: air_leak_test_repaired
+    - surgery: air_leak_test_persistent
+    - surgery: doughnut_incomplete
+    - surgery: anastomotic_defect
+  entity_a_flags: []
+  entity_b_flags:
+  - air_leak_test_repaired
+  - air_leak_test_persistent
+  - doughnut_incomplete
+  - anastomotic_defect
+  rationale: 漏试验持续阳性、吻合圈不完整或可见缺损属于未解决的即时机械完整性异常。漏试验阳性但处理后复测转阴仍保留复核提示，但不再与持续异常同级；现有系统评价未证明常规漏试验本身必然降低总体漏率。
+  recommendation: 术中立即查明原因，按缺损情况缝合修补、重做吻合和/或近端转流，并在处理后重新验证完整性；完整记录缺损、处理和复测结果。
+  citations:
+  - source_type: guideline
+    source_id: pmid_33216491
+    claim_id: claim_exp26_gl_ascrs2020_integrity
+    supports:
+    - trigger
+    - management
+    ref: 'The American Society of Colon and Rectal Surgeons Clinical Practice Guidelines for the Management of Rectal Cancer. https://www.ascrsu.com/ascrs/view/ASCRS-Toolkit/2851064/0/Management_of_Rectal_Cancer__2020_;
+      section: Operative Treatment—Technical Aspects, recommendations 12–13; access_date: 2026-07-28'
+  - source_type: literature
+    source_id: pmid_27294661
+    claim_id: claim_r3_01
+    supports:
+    - trigger
+    - uncertainty
+    ref: Is the intraoperative air leak test effective in the prevention of colorectal anastomotic leakage? A systematic review and meta-analysis.. PMID:27294661; DOI:10.1007/s00384-016-2616-4; https://pubmed.ncbi.nlm.nih.gov/27294661/
+  - source_type: authority_book
+    source_id: booksrc_book_ascrs2_intraoperative_integrity
+    claim_id: claim_book_ascrs2_intraoperative_integrity
+    supports:
+    - trigger
+    - management
+    ref: 'The ASCRS Textbook of Colon and Rectal Surgery — Postoperative Complications > Anastomotic Complications. ISBN:978-1-4419-1581-8; https://link.springer.com/book/10.1007/978-1-4419-1584-9; chapter/locator:
+      ISBN:978-1-4419-1581-8; 2 ed.; chapter:Postoperative Complications > Anastomotic Complications; pages:158; Table 10-1, Steps to minimize risk of leak from colorectal or coloanal anastomoses; access_date:
+      2026-07-28'
+  evidence_scope:
+    claim_kind: intraoperative_safety_guardrail
+    threshold_status: not_applicable
+    boolean_logic_status: corrected_vs_persistent_closed_loop_v1_1
+    clinical_expert_signoff: false
+  signal_class: safety_guardrail
+  severity_overrides:
+  - severity: high
+    when:
+      any:
+      - surgery: air_leak_test_persistent
+      - surgery: doughnut_incomplete
+      - surgery: anastomotic_defect
+- id: diabetes_poor_control_risk
+  severity: medium
+  risk_type: glycemic_risk
+  when:
+    patient: diabetes
+  entity_a_flags:
+  - diabetes
+  - diabetes_poor_control
+  entity_b_flags: []
+  rationale: 荟萃证据支持糖尿病与胃肠/结直肠吻合口漏增加相关。围术期高血糖是额外的动态安全变量，但当前证据不足以把HbA1c>7%作为结直肠吻合口漏的已验证独立分界值。
+  recommendation: 识别糖尿病后复核HbA1c和围术期血糖计划，并按本院糖尿病/麻醉路径个体化控制；不要因单一HbA1c阈值自动推导造口决策。
+  citations:
+  - source_type: literature
+    source_id: pmid_25890436
+    claim_id: claim_r4_01
+    supports:
+    - trigger
+    ref: Diabetes and risk of anastomotic leakage after gastrointestinal surgery.. PMID:25890436; DOI:10.1016/j.jss.2015.03.017; https://pubmed.ncbi.nlm.nih.gov/25890436/
+  - source_type: literature
+    source_id: pmid_33386511
+    claim_id: claim_r4_05
+    supports:
+    - trigger
+    ref: The influence of diabetes on postoperative complications following colorectal surgery.. PMID:33386511; DOI:10.1007/s10151-020-02373-9; https://pubmed.ncbi.nlm.nih.gov/33386511/
+  - source_type: literature
+    source_id: pmid_33712988
+    claim_id: claim_r4_03
+    supports:
+    - management
+    - uncertainty
+    ref: Association Between Intraoperative Blood Glucose and Anastomotic Leakage in Colorectal Surgery.. PMID:33712988; DOI:10.1007/s11605-021-04933-2; https://pubmed.ncbi.nlm.nih.gov/33712988/
+  evidence_scope:
+    claim_kind: risk_association_plus_indirect_management
+    threshold_status: hba1c_cutoff_not_used_as_rule_trigger
+    boolean_logic_status: evidence_aligned
+    clinical_expert_signoff: false
+  signal_class: risk_marker
+- id: poor_performance_status_risk
+  severity: medium
+  risk_type: general_condition
+  when:
+    patient: asa_ge_III
+  entity_a_flags:
+  - asa_ge_III
+  entity_b_flags: []
+  rationale: ASA≥III在大型队列、随机试验荟萃回归和既有评分系统中反复与吻合口漏相关。ECOG仍可用于描述功能状态，但ASA属于非特异全身风险代理，不能单项决定总体高优先级。
+  recommendation: 对ASA≥III患者完成心肺肾及衰弱/功能状态优化，加强术后监测；造口或术式选择仍需综合吻合高度、灌注和急诊状态。
+  citations:
+  - source_type: literature
+    source_id: phase2_lit_35915378
+    claim_id: claim_phase2_cli_35915378
+    supports:
+    - trigger
+    - threshold
+    ref: When Is a Diverting Stoma Indicated after Low Anterior Resection? A Meta-analysis of Randomized Trials and Meta-Regression of the Risk Factors of Leakage and Complications in Non-Diverted Patients..
+      PMID:35915378; DOI:10.1007/s11605-022-05427-5; https://pubmed.ncbi.nlm.nih.gov/35915378/
+  - source_type: literature
+    source_id: pmid_27474844
+    claim_id: claim_r5_02
+    supports:
+    - trigger
+    - threshold
+    ref: 'Risk factors for anastomotic leakage after colorectal resection: a retrospective analysis of 17 518 patients.. PMID:27474844; DOI:10.1111/codi.13476; https://pubmed.ncbi.nlm.nih.gov/27474844/'
+  - source_type: literature
+    source_id: pmid_38418633
+    claim_id: claim_r5_04
+    supports:
+    - trigger
+    - uncertainty
+    ref: 'Score prediction of anastomotic leak in colorectal surgery: a systematic review.. PMID:38418633; DOI:10.1007/s00464-024-10705-1; https://pubmed.ncbi.nlm.nih.gov/38418633/'
+  evidence_scope:
+    claim_kind: risk_association
+    threshold_status: directly_supported
+    boolean_logic_status: single_factor_review_not_independent_high_v1_1
+    clinical_expert_signoff: false
+  signal_class: risk_marker
+- id: major_blood_loss_risk
+  severity: medium
+  risk_type: perfusion_risk
+  when:
+    any:
+    - surgery: blood_loss_over_500ml
+    - surgery: blood_transfusion_intraop
+  entity_a_flags: []
+  entity_b_flags:
+  - blood_loss_over_500ml
+  - blood_transfusion_intraop
+  rationale: 系统评价支持较多术中失血和围术期输血分别与吻合口漏或不良结局增加相关，因此不再要求二者同时存在。500 mL是项目保守警戒点，文献阈值异质且混杂明显，不能单项决定总体高优先级，也不能视为通用校准阈值。
+  recommendation: 优先止血、纠正灌注不足并按患者状态采用限制性和个体化输血策略；记录失血、最低血红蛋白、输血时点与单位数，避免把输血关联误写为单独因果。
+  citations:
+  - source_type: literature
+    source_id: phase2_lit_31665375
+    claim_id: claim_phase2_cli_31665375
+    supports:
+    - trigger
+    ref: 'Surgical-related risk factors associated with anastomotic leakage after resection for rectal cancer: a meta-analysis.. PMID:31665375; DOI:10.1093/jjco/hyz139; https://pubmed.ncbi.nlm.nih.gov/31665375/'
+  - source_type: literature
+    source_id: pmid_27756644
+    claim_id: claim_r6_02
+    supports:
+    - trigger
+    - uncertainty
+    ref: 'Intraoperative modifiable risk factors of colorectal anastomotic leakage: Why surgeons and anesthesiologists should act together.. PMID:27756644; DOI:10.1016/j.ijsu.2016.09.098; https://pubmed.ncbi.nlm.nih.gov/27756644/'
+  - source_type: literature
+    source_id: pmid_36138307
+    claim_id: claim_r6_05
+    supports:
+    - trigger
+    - uncertainty
+    ref: 'Operative blood loss adversely affects short and long-term outcomes after colorectal cancer surgery: results of a systematic review and meta-analysis.. PMID:36138307; DOI:10.1007/s10151-022-02701-1;
+      https://pubmed.ncbi.nlm.nih.gov/36138307/'
+  evidence_scope:
+    claim_kind: risk_association
+    threshold_status: direction_supported_project_cutoff_needs_expert_signoff
+    boolean_logic_status: single_factor_review_not_independent_high_v1_1
+    clinical_expert_signoff: false
+  signal_class: risk_marker
+- id: intraoperative_hypoperfusion_risk
+  severity: medium
+  risk_type: splanchnic_perfusion_safety
+  when:
+    surgery: hypotension_over_30min
+  entity_a_flags: []
+  entity_b_flags:
+  - hypotension_over_30min
+  - map_below_65
+  rationale: 指南建议避免MAP<65 mmHg，但该建议针对总体围术期不良结局。结直肠研究中低血压与吻合口漏多为单因素关联，尚不足以证明MAP<65持续>30分钟是经外部验证的吻合口漏专属阈值。
+  recommendation: 按麻醉安全路径及时纠正持续低血压并复核容量、血红蛋白和组织灌注；本规则是安全警戒，不能单独决定造口或宣称吻合口漏概率。
+  citations:
+  - source_type: guideline
+    source_id: guideline_ascrs_sages_eras_2023
+    claim_id: claim_exp26_gl_eras2023_map65
+    supports:
+    - threshold
+    - management
+    - uncertainty
+    ref: 'Clinical Practice Guidelines for Enhanced Recovery After Colon and Rectal Surgery From ASCRS and SAGES. https://www.sages.org/wp-content/uploads/2017/07/Irani2023_ERAS_DisColonRect.pdf; section:
+      Recommendation 5, journal p.19 (PDF p.5); recommendation 15, journal p.22 (PDF p.8); access_date: 2026-07-28'
+  - source_type: literature
+    source_id: pmid_22297862
+    claim_id: claim_r7_01
+    supports:
+    - trigger
+    - uncertainty
+    ref: Intraoperative blood pressure changes as a risk factor for anastomotic leakage in colorectal surgery.. PMID:22297862; DOI:10.1007/s00384-011-1381-7; https://pubmed.ncbi.nlm.nih.gov/22297862/
+  - source_type: literature
+    source_id: pmid_23014977
+    claim_id: claim_r7_02
+    supports:
+    - trigger
+    - uncertainty
+    ref: 'Risk factors for anastomotic leakage following anterior resection for colorectal cancer: the effect of epidural analgesia on occurrence.. PMID:23014977; DOI:10.1007/s00384-012-1585-5; https://pubmed.ncbi.nlm.nih.gov/23014977/'
+  evidence_scope:
+    claim_kind: perioperative_safety_guardrail_with_indirect_al_evidence
+    threshold_status: operational_needs_clinical_signoff
+    boolean_logic_status: conservative_operational_trigger
+    clinical_expert_signoff: false
+  signal_class: safety_guardrail
+- id: prolonged_surgery_risk
+  severity: medium
+  risk_type: operative_burden
+  when:
+    surgery: surgery_duration_over_4h
+  entity_a_flags: []
+  entity_b_flags:
+  - surgery_duration_over_4h
+  rationale: 系统评价将手术时间>4小时列为术中风险因素，其他队列也支持手术时间延长与吻合口漏相关；效应可能同时反映手术复杂度和患者/肿瘤因素。
+  recommendation: 超过4小时后强化保温、抗菌药再给药时点、液体与灌注复核，并记录导致延长的原因；不应为追求时长阈值而牺牲肿瘤学或吻合安全。
+  citations:
+  - source_type: literature
+    source_id: pmid_25703524
+    claim_id: claim_r8_01
+    supports:
+    - trigger
+    - threshold
+    ref: Systematic review of preoperative, intraoperative and postoperative risk factors for colorectal anastomotic leaks.. PMID:25703524; DOI:10.1002/bjs.9697; https://pubmed.ncbi.nlm.nih.gov/25703524/
+  - source_type: literature
+    source_id: pmid_16500248
+    claim_id: claim_r8_02
+    supports:
+    - trigger
+    ref: 'Risk factors for anastomotic leakage after surgery for colorectal cancer: results of prospective surveillance.. PMID:16500248; DOI:10.1016/j.jamcollsurg.2005.10.019; https://pubmed.ncbi.nlm.nih.gov/16500248/'
+  - source_type: literature
+    source_id: phase2_lit_31713046
+    claim_id: claim_phase2_cli_31713046
+    supports:
+    - trigger
+    - uncertainty
+    ref: Retrospective Risk Analysis for Anastomotic Leakage Following Laparoscopic Rectal Cancer Surgery in a Single Institute.. PMID:31713046; DOI:10.1007/s12029-019-00315-9; https://pubmed.ncbi.nlm.nih.gov/31713046/
+  evidence_scope:
+    claim_kind: risk_association
+    threshold_status: directly_supported_in_systematic_review
+    boolean_logic_status: evidence_aligned
+    clinical_expert_signoff: false
+  signal_class: risk_marker
+- id: inflammation_nutrition_imbalance
+  severity: unknown
+  risk_type: immuno_nutritional_marker
+  when:
+    any:
+    - patient: nlr_elevated_over_5
+    - patient: pni_low_40
+  entity_a_flags:
+  - nlr_elevated_over_5
+  - pni_low_40
+  entity_b_flags: []
+  rationale: NLR和PNI在观察性研究中与吻合口漏相关，但两者最佳阈值在研究间明显变化。NLR>5与PNI<40均是项目研究性警戒值而非跨人群通用界值，单项结果仅触发语境复核，不再直接作为已分级的吻合口漏阳性风险信号。
+  recommendation: 触发后结合CRP、白蛋白、感染和营养评估解释，必要时重复检测趋势；不得把单一炎症营养指标当作诊断吻合口漏或自动造口的依据。
+  citations:
+  - source_type: literature
+    source_id: pmid_37540157
+    claim_id: claim_r9_01
+    supports:
+    - trigger
+    - uncertainty
+    ref: Preoperative prognostic nutritional index associated with anastomotic leakage in colorectal cancer patients after surgery.. PMID:37540157; DOI:10.17219/acem/169495; https://pubmed.ncbi.nlm.nih.gov/37540157/
+  - source_type: literature
+    source_id: pmid_38463372
+    claim_id: claim_r9_02
+    supports:
+    - trigger
+    - uncertainty
+    ref: 'Preoperative neutrophil-to-lymphocyte ratio predicts symptomatic anastomotic leakage in elderly colon cancer patients: Multicenter propensity score-matched analysis.. PMID:38463372; DOI:10.4240/wjgs.v16.i2.438;
+      https://pubmed.ncbi.nlm.nih.gov/38463372/'
+  - source_type: literature
+    source_id: phase2_lit_27154050
+    claim_id: claim_phase2_pub_27154050
+    supports:
+    - uncertainty
+    ref: The neutrophil-to-lymphocyte ratio predicts major perioperative complications in patients undergoing colorectal surgery.. PMID:27154050; DOI:10.1111/codi.13373; https://pubmed.ncbi.nlm.nih.gov/27154050/
+  evidence_scope:
+    claim_kind: risk_marker_with_heterogeneous_cutoffs
+    threshold_status: heterogeneous_cutoffs_need_expert_signoff_and_local_calibration
+    boolean_logic_status: research_marker_context_only_v1_1
+    clinical_expert_signoff: false
+  signal_class: context_review
+- id: obesity_risk
+  severity: medium
+  risk_type: technical_difficulty
+  when:
+    patient: bmi_over_30
+  entity_a_flags:
+  - bmi_over_30
+  entity_b_flags: []
+  rationale: 多项系统评价支持肥胖或内脏肥胖与直肠/结直肠手术吻合口漏增加相关，但部分综述结果不一致。BMI≥30 kg/m²是通用肥胖定义和项目触发值，内脏脂肪可能比BMI更接近技术难度。
+  recommendation: 评估盆腔暴露、内脏脂肪、吻合张力和灌注，优化体重及合并症；不因BMI单项自动选择术式或造口。
+  citations:
+  - source_type: literature
+    source_id: pmid_26810563
+    claim_id: claim_exp26_pmid_26810563_obesity_meta
+    supports:
+    - trigger
+    ref: 'Outcome of rectal cancer surgery in obese and nonobese patients: a meta-analysis.. PMID:26810563; DOI:10.1186/s12957-016-0775-y; https://pubmed.ncbi.nlm.nih.gov/26810563/'
+  - source_type: literature
+    source_id: phase2_lit_27778169
+    claim_id: claim_phase2_cli_27778169
+    supports:
+    - trigger
+    ref: 'Laparoscopic colorectal cancer resections in the obese: a systematic review.. PMID:27778169; DOI:10.1007/s00464-016-5209-y; https://pubmed.ncbi.nlm.nih.gov/27778169/'
+  - source_type: literature
+    source_id: pmid_34519249
+    claim_id: claim_exp26_pmid_34519249_bmi
+    supports:
+    - trigger
+    - threshold
+    ref: Clinical Factors Contributing to Anastomotic Leak After Mid-to-High Colorectal Anastomosis.. PMID:34519249; DOI:10.1177/00031348211041555; https://pubmed.ncbi.nlm.nih.gov/34519249/
+  evidence_scope:
+    claim_kind: risk_association_with_heterogeneity
+    threshold_status: directly_supported_in_observational_data
+    boolean_logic_status: evidence_aligned
+    clinical_expert_signoff: false
+  signal_class: risk_marker
+- id: icg_perfusion_risk
+  severity: medium
+  risk_type: perfusion_safety
+  when:
+    all:
+    - surgery: icg_perfusion_inadequate
+    - surgery: icg_no_corrective_action
+  entity_a_flags: []
+  entity_b_flags:
+  - icg_perfusion_inadequate
+  - icg_no_corrective_action
+  rationale: 指南和荟萃分析支持左侧结直肠吻合中使用ICG灌注评估。ICG促使约一部分病例改变切缘，但缺少直接随机比较证明“灌注不良后未调整”这一组合的独立效应量，因此本条定位为安全闭环。
+  recommendation: ICG显示灌注不足时应复核成像质量并调整切缘或重建吻合，直至形成可解释的灌注与处置记录；若未矫正，必须升级术者/团队复核。
+  citations:
+  - source_type: guideline
+    source_id: guideline_sages_icg_2025
+    claim_id: claim_exp26_gl_sages2025_icg
+    supports:
+    - management
+    ref: '2025 Guidelines for Fluorescence Image-guided Surgery Using Indocyanine Green in Gastrointestinal Procedures. https://www.sages.org/publications/guidelines/figs-with-icg-guidelines/; section:
+      KQ5 recommendation and anastomotic-leak evidence summary; access_date: 2026-07-28'
+  - source_type: literature
+    source_id: pmid_32885328
+    claim_id: claim_exp26_pmid_32885328_icg_meta
+    supports:
+    - management
+    - trigger
+    ref: 'Assessment of intraoperative use of indocyanine green fluorescence imaging on the incidence of anastomotic leakage after rectal cancer surgery: a PRISMA-compliant systematic review and meta-analysis..
+      PMID:32885328; DOI:10.1007/s10151-020-02335-1; https://pubmed.ncbi.nlm.nih.gov/32885328/'
+  - source_type: literature
+    source_id: pmid_25451666
+    claim_id: claim_r11_01
+    supports:
+    - management
+    - uncertainty
+    ref: 'Perfusion assessment in laparoscopic left-sided/anterior resection (PILLAR II): a multi-institutional study.. PMID:25451666; DOI:10.1016/j.jamcollsurg.2014.09.015; https://pubmed.ncbi.nlm.nih.gov/25451666/'
+  evidence_scope:
+    claim_kind: intraoperative_safety_guardrail
+    threshold_status: not_applicable
+    boolean_logic_status: safety_logic_needs_expert_signoff
+    clinical_expert_signoff: false
+  signal_class: safety_guardrail
+- id: multivisceral_resection_risk
+  severity: unknown
+  risk_type: surgical_complexity
+  when:
+    surgery: multivisceral_resection
+  entity_a_flags: []
+  entity_b_flags:
+  - multivisceral_resection
+  rationale: 多脏器整块切除代表更高的手术复杂度。现有系统评价报告了吻合口漏结局，但全国审计显示其独立风险作用随时期改变，因此本规则是复杂度提示而非稳定的因果效应估计。
+  recommendation: 由经验团队预先规划R0整块切除、血管/泌尿等协作及吻合策略，重点控制失血、时长、污染、张力和灌注；不得为降低漏风险而违背肿瘤学整块切除原则。
+  citations:
+  - source_type: guideline
+    source_id: pmid_34775402
+    claim_id: claim_glcand_ascrs_colon_multivisceral
+    supports:
+    - management
+    - uncertainty
+    ref: 'The American Society of Colon and Rectal Surgeons Clinical Practice Guidelines for the Management of Colon Cancer. https://www.ascrsu.com/ascrs/view/ASCRS-Toolkit/2851068/all/Management_of_Colon_Cancer__2022_;
+      section: Recommendations 10, 16, 17 and 18; access_date: 2026-07-28'
+  - source_type: literature
+    source_id: pmid_36811741
+    claim_id: claim_r12_01
+    supports:
+    - trigger
+    - uncertainty
+    ref: 'Outcomes following open versus laparoscopic multi-visceral resection for locally advanced colorectal cancer: A systematic review and meta-analysis.. PMID:36811741; DOI:10.1007/s00423-023-02835-2;
+      https://pubmed.ncbi.nlm.nih.gov/36811741/'
+  - source_type: literature
+    source_id: pmid_34536987
+    claim_id: claim_r12_02
+    supports:
+    - uncertainty
+    ref: 'Trends in risk factors of anastomotic leakage after colorectal cancer surgery (2011-2019): A Dutch population-based study.. PMID:34536987; DOI:10.1111/codi.15911; https://pubmed.ncbi.nlm.nih.gov/34536987/'
+  evidence_scope:
+    claim_kind: complexity_alert_not_positive_risk_rule
+    threshold_status: not_applicable
+    boolean_logic_status: evidence_aligned
+    clinical_expert_signoff: false
+  signal_class: context_review
+patient_factor_rules:
+  age_over_75:
+    severity: unknown
+    when:
+      all:
+      - patient: age_over_75
+      - any:
+        - surgery: surgery_duration_over_4h
+        - surgery: blood_transfusion_intraop
+    matching_entity_a_flags:
+    - age_over_75
+    matching_entity_b_flags:
+    - surgery_duration_over_4h
+    - blood_transfusion_intraop
+    rationale: 年龄>75岁本身没有在现有荟萃分析中显示稳定增加吻合口漏。本规则仅在同时出现长手术或输血时触发老年综合复核，不把年龄等同于衰弱，也不提供已验证的交互效应量。
+    citations:
+    - source_type: guideline
+      source_id: guideline_cpoc_frailty_2021
+      claim_id: claim_glcand_cpoc_frailty_screen
+      supports:
+      - management
+      - threshold
+      - uncertainty
+      ref: 'Guideline for Perioperative Care for People Living with Frailty Undergoing Elective and Emergency Surgery. https://www.cpoc.org.uk/guidelines-and-resources/guidelines/perioperative-care-people-living-frailty;
+        section: Standards; emergency admission pathway; preoperative assessment services; access_date: 2026-07-28'
+    - source_type: literature
+      source_id: phase2_lit_30649570
+      claim_id: claim_phase2_cli_30649570
+      supports:
+      - uncertainty
+      ref: 'Short-term outcomes of laparoscopic surgery for colorectal cancer in the elderly versus non-elderly: a systematic review and meta-analysis.. PMID:30649570; DOI:10.1007/s00384-019-03234-0; https://pubmed.ncbi.nlm.nih.gov/30649570/'
+    - source_type: literature
+      source_id: phase2_lit_35666815
+      claim_id: claim_phase2_pub_35666815
+      supports:
+      - uncertainty
+      ref: 'Robotic colorectal surgery in elderly patients: A single-centre experience.. PMID:35666815; DOI:10.1002/rcs.2431; https://pubmed.ncbi.nlm.nih.gov/35666815/'
+    risk_type: geriatric_composite_review
+    recommendation: 记录Clinical Frailty Scale并酌情完成综合老年评估，结合手术负荷决定监测和缓解措施。
+    evidence_scope:
+      claim_kind: assessment_guardrail_not_age_causality
+      threshold_status: age_threshold_supported_for_frailty_screening_not_al
+      boolean_logic_status: composite_interaction_needs_expert_signoff
+      clinical_expert_signoff: false
+    signal_class: context_review
+  severe_malnutrition:
+    severity: medium
+    when:
+      patient: severe_malnutrition
+    matching_entity_a_flags:
+    - severe_malnutrition
+    - pni_low_40
+    matching_entity_b_flags: []
+    rationale: 严重营养不良应在择期手术前进入强化营养路径；PNI<40在直肠癌队列中与吻合口漏相关。其复合代理定义尚未得到专家签署，因此保留强化管理提示，但不再单项决定总体高优先级。
+    citations:
+    - source_type: guideline
+      source_id: pmid_40957230
+      claim_id: claim_glcand_espen2025_preop_nutrition
+      supports:
+      - management
+      ref: 'ESPEN guideline on clinical nutrition in surgery - Update 2025. https://www.espen.org/guidelines/espen-scientific-guidelines-pdf-versions; section: Recommendations 19, 20, 21 and 23; access_date:
+        2026-07-28'
+    - source_type: guideline
+      source_id: guideline_ascrs_sages_eras_2023
+      claim_id: claim_exp26_gl_eras2023_nutrition
+      supports:
+      - management
+      ref: 'Clinical Practice Guidelines for Enhanced Recovery After Colon and Rectal Surgery From ASCRS and SAGES. https://www.sages.org/wp-content/uploads/2017/07/Irani2023_ERAS_DisColonRect.pdf; section:
+        Recommendation 5, journal p.19 (PDF p.5); recommendation 15, journal p.22 (PDF p.8); access_date: 2026-07-28'
+    - source_type: literature
+      source_id: phase2_lit_37204489
+      claim_id: claim_phase2_cli_37204489
+      supports:
+      - trigger
+      - threshold
+      ref: 'Predictive factors associated with anastomotic leakage after resection of rectal cancer: a multicenter study with the Hiroshima Surgical study group of Clinical Oncology.. PMID:37204489; DOI:10.1007/s00423-023-02931-3;
+        https://pubmed.ncbi.nlm.nih.gov/37204489/'
+    risk_type: severe_nutritional_risk
+    recommendation: 由营养团队评估后给予经口/肠内优先的治疗；若为择期手术，可按指南考虑10–14天术前营养治疗，同时评估再喂养风险与肿瘤学时效。
+    evidence_scope:
+      claim_kind: management_trigger_plus_risk_marker
+      threshold_status: composite_severe_malnutrition_definition_needs_expert_signoff
+      boolean_logic_status: management_priority_not_independent_high_v1_1
+      clinical_expert_signoff: false
+    signal_class: context_review
+  urgent_emergency:
+    severity: medium
+    when:
+      all:
+      - any:
+        - patient: bowel_obstruction
+        - patient: bowel_perforation
+      - surgery: emergency_surgery
+    matching_entity_a_flags:
+    - bowel_obstruction
+    - bowel_perforation
+    matching_entity_b_flags:
+    - emergency_surgery
+    - peritoneal_contamination_severe
+    rationale: 急诊梗阻或穿孔情境的吻合决策受脓毒症、生理紊乱、污染和肠壁质量共同影响。登记数据支持急诊手术与漏风险增加相关，但部分情境的荟萃结果不显著。单纯急诊梗阻或无重度污染的急诊穿孔为复核级；仅穿孔合并严重污染升级为高优先级。
+    citations:
+    - source_type: guideline
+      source_id: guideline_wses_emergency_crc_2017
+      claim_id: claim_exp26_gl_wses2017_emergency
+      supports:
+      - trigger
+      - management
+      ref: '2017 WSES guidelines on colon and rectal cancer emergencies: obstruction and perforation. https://pmc.ncbi.nlm.nih.gov/articles/PMC6090779/; section: Management of perforation, Statement 2.1
+        and accompanying anastomosis discussion; access_date: 2026-07-28'
+    - source_type: literature
+      source_id: phase2_lit_38084042
+      claim_id: claim_phase2_pub_38084042
+      supports:
+      - trigger
+      - uncertainty
+      ref: 'Anastomotic Leak in Colorectal Surgery: Predictive Factors and Survival.. PMID:38084042; DOI:10.5604/01.3001.0016.1602; https://pubmed.ncbi.nlm.nih.gov/38084042/'
+    - source_type: literature
+      source_id: pmid_36825639
+      claim_id: claim_exp26_pmid_36825639_emergency
+      supports:
+      - trigger
+      - uncertainty
+      ref: 'Right hemicolectomy anastomotic leak study: a review of right hemicolectomy in the binational clinical outcomes registry (BCOR).. PMID:36825639; DOI:10.1111/ans.18337; https://pubmed.ncbi.nlm.nih.gov/36825639/'
+    risk_type: emergency_contamination_risk
+    recommendation: 优先复苏和感染源控制；结合生理储备、污染程度和组织质量选择一期吻合、转流或分期手术，对不稳定或污染重者保持较低的分期手术阈值。
+    evidence_scope:
+      claim_kind: emergency_management_and_risk_association
+      threshold_status: not_applicable
+      boolean_logic_status: obstruction_vs_contaminated_perforation_split_v1_1
+      clinical_expert_signoff: false
+    signal_class: safety_guardrail
+    severity_overrides:
+    - severity: high
+      when:
+        all:
+        - patient: bowel_perforation
+        - surgery: emergency_surgery
+        - surgery: peritoneal_contamination_severe
+  bowel_preparation_process:
+    severity: unknown
+    when:
+      any:
+      - surgery: mechanical_bowel_prep_status
+      - surgery: oral_antibiotic_bowel_prep_status
+    matching_entity_a_flags: []
+    matching_entity_b_flags:
+    - mechanical_bowel_prep_status
+    - oral_antibiotic_bowel_prep_status
+    rationale: 机械肠道准备与口服抗生素准备对吻合口漏的独立效应在荟萃分析中存在争议，部分研究显示联合应用可降低感染性并发症但漏风险结论不一致。本规则仅登记语境，不单独触发告警。
+    citations:
+    - source_type: literature
+      source_id: phase2_lit_42257961
+      claim_id: claim_phase2_pub_42257961
+      supports:
+      - uncertainty
+      ref: Optimal preoperative bowel preparation for intracorporeal anastomosis in laparoscopic colectomy.. PMID:42257961; DOI:10.1186/s13756-021-01007-5; https://pubmed.ncbi.nlm.nih.gov/42257961/
+    - source_type: literature
+      source_id: phase2_lit_42356173
+      claim_id: claim_phase2_pub_42356173
+      supports:
+      - uncertainty
+      ref: 'Adding Preoperative Oral Antibiotics to Mechanical Bowel Preparation Reduces Surgical Site Infections in Elective Colorectal Surgery: A Meta-Analysis of Randomized Controlled Trials.. PMID:42356173;
+        DOI:10.1017/S0266462312000086; https://pubmed.ncbi.nlm.nih.gov/42356173/'
+    risk_type: process_measure_context
+    recommendation: 记录肠道准备完成情况作为校正/描述变量；不据此单独判定吻合口漏风险等级。
+    evidence_scope:
+      claim_kind: uncertainty
+      threshold_status: no_fixed_threshold
+      boolean_logic_status: descriptive_covariate
+      clinical_expert_signoff: true
+    signal_class: context_review
+  antibiotic_prophylaxis_process:
+    severity: unknown
+    when:
+      any:
+      - surgery: iv_antibiotic_prophylaxis_given
+      - surgery: iv_antibiotic_prophylaxis_timing_recorded
+      - surgery: iv_antibiotic_redosing_status
+    matching_entity_a_flags: []
+    matching_entity_b_flags:
+    - iv_antibiotic_prophylaxis_given
+    - iv_antibiotic_prophylaxis_timing_recorded
+    - iv_antibiotic_redosing_status
+    rationale: 围术期静脉抗生素预防时机与重给主要影响手术部位感染，对吻合口漏的独立因果证据有限。本规则登记语境，不单独触发告警。
+    citations:
+    - source_type: literature
+      source_id: phase2_lit_41973419
+      claim_id: claim_phase2_pub_41973419
+      supports:
+      - uncertainty
+      ref: β-Lactam vs Non-β-Lactam Prophylaxis in Elective Colorectal Surgery.. PMID:41973419; DOI:10.1001/jamasurg.2016.4952; https://pubmed.ncbi.nlm.nih.gov/41973419/
+    - source_type: literature
+      source_id: phase2_lit_42266121
+      claim_id: claim_phase2_pub_42266121
+      supports:
+      - uncertainty
+      ref: 'Guideline-concordant antibiotic prophylaxis on surgical site infection rates following colorectal surgery: real-world data from Thailand.. PMID:42266121; DOI:10.1089/sur.2024.137; https://pubmed.ncbi.nlm.nih.gov/42266121/'
+    risk_type: process_measure_context
+    recommendation: 记录抗生素预防时机与重给状态作为过程质量指标；不据此单独判定吻合口漏风险。
+    evidence_scope:
+      claim_kind: uncertainty
+      threshold_status: no_fixed_threshold
+      boolean_logic_status: descriptive_covariate
+      clinical_expert_signoff: true
+    signal_class: context_review
+  vasopressor_exposure:
+    severity: unknown
+    when:
+      any:
+      - surgery: vasopressor_used
+      - surgery: norepinephrine_equivalent_max_recorded
+    matching_entity_a_flags: []
+    matching_entity_b_flags:
+    - vasopressor_used
+    - norepinephrine_equivalent_max_recorded
+    rationale: 血管活性药暴露可能反映循环不稳定，与吻合口灌注相关，但去甲肾上腺素当量与吻合口漏的独立量化关系证据尚不充分。本规则登记语境，不单独触发告警。
+    citations:
+    - source_type: literature
+      source_id: phase2_lit_42299539
+      claim_id: claim_phase2_pub_42299539
+      supports:
+      - uncertainty
+      ref: 'Hypotension prediction index in surgical patients: A systematic review and meta-analysis of randomized controlled trials.. PMID:42299539; DOI:10.1097/MD.0000000000049257; https://pubmed.ncbi.nlm.nih.gov/42299539/'
+    - source_type: literature
+      source_id: phase2_lit_42389053
+      claim_id: claim_phase2_pub_42389053
+      supports:
+      - uncertainty
+      ref: 'Intraoperative blood pressure strategies and neurocognitive outcomes: A systematic review.. PMID:42389053; DOI:10.1155/2021/2161036; https://pubmed.ncbi.nlm.nih.gov/42389053/'
+    risk_type: perfusion_context
+    recommendation: 记录血管活性药使用及去甲肾上腺素当量作为灌注校正变量；不据此单独判定吻合口漏风险。
+    evidence_scope:
+      claim_kind: uncertainty
+      threshold_status: no_fixed_threshold
+      boolean_logic_status: descriptive_covariate
+      clinical_expert_signoff: true
+    signal_class: context_review
+  intraoperative_glucose_context:
+    severity: unknown
+    when:
+      surgery: glucose_near_anastomosis_recorded
+    matching_entity_a_flags: []
+    matching_entity_b_flags:
+    - glucose_near_anastomosis_recorded
+    rationale: 局部组织血糖与愈合的关系多来自动物或观察性研究，缺乏吻合口漏的独立前瞻阈值。本规则登记语境，不单独触发告警。
+    citations:
+    - source_type: literature
+      source_id: phase2_lit_42026671
+      claim_id: claim_phase2_pub_42026671
+      supports:
+      - uncertainty
+      ref: 'Association of preoperative insulin resistance surrogate indices with the risk of anastomotic leakage after colorectal cancer resection: a multicenter retrospective cohort.. PMID:42026671; DOI:10.1007/DCR.0b013e3181bdbc32;
+        https://pubmed.ncbi.nlm.nih.gov/42026671/'
+    - source_type: literature
+      source_id: phase2_lit_42578130
+      claim_id: claim_phase2_pub_42578130
+      supports:
+      - uncertainty
+      ref: 'Euglycemic ketoacidosis following sleeve gastrectomy in a young non-diabetic female: a case report.. PMID:42578130; DOI:10.1097/RC9.0000000000000675; https://pubmed.ncbi.nlm.nih.gov/42578130/'
+    risk_type: metabolic_context
+    recommendation: 记录吻合口附近组织血糖作为探索性代谢变量；不据此单独判定吻合口漏风险。
+    evidence_scope:
+      claim_kind: uncertainty
+      threshold_status: no_fixed_threshold
+      boolean_logic_status: descriptive_covariate
+      clinical_expert_signoff: true
+    signal_class: context_review
+  core_temperature_context:
+    severity: unknown
+    when:
+      surgery: lowest_core_temperature_recorded
+    matching_entity_a_flags: []
+    matching_entity_b_flags:
+    - lowest_core_temperature_recorded
+    rationale: 低体温与切口感染相关，但对吻合口漏的独立阈值尚未确立。本规则登记语境，不单独触发告警。
+    citations:
+    - source_type: literature
+      source_id: phase2_lit_39649238
+      claim_id: claim_phase2_pub_39649238
+      supports:
+      - uncertainty
+      ref: 'Peri-Operative Hypothermia in Trauma Patients: A Retrospective Cohort Analysis at a Busy District General Hospital Within the National Health Service (NHS).. PMID:39649238; DOI:10.7759/cureus.74979;
+        https://pubmed.ncbi.nlm.nih.gov/39649238/'
+    - source_type: literature
+      source_id: phase2_lit_40813602
+      claim_id: claim_phase2_pub_40813602
+      supports:
+      - uncertainty
+      ref: Visualisation and quantification of the effects of surgical humidification on intestinal perfusion and viability in a porcine model.. PMID:40813602; DOI:10.1007/s00464-019-06959-9; https://pubmed.ncbi.nlm.nih.gov/40813602/
+    risk_type: perfusion_context
+    recommendation: 记录最低核心体温作为校正变量并维持围术期保温；不据此单独判定吻合口漏风险。
+    evidence_scope:
+      claim_kind: uncertainty
+      threshold_status: no_fixed_threshold
+      boolean_logic_status: descriptive_covariate
+      clinical_expert_signoff: true
+    signal_class: context_review
+  fluid_balance_context:
+    severity: unknown
+    when:
+      surgery: net_fluid_balance_recorded
+    matching_entity_a_flags: []
+    matching_entity_b_flags:
+    - net_fluid_balance_recorded
+    rationale: 液体过负荷可能与组织水肿相关，但净液平衡与吻合口漏的独立阈值证据尚不充分。本规则登记语境，不单独触发告警。
+    citations:
+    - source_type: literature
+      source_id: phase2_lit_38584828
+      claim_id: claim_phase2_pub_38584828
+      supports:
+      - uncertainty
+      ref: 'Postoperative cognitive dysfunction in elderly patients with colorectal cancer: A randomized controlled study comparing goal-directed and conventional fluid therapy.. PMID:38584828; DOI:10.1515/med-2024-0930;
+        https://pubmed.ncbi.nlm.nih.gov/38584828/'
+    - source_type: literature
+      source_id: phase2_lit_41491434
+      claim_id: claim_phase2_pub_41491434
+      supports:
+      - uncertainty
+      ref: 'Individualized intraoperative blood pressure control with norepinephrine reduces kidney injury biomarkers but not creatinine-defined acute kidney injury in older patients with hypertension undergoing
+        major abdominal surgery: a single-center randomized controlled trial.. PMID:41491434; DOI:10.1001/jamasurg.2025.1299; https://pubmed.ncbi.nlm.nih.gov/41491434/'
+    risk_type: perfusion_context
+    recommendation: 记录净液平衡作为校正变量并遵循目标导向液体策略；不据此单独判定吻合口漏风险。
+    evidence_scope:
+      claim_kind: uncertainty
+      threshold_status: no_fixed_threshold
+      boolean_logic_status: descriptive_covariate
+      clinical_expert_signoff: true
+    signal_class: context_review
+  surgeon_volume_context:
+    severity: unknown
+    when:
+      any:
+      - surgery: lead_surgeon_colorectal_years_recorded
+      - surgery: lead_surgeon_rectal_volume_12m_recorded
+      - surgery: lead_surgeon_robotic_cases_recorded
+    matching_entity_a_flags: []
+    matching_entity_b_flags:
+    - lead_surgeon_colorectal_years_recorded
+    - lead_surgeon_rectal_volume_12m_recorded
+    - lead_surgeon_robotic_cases_recorded
+    rationale: 术者年资与例数与围术期结局相关，但低年资或低例数不应被自动等同于高吻合口漏风险，须结合具体术式与支持条件解读。本规则登记语境，不单独触发告警。
+    citations:
+    - source_type: literature
+      source_id: phase2_lit_42321444
+      claim_id: claim_phase2_pub_42321444
+      supports:
+      - uncertainty
+      ref: 'Effects of exercise interventions on sarcopenia-related outcomes in cancer patients and survivors: an umbrella review of systematic reviews and meta-analyses.. PMID:42321444; DOI:10.3390/ijerph19074038;
+        https://pubmed.ncbi.nlm.nih.gov/42321444/'
+    - source_type: literature
+      source_id: phase2_lit_42341213
+      claim_id: claim_phase2_pub_42341213
+      supports:
+      - uncertainty
+      ref: 'Hospital and surgeon volume versus outcomes after colorectal cancer surgery: umbrella review and meta-analysis.. PMID:42341213; DOI:10.1093/bjsopen/zrag074; https://pubmed.ncbi.nlm.nih.gov/42341213/'
+    risk_type: operator_context
+    recommendation: 记录术者独立结直肠年数、12个月直肠切除例数及机器人累计例数作为描述/校正变量；禁止据单项数值判定高危。
+    evidence_scope:
+      claim_kind: uncertainty
+      threshold_status: no_fixed_threshold
+      boolean_logic_status: descriptive_covariate
+      clinical_expert_signoff: true
+    signal_class: context_review
+  surgical_approach_context:
+    severity: unknown
+    when:
+      any:
+      - surgery: planned_surgical_approach
+      - surgery: conversion_status
+    matching_entity_a_flags: []
+    matching_entity_b_flags:
+    - planned_surgical_approach
+    - conversion_status
+    rationale: 手术入路（开放/腹腔镜/机器人）与中转对吻合口漏的独立效应在文献中结论不一，机器人入路既非自动保护也非自动有害。本规则登记语境，不单独触发告警。
+    citations:
+    - source_type: literature
+      source_id: phase2_lit_42579032
+      claim_id: claim_phase2_pub_42579032
+      supports:
+      - uncertainty
+      ref: 'Totally robotic low anterior resection versus conventional laparoscopic surgery for rectal cancer: a systematic review and meta-analysis.. PMID:42579032; DOI:10.1007/s11701-025-02906-0; https://pubmed.ncbi.nlm.nih.gov/42579032/'
+    - source_type: literature
+      source_id: phase2_lit_42581199
+      claim_id: claim_phase2_pub_42581199
+      supports:
+      - uncertainty
+      ref: 'Robot-assisted versus laparoscopic surgery for rectal cancer: a systematic review and meta-analysis of randomised trials with GRADE certainty rating.. PMID:42581199; DOI:10.1007/s00464-025-12227-w;
+        https://pubmed.ncbi.nlm.nih.gov/42581199/'
+    risk_type: approach_context
+    recommendation: 记录计划入路与中转状态作为描述/校正变量；禁止将机器人入路等同于保护性或有害因素。
+    evidence_scope:
+      claim_kind: uncertainty
+      threshold_status: no_fixed_threshold
+      boolean_logic_status: descriptive_covariate
+      clinical_expert_signoff: true
+    signal_class: context_review
+  stapler_technique_context:
+    severity: unknown
+    when:
+      any:
+      - surgery: rectal_transection_stapler_firing_count
+      - surgery: anastomotic_tension
+      - surgery: primary_anastomosis_performed
+    matching_entity_a_flags: []
+    matching_entity_b_flags:
+    - rectal_transection_stapler_firing_count
+    - anastomotic_tension
+    - primary_anastomosis_performed
+    rationale: 直肠横断吻合器击发次数、吻合张力与是否一期吻合是技术语境变量，多次击发与漏的关联存在但阈值未统一。本规则登记语境，不单独触发告警。
+    citations:
+    - source_type: literature
+      source_id: phase2_lit_42461999
+      claim_id: claim_phase2_pub_42461999
+      supports:
+      - uncertainty
+      ref: Robotic Single-Port Trans-stomal Hartmann Reversal.. PMID:42461999; DOI:10.1097/DCR.0000000000004219; https://pubmed.ncbi.nlm.nih.gov/42461999/
+    - source_type: literature
+      source_id: phase2_lit_42548154
+      claim_id: claim_phase2_pub_42548154
+      supports:
+      - uncertainty
+      ref: Circular stapler platform and the risk of anastomotic leakage after elective left colectomy and high anterior resection.. PMID:42548154; DOI:10.1111/codi.70564; https://pubmed.ncbi.nlm.nih.gov/42548154/
+    risk_type: technique_context
+    recommendation: 记录击发次数、吻合张力与一期吻合状态作为技术校正变量；不据此单独判定吻合口漏风险。
+    evidence_scope:
+      claim_kind: uncertainty
+      threshold_status: no_fixed_threshold
+      boolean_logic_status: descriptive_covariate
+      clinical_expert_signoff: true
+    signal_class: context_review
+  diversion_decision_context:
+    severity: unknown
+    when:
+      any:
+      - surgery: diverting_stoma_type
+      - surgery: intraoperative_technical_adverse_event
+      - surgery: technical_adverse_event_corrected
+    matching_entity_a_flags: []
+    matching_entity_b_flags:
+    - diverting_stoma_type
+    - intraoperative_technical_adverse_event
+    - technical_adverse_event_corrected
+    rationale: 转流造口、术中技术不良事件及其纠正与否是安全决策语境变量，转流本身既非吻合口漏的直接标志也非保护性独立因素。本规则登记语境，不单独触发告警。
+    citations:
+    - source_type: literature
+      source_id: phase2_lit_42552482
+      claim_id: claim_phase2_pub_42552482
+      supports:
+      - uncertainty
+      ref: 'Treatment of colorectal leaks with the VACStent-Colon: results of the VACStent feasibility trial.. PMID:42552482; DOI:10.1007/s10151-024-02932-4; https://pubmed.ncbi.nlm.nih.gov/42552482/'
+    - source_type: literature
+      source_id: phase2_lit_42600731
+      claim_id: claim_phase2_pub_42600731
+      supports:
+      - uncertainty
+      ref: A Propensity-Score Matched ACS-NSQIP Database Analysis of Primary Anastomosis With or Without Diversion for Acute Perforated Diverticulitis.. PMID:42600731; DOI:10.1016/j.gassur.2026.102548;
+        https://pubmed.ncbi.nlm.nih.gov/42600731/
+    risk_type: safety_context
+    recommendation: 记录转流类型、技术不良事件及纠正状态作为安全决策语境变量；不据此单独判定吻合口漏风险。
+    evidence_scope:
+      claim_kind: uncertainty
+      threshold_status: no_fixed_threshold
+      boolean_logic_status: descriptive_covariate
+      clinical_expert_signoff: true
+    signal_class: context_review
+  patient_adjustment_context:
+    severity: unknown
+    when:
+      any:
+      - patient: preop_hemoglobin_recorded
+      - patient: smoking_status_recorded
+      - patient: clinical_frailty_scale_recorded
+      - patient: preop_crp_recorded
+      - patient: coronary_artery_disease
+      - patient: renal_dysfunction
+      - patient: tumor_distance_recorded
+      - patient: clinical_t_stage_recorded
+      - patient: neoadjuvant_treatment_recorded
+      - patient: previous_abdominal_pelvic_surgery
+      - patient: preop_sepsis_status
+      - patient: ct_visceral_fat_recorded
+    matching_entity_a_flags:
+    - preop_hemoglobin_recorded
+    - smoking_status_recorded
+    - clinical_frailty_scale_recorded
+    - preop_crp_recorded
+    - coronary_artery_disease
+    - renal_dysfunction
+    - tumor_distance_recorded
+    - clinical_t_stage_recorded
+    - neoadjuvant_treatment_recorded
+    - previous_abdominal_pelvic_surgery
+    - preop_sepsis_status
+    - ct_visceral_fat_recorded
+    matching_entity_b_flags: []
+    rationale: 术前血红蛋白、吸烟、衰弱、CRP、冠心病、肾功能不全、肿瘤距离肛缘、cT分期、新辅助治疗、既往腹/盆手术、脓毒症、CT内脏脂肪面积等均为患者校正/描述变量，其与吻合口漏的独立效应量在文献中多为间接或不一致。本规则登记语境，不单独触发告警。
+    citations:
+    - source_type: literature
+      source_id: phase2_lit_42498704
+      claim_id: claim_phase2_pub_42498704
+      supports:
+      - uncertainty
+      ref: 'Protective Ileostomy After Low Anterior Resection for Rectal Cancer: Modifying the Clinical Course of Anastomotic Leakage at the Cost of Stoma-Related Morbidity.. PMID:42498704; DOI:10.1177/00031348261471475;
+        https://pubmed.ncbi.nlm.nih.gov/42498704/'
+    - source_type: literature
+      source_id: phase2_lit_42516010
+      claim_id: claim_phase2_pub_42516010
+      supports:
+      - uncertainty
+      ref: 'After the Platform Debate: Does Tumor Height Still Matter in Robotic Rectal Cancer Surgery?. PMID:42516010; DOI:10.1177/00031348261472845; https://pubmed.ncbi.nlm.nih.gov/42516010/'
+    risk_type: patient_adjustment_context
+    recommendation: 记录上述患者因素作为综合评估与校正变量；不据此单独判定吻合口漏风险。
+    evidence_scope:
+      claim_kind: uncertainty
+      threshold_status: no_fixed_threshold
+      boolean_logic_status: descriptive_covariate
+      clinical_expert_signoff: true
+    signal_class: context_review
+policy_version: '1.1'
+policy_status: engineering_candidate_pending_clinical_signoff
+aggregation_semantics: highest_triggered_priority is displayed separately; cumulative primary alert uses weighted score >=4 (HIGH=2, MEDIUM=1, LOW/UNKNOWN=0); unresolved safety guardrails remain independently
+  actionable; not a calibrated leak probability

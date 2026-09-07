@@ -1,0 +1,40 @@
+{
+  "schema_version": "v3.0",
+  "phases": {
+    "phase1": {
+      "entity_a_count": 42,
+      "entity_b_count": 51,
+      "patient_factor_rule_count": 3
+    },
+    "phase2": {
+      "active_evidence_chunks": 253,
+      "level_distribution": {
+        "A": 30,
+        "B": 62,
+        "C": 155,
+        "D": 1,
+        "E": 5
+      }
+    },
+    "phase3": {
+      "rule_count": 12,
+      "patient_factor_rule_count": 14,
+      "rules_yaml_sha256": "27f58cf2c3fef1b40049e9a0a7788834f8697a7e32a05c445111cbfc44822926",
+      "citations_verified": true
+    },
+    "phase4": {
+      "status": "complete",
+      "chunks_inserted": 275,
+      "entities_extracted": 1307,
+      "relations_extracted": 1726,
+      "index_disk_kb": 57308,
+      "build_time_sec": 14683.84,
+      "llm_provider": "deepseek:deepseek-v4-flash",
+      "embedding_provider": "ark:ep-m-20260718003621-d5hn6",
+      "embedding_dim": 2048,
+      "index_built_against_rules_sha256": "27f58cf2c3fef1b40049e9a0a7788834f8697a7e32a05c445111cbfc44822926",
+      "acceptance_probes_passed": 26,
+      "acceptance_probes_total": 26
+    }
+  }
+}

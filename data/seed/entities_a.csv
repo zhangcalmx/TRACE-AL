@@ -1,0 +1,46 @@
+patient-host-profile_id,primary_name,aliases,category,data_type,unit,allowed_values,flags,risk_direction,evidence_sources
+A1_01,age,年龄; age_years,demographics,continuous,years,≥18,"age_over_65,age_over_75",higher_age_increases_risk,PMID:31274153; Int J Surg 2021; Ochs 2025 JAMA Netw Open
+A1_02,gender,性别; sex,demographics,categorical,,male;female,male_gender,male_higher_risk_in_rectal_surgery,PMID:33756515; Surg Endosc 2021
+A1_03,bmi,BMI; 体重指数; body_mass_index,demographics,continuous,kg/m²,≥12; ≤50,"bmi_over_25,bmi_over_30,bmi_under_18_5",obesity_increases_AL_risk;underweight_also_risk_factor,PMID:28946873; COLOR II trial; ACS NSQIP 2019
+A1_04,recent_weight_loss,近期体重下降; unintentional_weight_loss,demographics,continuous,kg,0-30,"weight_loss_over_5pct,weight_loss_over_10pct",weight_loss_indicates_malnutrition,PMID:31542116; NRS-2002 validation studies
+A1_05,frailty_status,衰弱状态; frailty,demographics,categorical,,robust;prefrail;frail,frail_status,frailty_increases_complication_risk,PMID:35605182; Modified Frailty Index; Spence 2021 Ann Surg Oncol
+A1_06,asa_grade,ASA分级; ASA_physical_status,demographics,categorical,,I;II;III;IV;V,asa_ge_III,ASA≥III_significant_AL_risk,PMID:28244090; ACS NSQIP risk calculator
+A1_07,ecog_performance_status,ECOG体能状态; ECOG; performance_status,demographics,categorical,,0;1;2;3;4,ecog_ge_2,poor_performance_status_increases_risk,PMID:30570476; NCCN guidelines
+A1_08,ct_visceral_fat_area,CT内脏脂肪面积; visceral_fat_area; VFA,body_composition,continuous,cm2,0-1000,,research_covariate_no_fixed_threshold,PMID:37671054
+A2_01,diabetes_mellitus,糖尿病; DM; diabetes,comorbidity,categorical,,no;type2;type1;hba1c_under_7;hba1c_7_to_9;hba1c_over_9,"diabetes,diabetes_poor_control",diabetes_impairs_wound_healing;HbA1c>7_higher_AL_risk,PMID:29323447; PMID:32776843
+A2_02,hypertension,高血压; HTN,comorbidity,categorical,,no;yes,hypertension,HTN_marker_of_cardiovascular_risk,PMID:31274153; ACS NSQIP
+A2_03,coronary_artery_disease,冠心病; CAD; CHD; coronary_heart_disease,comorbidity,categorical,,no;yes,cad,CAD_increases_anesthesia_and_surgical_risk,PMID:32706459; ACS NSQIP
+A2_04,chronic_lung_disease,慢性肺病; COPD; CLD,comorbidity,categorical,,no;copd;asthma;other,chronic_lung_disease,pulmonary_comorbidity_increases_AL_and_SSI_risk,PMID:28946873; ACS NSQIP
+A2_05,renal_dysfunction,肾功能不全; CKD; chronic_kidney_disease; renal_failure,comorbidity,categorical,,no;ckd_stage3;ckd_stage4;ckd_stage5_dialysis,"ckd,ckd_dialysis",CKD_reduced_tissue_healing;dialysis_patient_very_high_risk,PMID:32568541; ACS NSQIP 2020
+A2_06,liver_dysfunction,肝功能不全; liver_disease; cirrhosis,comorbidity,categorical,,no;chronic_hepatitis;cirrhosis_child_a;cirrhosis_child_b_c,"liver_dysfunction,cirrhosis",liver_dysfunction_impairs_coagulation_and_healing,PMID:30542576
+A2_07,smoking,吸烟; tobacco_use,comorbidity,categorical,,"never;former;current,≤20_pack_years;current,>20_pack_years","current_smoker,heavy_smoker",smoking_impairs_microcirculation_and_healing,PMID:28946873; ACS NSQIP; Sorensen 2012 Ann Surg
+A2_08,alcohol_use,饮酒; alcohol_consumption,comorbidity,categorical,,none;moderate;heavy,heavy_alcohol,chronic_alcohol_impairs_immune_function,PMID:24722462
+A2_09,long_term_corticosteroids,长期糖皮质激素; steroid_use; corticosteroid,comorbidity,categorical,,no;yes;high_dose,steroid_use,steroids_impair_wound_healing_and_increase_infection,PMID:28946873; ACS NSQIP
+A2_10,immunosuppressive_medication,免疫抑制药物; immunosuppressant; biologics,comorbidity,categorical,,no;yes,immunosuppressed,immunosuppression_increases_infection_and_AL_risk,PMID:33222021
+A2_11,preoperative_sepsis_status,术前脓毒症状态; preop_sepsis; septic_shock,comorbidity,categorical,,none;sepsis;septic_shock,,contextual_severity_covariate_no_fixed_AL_direction,WSES emergency colorectal cancer guideline; contextual evidence
+A3_01,albumin,白蛋白; serum_albumin,nutrition,continuous,g/L,15-55,"albumin_low_35,albumin_low_30",hypoalbuminemia_predicts_AL_(strong_evidence),PMID:28946873; PMID:31274153; NRS-2002
+A3_02,prealbumin,前白蛋白; transthyretin,nutrition,continuous,mg/L,50-500,prealbumin_low_200,low_prealbumin_indicates_acute_malnutrition,PMID:30145638
+A3_03,hemoglobin,血红蛋白; Hb; HGB,blood,continuous,g/L,40-200,"anemia_severe,anemia_moderate",anemia_reduces_oxygen_delivery_to_anastomosis,PMID:28946873; ACS NSQIP; TENTACLE-Rectum
+A3_04,lymphocyte_count,淋巴细胞计数; lymphocyte; LYM,inflammation,continuous,×10⁹/L,0.1-10,lymphopenia,lymphopenia_indicates_immunosuppression,PMID:34753375; PNI index
+A3_05,platelet_count,血小板计数; PLT; platelet,blood,continuous,×10⁹/L,10-800,"thrombocytopenia,thrombocytosis",extreme_platelet_counts_affect_hemostasis,PMID:31542116
+A3_06,crp,C反应蛋白; C_reactive_protein,inflammation,continuous,mg/L,0.1-500,"crp_elevated,crp_high",elevated_CRP_suggests_systemic_inflammation,PMID:28946873; COLOR II
+A3_07,nlr,中性粒细胞淋巴细胞比值; neutrophil_lymphocyte_ratio,inflammation,continuous,,0.5-50,nlr_elevated_over_5,NLR>5_indicates_inflammation_immune_imbalance,PMID:34753375; PMID:32568541
+A3_08,pni,预后营养指数; prognostic_nutritional_index; PNI,nutrition,composite,,20-70,"pni_low_45,pni_low_40",PNI<45_significant_AL_predictor,PMID:34753375; Onodera PNI
+A3_09,nutritional_screening,NRS-2002评估; PG-SGA; nutrition_screening,nutrition,categorical,,nrs2002_0_2;nrs2002_3_4;nrs2002_ge_5;pgsga_a;pgsga_b;pgsga_c,"malnutrition_risk,severe_malnutrition",preoperative_malnutrition_strong_AL_predictor,PMID:31542116; ESPEN guidelines 2021
+A3_10,sarcopenia,肌少症; muscle_wasting,nutrition,categorical,,no;yes_sarcopenia,sarcopenia,sarcopenia_independently_predicts_AL,PMID:35668824; sarcopenia_in_colorectal_surgery 2022
+A4_01,primary_site,原发部位; tumor_location,tumor,categorical,,right_colon;left_colon;sigmoid;rectum_upper;rectum_mid;rectum_lower,"rectal_cancer,lower_rectal_cancer",rectal_cancer_higher_AL_risk_than_colon,PMID:28946873; TENTACLE-Rectum; COLOR II
+A4_02,distance_from_anal_verge,肿瘤距肛缘距离; tumour_distance; height_from_anal_verge,tumor,continuous,cm,0-40,"distance_under_6cm,distance_6_10cm",lower_anastomosis_higher_AL_risk(<6cm_highest),PMID:28946873; ISREC definition; Degiuli 2022
+A4_03,clinical_tnm_stage,临床TNM分期; cTNM; clinical_stage,tumor,categorical,,cI;cIIA;cIIB;cIIIA;cIIIB;cIIIC;cIVA;cIVB,tumor_stage_III_plus,advanced_stage_correlates_with_complex_surgery,AJCC 8th edition; PMID:31542116
+A4_04,pathological_tnm_stage,病理TNM分期; pTNM; pathological_stage,tumor,categorical,,pT0;pI;pII;pIII;pIV,ptnm_III_plus,advanced_pathological_stage_longer_surgery,AJCC 8th edition
+A4_05,tumor_size,肿瘤大小; tumour_diameter,tumor,continuous,cm,0.1-25,tumor_size_over_5cm,larger_tumor_more_complex_resection,PMID:33756515
+A4_06,bowel_obstruction,肠梗阻; obstruction; ileus,tumor,categorical,,no;partial;complete,bowel_obstruction,obstruction_emergency_surgery_higher_risk,PMID:28946873; ACS NSQIP 2019
+A4_07,bowel_perforation,肠穿孔; perforation,tumor,categorical,,no;yes,bowel_perforation,perforation_infection_and_sepsis_high_AL_risk,PMID:28244090
+A4_08,inflammatory_bowel_disease,炎症性肠病; IBD; Crohn's; ulcerative_colitis,tumor,categorical,,no;crohns;uc,"ibd,active_ibd",IBD_patients_higher_AL_due_to_inflammation_and_immunosuppression,PMID:30542576; PMID:31542116
+A4_09,previous_abdominal_or_pelvic_surgery,既往腹部或盆腔手术; prior_surgery; previous_surgery,tumor,categorical,,no;yes_abdominal;yes_pelvic;yes_both,"prior_abdominal_surgery,prior_pelvic_surgery",prior_surgery_adhesions_and_altered_anatomy,PMID:33756515
+A4_10,clinical_t_stage,临床T分期; cT_stage; clinical_tumor_stage,tumor,categorical,,cTis;cT1;cT2;cT3;cT4a;cT4b,,adjustment_covariate_not_a_standalone_AL_rule,AJCC 8th edition; PMID:36449942
+A5_01,neoadjuvant_radiotherapy,新辅助放疗; neoadjuvant_RT; preoperative_radiation,preoperative_therapy,categorical,,no;short_course(5x5Gy);long_course;long_course_with_chemo,"neoadjuvant_rt,neoadjuvant_chemoradiation",neoadjuvant_RT_increases_AL_risk_(especially_low_rectal),PMID:28946873; TENTACLE-Rectum; Swedish Rectal Cancer Trial; COLOR II
+A5_02,neoadjuvant_chemotherapy,新辅助化疗; neoadjuvant_chemo; preoperative_chemotherapy,preoperative_therapy,categorical,,no;folfox;capox;folfiri;xelox;other,neoadjuvant_chemo,neoadjuvant_chemo_alone_minimal_AL_risk,PMID:33756515; FOXTROT trial
+A5_03,total_radiation_dose,总放疗剂量; RT_dose; radiation_dose,preoperative_therapy,continuous,Gy,0-66,"rt_dose_over_45gy,rt_dose_over_50gy",higher_radiation_dose_greater_tissue_damage,PMID:28946873; TENTACLE-Rectum
+A5_04,rt_surgery_interval,放疗结束至手术时间; RT_to_surgery_interval,preoperative_therapy,continuous,weeks,4-16,"rt_interval_under_8w,rt_interval_over_12w",short_interval_<8w_higher_AL_risk_(still_debated),PMID:28946873; Stockholm III trial; GRECCAR 6
+A5_05,targeted_or_immunotherapy,靶向或免疫治疗; targeted_therapy; immunotherapy; biologics,preoperative_therapy,categorical,,no;anti_egfr;anti_vegf;anti_pd1;anti_ctla4,"anti_vegf_therapy,immunotherapy_pretreatment",anti_VEGF_may_impair_wound_healing,PMID:33222021; bevacizumab_wound_healing_warnings
+A5_06,preoperative_nutritional_support,术前营养支持; preoperative_nutrition; immunonutrition,preoperative_therapy,categorical,,none;oral_supplement;enteral;parenteral,preop_nutrition_support,preoperative_nutrition_reduces_AL_risk_in_malnourished,PMID:31542116; ESPEN guidelines; ERAS protocols

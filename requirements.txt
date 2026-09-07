@@ -1,0 +1,5 @@
+# Heroku/Streamlit Cloud install from this file.
+# Editable install is deliberate: it links the package to the checkout instead
+# of building a cached wheel, so redeploys always run the pushed code and
+# package modules resolve project data relative to the checkout.
+-e .[streamlit,rag]

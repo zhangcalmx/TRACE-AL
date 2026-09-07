@@ -1,0 +1,9 @@
+{
+  "working_dir": "data/processed/lightrag_index_20260825_113121",
+  "acceptance_manifest": "data/processed/lightrag_index_20260825_113121/acceptance_manifest.json",
+  "rules_yaml_sha256": "27f58cf2c3fef1b40049e9a0a7788834f8697a7e32a05c445111cbfc44822926",
+  "evidence_fingerprints": {
+    "content_sha256": "98f6e8570b3eefbe9a52c3c123e8315ebf7994539f719766df15c3b2cabdc3fd",
+    "metadata_sha256": "cfa9fe4e31c17c66034169d344953623daacbfafb54e9c0b080249d45f8b9f8f"
+  }
+}

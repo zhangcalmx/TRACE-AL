@@ -1,0 +1,827 @@
+{
+  "retrieval_mode": "mix",
+  "probes": [
+    {
+      "rule_id": "age_over_75",
+      "query": "请检索并总结规则 age_over_75 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: phase2_cli_30649570\n\n**来源：** PMID:30649570；DOI:10.1007/s00384-019-03234-0；PubMed abstract；审阅日期 2026-07-26\n\n**结论：** 系统评价与荟萃分析显示，接受腹腔镜结直肠癌手术的老年与非老年患者之间，吻合口漏发生率无显著差异（RR=1.24，95% CI 0.86–1.80）。\n\n---\n\n此外，知识库中还有两条与 `age_over_75` 规则相关的证据，但需注意其证据等级与适用范围：\n\n- **evidence_id: glcand_cpoc_frailty_screen**（证据等级 A）：CPOC/BGS 2021 要求围术期评估并记录衰弱，覆盖择期和急诊路径；项目中年龄>75岁应触发 CFS/综合老年评估采集，不应把年龄阈值本身等同于衰弱或直接等同于吻合口漏。\n- **evidence_id: phase2_pub_35666815**（证据等级 C）：机器人结直肠手术单中心队列中，研究定义的老年组与非老年组在吻合口漏等术后结局方面无统计学显著差异；老年组中位住院时间长1天（p=0.007），但本项目采用的年龄阈值未被单独验证。\n\n### References\n\n- [1] 老年患者腹腔镜结直肠癌手术后的吻合口漏\n- [2] 高龄患者应评估衰弱而非以年龄替代衰弱\n- [3] Robotic colorectal surgery in elderly patients: A single-centre experience.",
+      "cited_evidence_ids": [
+        "glcand_cpoc_frailty_screen",
+        "phase2_cli_30649570",
+        "phase2_pub_35666815"
+      ],
+      "cited_rule_evidence_ids": [
+        "glcand_cpoc_frailty_screen",
+        "phase2_cli_30649570",
+        "phase2_pub_35666815"
+      ],
+      "first_line_evidence_id": "phase2_cli_30649570",
+      "first_line_evidence_ids": [
+        "phase2_cli_30649570"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "antibiotic_prophylaxis_process",
+      "query": "请检索并总结规则 antibiotic_prophylaxis_process 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: phase2_pub_41973419\n\n**来源：** PMID:41973419；DOI:10.1001/jamasurg.2016.4952；PubMed abstract；审阅日期 2026-07-26\n\n**结论：** β-内酰胺类与非β-内酰胺类预防性抗生素在择期结直肠手术中的手术部位感染率差异可能与给药时机有关，但对吻合口漏的独立证据有限。\n\n---\n\nevidence_id: phase2_pub_42266121\n\n**来源：** PMID:42266121；DOI:10.1089/sur.2024.137；PubMed abstract；审阅日期 2026-07-26\n\n**结论：** 指南一致的围术期抗生素预防与手术部位感染率降低相关，但对吻合口漏的独立因果证据有限。\n\n---\n\nevidence_id: glcand_ascrs_ssi_antibiotic_timing_redose\n\n**来源：** Table 2, recommendation 7；Recommendation 7, antimicrobial redosing paragraph；Table 2; recommendations 1, 2, 5, 7, 11, 12\n\n**结论：** ASCRS 2024建议结直肠切除在切皮前60分钟内给予静脉抗菌药，并按药代动力学安排再给药；指南正文提示手术超过约两个半衰期或大量失血时应考虑再给药。\n\n### References\n\n- [1] β-Lactam vs Non-β-Lactam Prophylaxis in Elective Colorectal Surgery\n- [2] Guideline-concordant antibiotic prophylaxis on surgical site infection rates following colorectal surgery: real-world data from Thailand\n- [3] 预防性静脉抗菌药的给药时机与再给药",
+      "cited_evidence_ids": [
+        "glcand_ascrs_ssi_antibiotic_timing_redose",
+        "phase2_pub_41973419",
+        "phase2_pub_42266121"
+      ],
+      "cited_rule_evidence_ids": [
+        "phase2_pub_41973419",
+        "phase2_pub_42266121"
+      ],
+      "first_line_evidence_id": "phase2_pub_41973419",
+      "first_line_evidence_ids": [
+        "phase2_pub_41973419"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "bowel_preparation_process",
+      "query": "请检索并总结规则 bowel_preparation_process 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: phase2_pub_42257961\n\n**来源：** PMID:42257961；DOI:10.1186/s13756-021-01007-5；PubMed abstract；审阅日期2026-07-26。\n\n**结论：** 腹腔镜结直肠切除术腹腔内吻合后，最佳术前肠道准备方案以减少术后感染性并发症仍存在不确定性，对吻合口漏的独立影响尚待明确。\n\n---\n\nevidence_id: phase2_pub_42356173\n\n**来源：** PMID:42356173；DOI:10.1017/S0266462312000086；PubMed abstract；审阅日期2026-07-26。\n\n**结论：** 机械肠道准备与口服抗生素准备的联合应用可降低结直肠手术后手术部位感染，但对吻合口漏的独立效应证据不一致，存在争议。\n\n---\n\nevidence_id: exp26_pmid_32919437_bowel_prep\n\n**来源：** PMID:32919437；DOI:10.3393/ac.2020.05.14.2；PubMed abstract；Crossref/OpenAlex verification 2026-07-26。\n\n**结论：** 该系统评价认为，单纯机械性肠道准备不能降低吻合口漏，而口服抗菌药或其与机械性肠道准备联合可能降低风险；应结合当前机构感染预防路径应用。\n\n---\n\nevidence_id: glcand_ascrs_ssi_mbpoa\n\n**来源：** Table 2, recommendation 2；Recommendation 2 section；Table 2; recommendations 1, 2, 5, 7, 11, 12。\n\n**结论：** ASCRS 2024强推荐择期结直肠切除采用机械肠道准备联合术前口服抗菌药以降低SSI；指南同时指出机械准备单独使用不能降低SSI，且未显示降低吻合口漏。\n\n### References\n\n- [1] Optimal preoperative bowel preparation for intracorporeal anastomosis in laparoscopic colectomy.\n- [2] Adding Preoperative Oral Antibiotics to Mechanical Bowel Preparation Reduces Surgical Site Infections in Elective Colorectal Surgery: A Meta-Analysis of Randomized Controlled Trials.\n- [3] 系统评价：口服抗菌药联合肠道准备\n- [4] 机械肠道准备与口服抗菌药联合使用",
+      "cited_evidence_ids": [
+        "exp26_pmid_32919437_bowel_prep",
+        "glcand_ascrs_ssi_mbpoa",
+        "phase2_pub_42257961",
+        "phase2_pub_42356173"
+      ],
+      "cited_rule_evidence_ids": [
+        "phase2_pub_42257961",
+        "phase2_pub_42356173"
+      ],
+      "first_line_evidence_id": "phase2_pub_42257961",
+      "first_line_evidence_ids": [
+        "phase2_pub_42257961"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "core_temperature_context",
+      "query": "请检索并总结规则 core_temperature_context 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: phase2_pub_39649238\n\n**来源：** PMID:39649238；DOI:10.7759/cureus.74979；PubMed abstract（2026-07-26审阅）\n\n**结论：** 术中腹腔暴露于干冷环境可能导致组织蒸发冷却和氧合降低，从而增加手术部位感染和吻合口漏风险，保温干预的独立效应证据尚需累积。\n\n---\n\nevidence_id: phase2_pub_40813602\n\n**来源：** PMID:40813602；DOI:10.1007/s00464-019-06959-9；PubMed abstract（2026-07-26审阅）\n\n**结论：** 围术期低体温（核心体温低于特定阈值）增加术后伤口感染等并发症风险，组织低温与吻合口漏相关。\n\n---\n\nevidence_id: glcand_ascrs_ssi_normothermia\n\n**来源：** ASCRS 2024，Table 2，推荐意见12\n\n**结论：** ASCRS 2024条件性建议维持术中正常体温，可能减少结直肠手术SSI；这是组织灌注与感染控制的间接证据，不应据此宣称已证明降低吻合口漏。",
+      "cited_evidence_ids": [
+        "glcand_ascrs_ssi_normothermia",
+        "phase2_pub_39649238",
+        "phase2_pub_40813602"
+      ],
+      "cited_rule_evidence_ids": [
+        "phase2_pub_39649238",
+        "phase2_pub_40813602"
+      ],
+      "first_line_evidence_id": "phase2_pub_39649238",
+      "first_line_evidence_ids": [
+        "phase2_pub_39649238"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "diabetes_poor_control_risk",
+      "query": "请检索并总结规则 diabetes_poor_control_risk 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: r4_10\n\n**来源：** PMID:40442353 | DOI:10.1007/s00464-025-11821-2 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 40442353(2025) 3765例大样本研究证实糖尿病为吻合口漏（AL）的独立危险因素，AUC值为0.818。\n\n---\n\n### References\n\n- [1] 大样本队列糖尿病独立危险因素",
+      "cited_evidence_ids": [
+        "r4_10"
+      ],
+      "cited_rule_evidence_ids": [
+        "r4_10"
+      ],
+      "first_line_evidence_id": "r4_10",
+      "first_line_evidence_ids": [
+        "r4_10"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "diversion_decision_context",
+      "query": "请检索并总结规则 diversion_decision_context 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: phase2_pub_42552482\n\n**来源：** PMID:42552482；PubMed abstract；reviewed 2026-07-26 | PMID:42552482；DOI:10.1007/s10151-024-02932-4；PubMed abstract\n\n**结论：** 转流造口在内窥镜真空治疗吻合口漏中的作用提示转流决策是安全语境变量，但转流本身既非吻合口漏的直接标志也非保护性独立因素。\n\n---\n\nevidence_id: phase2_pub_42600731\n\n**来源：** PMID:42600731；PubMed abstract；reviewed 2026-07-26 | PMID:42600731；DOI:10.1016/j.gassur.2026.102548；PubMed abstract\n\n**结论：** 一期吻合是否联合转流造口的决策存在争议，转流造口可能减轻吻合口漏的临床后果但不预防漏本身。\n\n### References\n\n- [1] Treatment of colorectal leaks with the VACStent-Colon: results of the VACStent feasibility trial.\n- [2] A Propensity-Score Matched ACS-NSQIP Database Analysis of Primary Anastomosis With or Without Diversion for Acute Perforated Diverticulitis.",
+      "cited_evidence_ids": [
+        "phase2_pub_42552482",
+        "phase2_pub_42600731"
+      ],
+      "cited_rule_evidence_ids": [
+        "phase2_pub_42552482",
+        "phase2_pub_42600731"
+      ],
+      "first_line_evidence_id": "phase2_pub_42552482",
+      "first_line_evidence_ids": [
+        "phase2_pub_42552482"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "fluid_balance_context",
+      "query": "请检索并总结规则 fluid_balance_context 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: phase2_pub_38584828\n\n**来源：** PMID:38584828；DOI:10.1515/med-2024-0930；PubMed abstract；审阅日期 2026-07-26\n\n**结论：** 个体化术中血压控制与去甲肾上腺素给药影响液体潴留等替代指标，液体平衡与吻合口漏的独立因果证据尚不充分。\n\n---\n\nevidence_id: phase2_pub_41491434\n\n**来源：** PMID:41491434；DOI:10.1001/jamasurg.2025.1299；PubMed abstract；审阅日期 2026-07-26\n\n**结论：** 目标导向液体治疗与术中血流动力学管理影响患者术后恢复，液体平衡与吻合口漏的独立阈值证据尚不充分。\n\n---\n\nevidence_id: glcand_eras2025_fluid_balance\n\n**来源：** ERAS Society 2025指南，Section 13（术中液体），Table VII；术后液体推荐；经勘误关联核对后的推荐表\n\n**结论：** 指南建议手术日维持轻度正液体平衡并避免体重增加超过约2.5 kg；限制过度（近零平衡）和液体过量（液体过负荷）都可能带来不良结局。\n\n### References\n\n- [1] Postoperative cognitive dysfunction in elderly patients with colorectal cancer: A randomized controlled study comparing goal-directed and conventional fluid therapy.\n- [2] Individualized intraoperative blood pressure control with norepinephrine reduces kidney injury biomarkers but not creatinine-defined acute kidney injury in older patients with hypertension undergoing major abdominal surgery: a single-center randomized controlled trial.\n- [3] 避免近零平衡与液体过负荷两个极端",
+      "cited_evidence_ids": [
+        "glcand_eras2025_fluid_balance",
+        "phase2_pub_38584828",
+        "phase2_pub_41491434"
+      ],
+      "cited_rule_evidence_ids": [
+        "phase2_pub_38584828",
+        "phase2_pub_41491434"
+      ],
+      "first_line_evidence_id": "phase2_pub_38584828",
+      "first_line_evidence_ids": [
+        "phase2_pub_38584828"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "icg_perfusion_risk",
+      "query": "请检索并总结规则 icg_perfusion_risk 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: r11_09\n\n**来源：** PMID:33010938 | DOI:10.1016/j.surg.2020.08.024 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 该荟萃分析纳入20项研究、共5498例患者，结果显示ICG组并发症发生率为3.7%，对照组为8.6%，OR值为0.46，提示ICG灌注评估可降低并发症风险。\n\n---\n\nevidence_id: r11_11\n\n**来源：** PMID:30192332 | DOI:10.1097/dcr.0000000000001123 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 2018年发表的荟萃分析显示，ICG的使用与吻合口漏（AL）风险显著降低相关，OR值为0.27。\n\n---\n\nevidence_id: r11_08\n\n**来源：** PMID:36781468 | DOI:10.1007/s00464-023-09928-5 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** EAES共识强烈推荐ICG用于结直肠吻合口灌注评估。\n\n---\n\nevidence_id: r11_12\n\n**来源：** PMID:33409585 | DOI:10.1007/s00423-020-02077-6 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 该荟萃分析纳入18项研究、共4038例患者，评估ICG荧光血管造影（ICGFA）在直肠癌手术中的应用，结果显示其与吻合口漏风险降低相关，OR值为0.33。\n\n---\n\nevidence_id: r11_10\n\n**来源：** PMID:37250631 | DOI:10.3389/fmed.2023.1157389 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 系统评价显示，ICG荧光血管造影（ICGFA）在直肠癌手术中可降低吻合口漏（AL）的发生风险。\n\n---\n\nevidence_id: r11_02\n\n**来源：** PMID:33872284 | DOI:10.1097/dcr.0000000000002007 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** PILLAR III多中心随机对照试验因入组不足提前结束；ICG灌注评估组与标准组的吻合口漏率分别为9.0%和9.6%，差异无统计学意义（P=0.37）。\n\n---\n\nevidence_id: r11_03\n\n**来源：** PMID:40690925 | DOI:10.1016/s2468-1253(25)00101-3 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** IntAct随机对照试验随机分配766例患者，完整病例分析纳入698例；90日临床吻合口漏率ICG组为10%、标准治疗组为15%（调整OR 0.667，95%CI 0.419-1.060，P=0.087），差异未达统计学显著。\n\n---\n\nevidence_id: r11_06\n\n**来源：** PMID:37218517 | DOI:10.1097/sla.0000000000005907 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** EssentiAL随机对照试验在日本41家医院纳入839例患者，ICG组吻合口漏率为7.6%，对照组为11.8%，降低4.2%。\n\n---\n\nevidence_id: r11_04\n\n**来源：** PMID:39151436 | DOI:10.1016/s2468-1253(24)00198-5 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** AVOID多中心随机3期试验的931例意向治疗人群中，ICG荧光引导组与常规组90日临床相关吻合口漏率为7%对9%（RR 0.77，95%CI 0.50–1.20；P=0.24），差异无统计学显著性。\n\n---\n\nevidence_id: r11_01\n\n**来源：** PMID:25451666 | DOI:10.1016/j.jamcollsurg.2014.09.015 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** PILLAR II前瞻性多中心单臂研究纳入139例可分析患者；荧光灌注评估使11例（8%）改变手术计划，其中多数发生于近端切缘，这11例未发生吻合口漏；全队列吻合口漏率为1.4%。\n\n---\n\nevidence_id: r11_05\n\n**来源：** PMID:40839222 | DOI:10.1007/s10151-025-03203-6 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 在533例超低位直肠癌ISR多中心回顾性队列中，倾向匹配后荧光腹腔镜组吻合口漏为3.1%，非荧光组为11.5%（P=0.005）；新辅助放化疗亚组为13.0%和35.9%，仅呈降低趋势（P=0.051）。\n\n---\n\nevidence_id: r11_ext1\n\n**来源：** PMID:36675423 | DOI:10.3390/jcm12020494 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 该综述总结了ICG在结直肠手术中的应用情况。\n\n---\n\nevidence_id: exp26_pmid_33236661_icg_cohort\n\n**来源：** PMID:33236661 | DOI:10.1177/1553350620975258 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 272例左结肠和直肠手术的回顾性队列中，ICG组总体吻合口漏为10.8%，非ICG组为17.8%（p=0.07）；倾向评分匹配后为9.3%与16%（p=0.058），提示方向性获益但未达到传统统计学显著性。\n\n---\n\nevidence_id: r11_07\n\n**来源：** PMID:40042831 | DOI:10.1001/jamasurg.2025.0006 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 芬兰ICG-COLORAL多中心随机试验在排除低位前切除的1136例意向治疗人群中，ICG组与对照组吻合口漏率为5.8%对7.9%（OR 0.73，95%CI 0.48–1.13；P=0.16），总体降低未达统计学显著；左侧手术亚组仅显示可能受益的趋势。\n\n---\n\nevidence_id: exp26_pmid_35600102_icg_standardisation\n\n**来源：** PMID:35600102 | DOI:10.7602/jmis.2021.24.3.113 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 综述认为ICG可显示不良灌注区并辅助识别低灌注相关吻合口并发症，但两项多中心随机试验未显示吻合口漏显著下降；当前仍缺少标准化、客观定量的ICG评估方案。\n\n### References\n\n- [1] ICG荟萃5498例OR 0.46\n- [2] 早期ICG荟萃OR 0.27\n- [3] EAES共识-强推荐ICG\n- [4] 直肠癌ICG荟萃OR 0.33\n- [5] 直肠癌ICG荟萃",
+      "cited_evidence_ids": [
+        "exp26_pmid_33236661_icg_cohort",
+        "exp26_pmid_35600102_icg_standardisation",
+        "r11_01",
+        "r11_02",
+        "r11_03",
+        "r11_04",
+        "r11_05",
+        "r11_06",
+        "r11_07",
+        "r11_08",
+        "r11_09",
+        "r11_10",
+        "r11_11",
+        "r11_12",
+        "r11_ext1"
+      ],
+      "cited_rule_evidence_ids": [
+        "exp26_pmid_33236661_icg_cohort",
+        "exp26_pmid_35600102_icg_standardisation",
+        "r11_01",
+        "r11_02",
+        "r11_03",
+        "r11_04",
+        "r11_05",
+        "r11_06",
+        "r11_07",
+        "r11_08",
+        "r11_09",
+        "r11_10",
+        "r11_11",
+        "r11_12",
+        "r11_ext1"
+      ],
+      "first_line_evidence_id": "r11_09",
+      "first_line_evidence_ids": [
+        "r11_09"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "immediate_anastomotic_defect",
+      "query": "请检索并总结规则 immediate_anastomotic_defect 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: r3_10\n\n**来源：** PMID:39608745；DOI:10.1016/j.gassur.2024.101899；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 该研究（2025年发表）探讨了吻合方式与空气漏试验（ALT）阳性之间的关系，证据等级为C级。\n\n---\n\n此外，规则 `immediate_anastomotic_defect` 还关联了以下直接证据：\n\n- **r3_05**（来源：PMID:37051157；DOI:10.4174/astr.2023.104.4.214）：2023年438例倾向评分匹配分析显示，ALT阳性率0.9%，经处理后无吻合口漏发生。\n- **r3_07**（来源：PMID:32978892；DOI:10.1111/codi.15380）：2021年53篇文献的系统综述，评估包括ALT在内的吻合口完整性检测方法。\n- **r3_08**（来源：PMID:31302816；DOI:10.1007/s10151-019-02034-6）：2019年3844例网络荟萃分析，比较ALT、ICG与结肠镜三种检测方法。\n- **exp26_pmid_34853559_troubleshooting**（来源：PMID:34853559；DOI:10.1055/s-0041-1735269）：技术综述建议在手术结束前检查每个新建吻合口；空气漏试验可发现左侧结肠或直肠吻合的机械缺陷并允许术中修复，吻合圈不完整或吻合器击发故障也应立即处理。\n- **exp26_pmid_35979268_iocs**（来源：PMID:35979268；DOI:10.23922/jarc.2022-003）：术中结肠镜辅助空气漏试验与吻合口漏独立相关（p=0.039）；4例术中阳性漏均追加缝合且术后未发生漏，提示其可辅助发现并修复即时缺陷。\n- **exp26_pmid_32919437_air_test_uncertainty**（来源：PMID:32919437；DOI:10.3393/ac.2020.05.14.2）：系统评价认为现有证据未显示常规空气漏试验本身降低术后吻合口漏；但不否定阳性试验发现即时机械缺陷后必须修复的临床价值。\n- **r3_01**（来源：PMID:27294661；DOI:10.1007/s00384-016-2616-4）：系统评价观察到接受术中充气试验者的临床吻合口漏率较低，但差异无统计学意义（P=0.15）；充气试验阳性者术后漏率高于阴性者（11.4%对4.2%，P<0.001）。\n- **r3_02**（来源：PMID:30203203；DOI:10.1007/s00464-018-6421-8）：777例择期腹腔镜左侧结肠切除中，398例接受充气试验，阳性20例（5.0%）；处理后阳性者无术后漏，接受试验者总体漏率低于未试验者（2.5%对5.8%）。\n- **r3_03**（来源：PMID:33905010；DOI:10.1007/s10151-021-02453-4）：40例前瞻性研究中，稀释美蓝染料漏试验阳性率为20%（8/40），充气漏试验为2.5%（1/40）；作者结论为染料漏试验对术中缺陷检出更敏感。\n- **r3_06**（来源：PMID:38767835；DOI:10.1007/s13304-024-01883-7）：2024年iCral3前瞻性队列2061例多治疗机器学习分析ALT作用。\n- **r3_09**（来源：PMID:33332954；DOI:10.3393/ac.2020.09.21.1）：2022年反向充气试验新技术评估低位结直肠吻合。\n- **r3_ext1**（来源：PMID:36843691；DOI:10.7759/cureus.34168）：叙述性综述讨论的术中吻合口完整性评估方法包括充气试验、术中内镜、Doppler超声和近红外荧光成像。\n- **book_ascrs2_intraoperative_integrity**（来源：ISBN:978-1-4419-1581-8，第2版）：ASCRS教材建议圆形吻合器吻合后检查吻合圈完整性，并在术中采用空气或液体充盈试验排除即时漏，同时强调良好血供和无张力吻合。\n- **phase2_pub_33021045**（来源：PMID:33021045；DOI:10.1111/ans.16338）：术中柔性乙状结肠镜检查与阳性漏试验检出率增加相关（OR 5.21，P>0.001），并与吻合口漏减少（OR 0.45，P=0.006）及需干预的术后吻合口出血减少（OR 0.40，P=0.037）相关。\n\n### References\n\n- [1] 术中吻合口完整性排查与故障处理\n- [2] 术中检测技术系统综述\n- [3] 系统评价：空气漏试验的结局证据并不一致\n- [4] 术中结肠镜辅助空气漏试验\n- [5] 权威书籍：The ASCRS Textbook of Colon and Rectal Surgery（第2版）",
+      "cited_evidence_ids": [
+        "book_ascrs2_intraoperative_integrity",
+        "exp26_pmid_32919437_air_test_uncertainty",
+        "exp26_pmid_34853559_troubleshooting",
+        "exp26_pmid_35979268_iocs",
+        "phase2_pub_33021045",
+        "r3_01",
+        "r3_02",
+        "r3_03",
+        "r3_05",
+        "r3_06",
+        "r3_07",
+        "r3_08",
+        "r3_09",
+        "r3_10",
+        "r3_ext1"
+      ],
+      "cited_rule_evidence_ids": [
+        "book_ascrs2_intraoperative_integrity",
+        "exp26_pmid_32919437_air_test_uncertainty",
+        "exp26_pmid_34853559_troubleshooting",
+        "exp26_pmid_35979268_iocs",
+        "phase2_pub_33021045",
+        "r3_01",
+        "r3_02",
+        "r3_03",
+        "r3_05",
+        "r3_06",
+        "r3_07",
+        "r3_08",
+        "r3_09",
+        "r3_10",
+        "r3_ext1"
+      ],
+      "first_line_evidence_id": "r3_10",
+      "first_line_evidence_ids": [
+        "r3_10"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "inflammation_nutrition_imbalance",
+      "query": "请检索并总结规则 inflammation_nutrition_imbalance 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: r9_06\n\n**来源：** PMID:32375770（DOI:10.1186/s12957-020-01856-1，PubMed abstract，Crossref/OpenAlex verification 2026-07-26）\n\n**结论：** 该多中心研究纳入1432例病例，发现NLR>7.1预测吻合口漏（AL）的最佳AUC为0.744。\n\n---\n\n此外，规则 `inflammation_nutrition_imbalance` 还关联了以下直接证据（均标注为C级证据）：\n\n- **r9_04**（PMID:39202294）：Ioannidis(2024) 专门研究了NLR作为AL预测因子的作用。\n- **r9_08**（PMID:41869571）：2026年研究显示，PNI预测AL的能力优于NLR。\n- **r9_07**（PMID:30583791）：2019年前瞻性研究显示，PNI可预测结直肠癌术后并发症。\n- **r9_10**（PMID:37988156）：2024年研究显示，引流液LDH和NLR可用于早期检测AL。\n- **r9_ext1**（PMID:36675762）：2023年ANN研究显示，炎症指标预测手术并发症的价值更优。\n- **r9_ext2**（PMID:33763228）：2021年研究比较了NLR与CRP在早期预测AL中的作用。\n- **r9_05**（PMID:29377500）：术后第4天NLR可预测吻合口裂开（AUC 0.78），而非术前NLR。\n- **r9_01**（PMID:37540157）：PNI与结直肠癌术后AL相关（AUC 0.625）。\n- **r9_02**（PMID:38463372）：三中心倾向评分匹配研究中，术前NLR≥2.66与老年结肠癌患者术后症状性AL相关（OR=5.51，95%CI 1.50–20.26；P=0.010）。\n- **r9_09**（PMID:36684195）：292例回顾性研究中，肿瘤部位、术前白蛋白、淋巴细胞、NLR及肠系膜上动脉钙化体积评分为术后吻合口漏独立风险因素；相关列线图训练集和验证集C-index分别为0.913和0.840。\n\n### References\n\n- [1] 炎症指标多中心1432例\n- [2] NLR作为AL预测因子\n- [3] PNI优于NLR-2026例倾向评分\n- [4] PNI vs 并发症\n- [5] 引流液LDH+NLR",
+      "cited_evidence_ids": [
+        "r9_01",
+        "r9_02",
+        "r9_04",
+        "r9_05",
+        "r9_06",
+        "r9_07",
+        "r9_08",
+        "r9_09",
+        "r9_10",
+        "r9_ext1",
+        "r9_ext2"
+      ],
+      "cited_rule_evidence_ids": [
+        "r9_01",
+        "r9_02",
+        "r9_04",
+        "r9_05",
+        "r9_06",
+        "r9_07",
+        "r9_08",
+        "r9_09",
+        "r9_10",
+        "r9_ext1",
+        "r9_ext2"
+      ],
+      "first_line_evidence_id": "r9_06",
+      "first_line_evidence_ids": [
+        "r9_06"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "intraoperative_glucose_context",
+      "query": "请检索并总结规则 intraoperative_glucose_context 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: phase2_pub_42578130\n\n**来源：** PMID:42578130；DOI:10.1097/RC9.0000000000000675；PubMed abstract；审阅日期 2026-07-26\n\n**结论：** 术前胰岛素抵抗与结直肠癌术后吻合口漏风险相关，局部组织血糖与吻合口愈合的关系多为间接证据。\n\n---\n\nevidence_id: phase2_pub_42026671\n\n**来源：** PMID:42026671；DOI:10.1007/DCR.0b013e3181bdbc32；PubMed abstract；审阅日期 2026-07-26\n\n**结论：** 术前胰岛素抵抗替代指标与结直肠癌术后吻合口漏风险之间的关联提示代谢状态影响吻合口愈合，但局部组织血糖的独立阈值证据尚不充分。\n\n### References\n\n- [1] Euglycemic ketoacidosis following sleeve gastrectomy in a young non-diabetic female: a case report.\n- [2] Association of preoperative insulin resistance surrogate indices with the risk of anastomotic leakage after colorectal cancer resection: a multicenter retrospective cohort.",
+      "cited_evidence_ids": [
+        "phase2_pub_42026671",
+        "phase2_pub_42578130"
+      ],
+      "cited_rule_evidence_ids": [
+        "phase2_pub_42026671",
+        "phase2_pub_42578130"
+      ],
+      "first_line_evidence_id": "phase2_pub_42578130",
+      "first_line_evidence_ids": [
+        "phase2_pub_42578130"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "intraoperative_hypoperfusion_risk",
+      "query": "请检索并总结规则 intraoperative_hypoperfusion_risk 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: r7_03\n\n**来源：** PMID:37126191；DOI:10.1007/s00464-023-09980-1；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 2023年一项纳入1548例患者的研究显示，血管升压药使用与吻合口漏（AL）相关（OR=2.1），使用组吻合口漏发生率为11.8%，未使用组为6.3%。证据等级为C级。\n\n---\n\n此外，规则 `intraoperative_hypoperfusion_risk` 还关联以下直接证据（按证据ID列出）：\n\n- **r7_01**（来源：PMID:22297862；DOI:10.1007/s00384-011-1381-7）：285例前瞻性队列中，术中舒张压较基线下降>40%是吻合口漏的单因素危险因素（P=0.049）；摘要未报告其为独立危险因素。证据等级C。\n- **r7_02**（来源：PMID:23014977；DOI:10.1007/s00384-012-1585-5）：1312例前切除患者中，低血压发作仅在单因素分析中与吻合口漏相关；多因素分析的独立因素为ASA、围手术期输血、吻合技术、麻醉时长和肿瘤部位。证据等级C。\n- **r7_04**（来源：PMID:29282510；DOI:10.1007/s00268-017-4423-7）：停用围术期NSAIDs、引入术中目标导向液体治疗并避免急诊一期吻合的组合实践变更后，吻合口漏率由10.0%降至4.5%（调整OR=0.45，95%CI 0.26–0.78）。证据等级C。\n- **r7_05**（来源：PMID:35836033；DOI:10.1007/s00464-022-09407-3）：52例术中高光谱成像（HSI）研究显示该技术可识别临床判断不可靠的边缘灌注肠段；26例切线不一致者StO2较低，研究仅发生1例吻合口漏，仍需更大试验验证临床影响。证据等级C。\n- **r7_06**（来源：PMID:32194255；DOI:10.1016/j.ijsu.2020.03.019）：30例机器人辅助腹腔镜结直肠手术随机研究中，8 mmHg气腹压较12/16 mmHg与更快的壁层腹膜荧光达峰及更高最大荧光强度相关，提示壁层腹膜灌注改善；研究未检验AL结局。证据等级C。\n- **r7_ext1**（来源：PMID:40682598；DOI:10.1007/s10151-025-03195-3）：2025年猪模型研究探讨去甲肾上腺素对微循环的影响。证据等级D。\n- **r7_ext2**（来源：PMID:23773612；DOI:10.1111/codi.12321）：2013年124例研究中，围手术期输液>8000ml时吻合口漏显著增加。证据等级C。\n- **exp26_gl_eras2023_map65**（来源：ASCRS/SAGES 2023指南，Recommendation 5及15）：指南建议避免术中低血压，因为即使短时间平均动脉压低于65 mmHg也与不良结局相关（强推荐、中等质量证据，1B）；该条款针对总体围手术期安全，并非吻合口漏专属效应。证据等级A。\n\n### References\n\n- [1] PMID:37126191\n- [2] PMID:22297862\n- [3] PMID:23014977\n- [4] PMID:29282510\n- [5] ASCRS/SAGES 2023：避免术中MAP低于65 mmHg",
+      "cited_evidence_ids": [
+        "exp26_gl_eras2023_map65",
+        "r7_01",
+        "r7_02",
+        "r7_03",
+        "r7_04",
+        "r7_05",
+        "r7_06",
+        "r7_ext1",
+        "r7_ext2"
+      ],
+      "cited_rule_evidence_ids": [
+        "exp26_gl_eras2023_map65",
+        "r7_01",
+        "r7_02",
+        "r7_03",
+        "r7_04",
+        "r7_05",
+        "r7_06",
+        "r7_ext1",
+        "r7_ext2"
+      ],
+      "first_line_evidence_id": "r7_03",
+      "first_line_evidence_ids": [
+        "r7_03"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "low_anastomosis_risk",
+      "query": "请检索并总结规则 low_anastomosis_risk 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: r1_02\n\n**来源：** PMID:25743996 | PMID:9529492；DOI:10.1007/s00464-015-4117-x；DOI:10.1046/j.1365-2168.1998.00615.x；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** Rullier的272例研究显示，距肛缘<5 cm的吻合口漏风险为>5 cm吻合的6.5倍，吻合平面和男性为独立因素；后续荟萃分析亦显示距肛缘5 cm内吻合与AL相关（OR=9.63）。\n\n---\n\nevidence_id: r1_03\n\n**来源：** PMID:25743996；DOI:10.1007/s00464-015-4117-x；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 14项研究4580例的荟萃分析显示，吻合口距肛缘5 cm以内与腹腔镜直肠前切除术后吻合口漏增加相关（OR 9.63，95%CI 3.05-30.43）。\n\n---\n\nevidence_id: exp26_pmid_29881234_low_level_review\n\n**来源：** PMID:29881234；DOI:10.3748/wjg.v24.i21.2247；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 腹腔镜结直肠手术综述认为，左侧吻合的主要危险因素之一是较低的吻合位置，并强调不同研究对吻合口漏的定义和危险因素并不完全一致。\n\n---\n\nevidence_id: exp26_pmid_39441693_lower_third\n\n**来源：** PMID:39441693；DOI:10.1093/bjsopen/zrae089；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 对ESCP前瞻性审计数据的3305例左侧手工圆形吻合器吻合分析中，吻合口漏率为8.0%；直肠下三分之一吻合高度是独立预测因素，而吻合器品牌和钉头直径不是预测因素。\n\n---\n\nevidence_id: r1_ext3\n\n**来源：** PMID:32666758；DOI:10.3897/folmed.62.e47727；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 32666758(2020)LAR后AL危险因素综合分析。\n\n---\n\nevidence_id: r1_04\n\n**来源：** PMID:34816571；DOI:10.1111/codi.15997；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 意大利 RALAR 全国 24 个转诊中心的回顾性研究纳入 5398 例直肠癌手术患者，总 AL 率 10.2%；多因素分析将肿瘤位置等列为独立风险因素，摘要未报告低位吻合的特定距离阈值。\n\n---\n\nevidence_id: exp26_pmid_32461995_low_tumour\n\n**来源：** PMID:32461995；DOI:10.1155/2020/5059670；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 同一382例直肠癌队列的多因素分析显示，肿瘤位置更接近肛门与术后吻合口漏独立相关（p=0.004），支持低位手术场景需提高警惕。\n\n---\n\nevidence_id: r1_ext5\n\n**来源：** PMID:40839222；DOI:10.1007/s10151-025-03203-6；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 在 533 例超低位直肠腺癌腹腔镜括约肌间切除的多中心回顾性队列中，倾向评分匹配后荧光腹腔镜组 AL 率较低（3.1% 对 11.5%）；接受新辅助放化疗亚组的降低趋势未达统计学显著（13.0% 对 35.9%，P=0.051），不足以得出“必须 ICG 评估”的结论。\n\n---\n\nevidence_id: r1_08\n\n**来源：** PMID:37795583；DOI:10.1002/jso.27470；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 华西医院(2024,PMID:37795583)机器学习预测中低位直肠癌LAR后症状性AL。\n\n---\n\nevidence_id: phase2_pub_25833333\n\n**来源：** PMID:25833333；DOI:10.1002/bjs.9782；PubMed abstract\n\n**结论：** 低位前切除后，横向结肠成形与侧端结肠肛管吻合的功能结局与结肠J囊相似；就吻合口漏率而言，未发现任何一种重建技术具有优势。\n\n---\n\nevidence_id: r1_ext2\n\n**来源：** PMID:36718787；DOI:10.1002/cnr2.1781；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 36718787(2023)前瞻性血清和腹腔生物标志物早期预测腹腔镜LAR后症状性AL。\n\n---\n\nevidence_id: r1_06\n\n**来源：** PMID:38977498；DOI:10.1007/s00464-024-11008-1；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** Ito(2024,PMID:38977498)提出Bridging现象(近端结肠如悬索桥跨过盆腔)是低位前切除术后AL的关键风险因素。\n\n---\n\nevidence_id: phase2_pub_32862745\n\n**来源：** PMID:32862745；DOI:10.1177/0300060520946520；PubMed abstract\n\n**结论：** 该研究报告，糖尿病和吻合口高度均显著影响吻合口漏的发生；支持引句未提供这两个因素的效应量。\n\n---\n\nevidence_id: r1_10\n\n**来源：** PMID:33628027；DOI:10.2147/tcrm.s297278；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 2021年(PMID:33628027)开发腹腔镜直肠癌术后AL风险评分系统。\n\n---\n\nevidence_id: phase2_cli_22193436\n\n**来源：** PMID:22193436；DOI:10.5754/hge11786；PubMed abstract\n\n**结论：** 低位直肠癌前切除术的荟萃分析显示，保护性造口显著降低术后吻合口漏（合并RR=0.34，95% CI 0.22–0.53，p<0.00001）。\n\n---\n\nevidence_id: r1_11\n\n**来源：** PMID:41391690；DOI:10.1016/j.clinre.2025.102745；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 2026年(PMID:41391690)585例LAR患者LASSO回归分析确认肿瘤下缘距肛缘距离为AL预测因子。\n\n---\n\nevidence_id: exp26_pmid_35979268_low_level\n\n**来源：** PMID:35979268；DOI:10.23922/jarc.2022-003；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 201例腹腔镜直肠癌手术回顾性队列中，吻合口漏发生率为8.0%；多因素分析显示吻合高度是独立预测因素（p=0.029）。\n\n---\n\nevidence_id: phase2_pub_36187056\n\n**来源：** PMID:36187056；DOI:10.5114/wiitm.2022.115168；PubMed abstract\n\n**结论：** 多变量分析显示，距肛缘小于6.5 cm、糖尿病和未使用加固缝合均为吻合口漏的独立风险因素；这是多因素观察性关联，不能据此推断单一因素的因果效应。\n\n---\n\nevidence_id: exp26_gl_ascrs2020_low_diversion\n\n**来源：** Operative Treatment—Technical Aspects, recommendations 12–13\n\n**结论：** ASCRS 2020建议LAR后考虑保护性造口（1B）；其引用的23项研究综述显示，距肛缘5–8 cm的低位直肠吻合与临床漏增加相关（OR 3.26，95%CI 2.31–4.62）。\n\n### References\n\n- [1] Rullier经典研究-低位吻合风险\n- [2] 低位吻合风险系统评价\n- [3] 腹腔镜结直肠手术危险因素综述：低位吻合\n- [4] ESCP审计：直肠下三分之一吻合高度\n- [5] Folia Med AL危险因素",
+      "cited_evidence_ids": [
+        "exp26_gl_ascrs2020_low_diversion",
+        "exp26_pmid_29881234_low_level_review",
+        "exp26_pmid_32461995_low_tumour",
+        "exp26_pmid_35979268_low_level",
+        "exp26_pmid_39441693_lower_third",
+        "phase2_cli_22193436",
+        "phase2_pub_25833333",
+        "phase2_pub_32862745",
+        "phase2_pub_36187056",
+        "r1_02",
+        "r1_03",
+        "r1_04",
+        "r1_06",
+        "r1_08",
+        "r1_10",
+        "r1_11",
+        "r1_ext2",
+        "r1_ext3",
+        "r1_ext5"
+      ],
+      "cited_rule_evidence_ids": [
+        "exp26_gl_ascrs2020_low_diversion",
+        "exp26_pmid_29881234_low_level_review",
+        "exp26_pmid_32461995_low_tumour",
+        "exp26_pmid_35979268_low_level",
+        "exp26_pmid_39441693_lower_third",
+        "phase2_cli_22193436",
+        "phase2_pub_25833333",
+        "phase2_pub_32862745",
+        "phase2_pub_36187056",
+        "r1_02",
+        "r1_03",
+        "r1_04",
+        "r1_06",
+        "r1_08",
+        "r1_10",
+        "r1_11",
+        "r1_ext2",
+        "r1_ext3",
+        "r1_ext5"
+      ],
+      "first_line_evidence_id": "r1_02",
+      "first_line_evidence_ids": [
+        "r1_02"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "major_blood_loss_risk",
+      "query": "请检索并总结规则 major_blood_loss_risk 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: r6_02\n\n**来源：** PMID:27756644（DOI:10.1016/j.ijsu.2016.09.098；PubMed abstract；Crossref/OpenAlex verification 2026-07-26）\n\n**结论：** van Rooijen（2016）系统综述确认贫血、出血量和输血为吻合口漏（AL）的独立风险因素（证据I-II级）。\n\n---\n\n### 其他直接证据\n\n- **r6_01**（来源：PMID:37335436；DOI:10.1007/s12029-023-00947-y）：围手术期输血者与未输血者的AL率分别为11.3%和2.2%（P=0.0002）；漏诊断前接受更多单位输血也与AL相关（P=0.001）。\n- **r6_03**（来源：PMID:32399595；DOI:10.1007/s13304-020-00753-2）：输血影响所有终点，AL的OR=8.15，总体并发症的OR=19.33。\n- **r6_04**（来源：PMID:36900095；DOI:10.3390/diagnostics13050952）：Catarci（2023）倾向评分匹配分析输血与AL的关系。\n- **r6_05**（来源：PMID:36138307；DOI:10.1007/s10151-022-02701-1）：Simillis（2023）系统评价与荟萃分析术中出血对结直肠术后结局的影响。\n- **r6_06**（来源：PMID:40088136；DOI:10.1002/wjs.12533）：多中心研究显示术中出血可预测Ⅰ-Ⅲ期结直肠癌局部复发。\n- **r6_07**（来源：PMID:34697662；DOI:10.1007/s00384-021-04015-4）：49项研究、61,312例患者的系统综述评估术中出血量与结直肠术后预后。\n- **r6_08**（来源：PMID:36683625；DOI:10.12998/wjcc.v10.i36.13321）：583例研究中，输血和术中出血是直肠癌AL的危险因素。\n- **r6_09**（来源：PMID:37943801；DOI:10.1093/bjs/znad316）：中国52家三级医院前瞻性快照研究纳入1854例右半结肠癌择期切除患者；多因素分析中，术中失血>50 mL与AL独立相关（P=0.004）。\n- **r6_10**（来源：PMID:34943616；DOI:10.3390/diagnostics11122382）：2021年综述明确围手术期输血为AL的重要危险因素。\n- **r6_ext1**（来源：PMID:28238216；DOI:10.1111/codi.13641）：398例直肠癌保肛手术中，血红蛋白7至<10 g/dL且接受输血者较同范围未输血者器官/腔隙手术部位感染增加（OR 3.63），但吻合口漏无显著差异。\n- **exp26_pmid_32461995_transfusion**（来源：PMID:32461995；DOI:10.1155/2020/5059670）：382例直肠癌队列多因素分析显示，围手术期输血与术后吻合口漏独立相关（p<0.001）。\n- **exp26_pmid_26305194_transfusion**（来源：PMID:26305194）：综述将术前输血列为多项研究报告的吻合口漏危险因素之一。\n- **phase2_cli_31665375**（来源：PMID:31665375；DOI:10.1093/jjco/hyz139）：荟萃分析显示术中输血与吻合口漏显著相关（合并OR=1.64，95% CI 1.34–2.02，p=0.02）。\n- **phase2_cli_26558741**（来源：PMID:26558741；DOI:10.1111/codi.13212）：结肠癌切除队列中，围手术期输血是吻合口漏的独立危险因素（OR=2.83，CI 1.59–5.06，p<0.0001）。\n- **phase2_pub_42222228**（来源：PMID:42222228；DOI:10.3389/fsurg.2026.1825596）：冠状动脉疾病（p=0.038）和术中输血（p=0.001）均被识别为吻合口漏的显著独立风险因素。\n- **glcand_eras2025_anemia**（来源：ERAS Society 2025指南勘误关联核对）：强推荐术前常规筛查并纠正贫血，以改善长期结局并减少围术期输血；对吻合口漏的影响属于间接风险优化。\n\n### References\n\n- [1] 出血输血为AL独立风险-系统综述\n- [2] 输血-AL剂量反应关系\n- [3] 术中出血系统评价\n- [4] 出血量系统综述61,312例\n- [5] 中国多中心-出血/输血变量",
+      "cited_evidence_ids": [
+        "exp26_pmid_26305194_transfusion",
+        "exp26_pmid_32461995_transfusion",
+        "glcand_eras2025_anemia",
+        "phase2_cli_26558741",
+        "phase2_cli_31665375",
+        "phase2_pub_42222228",
+        "r6_01",
+        "r6_02",
+        "r6_03",
+        "r6_04",
+        "r6_05",
+        "r6_06",
+        "r6_07",
+        "r6_08",
+        "r6_09",
+        "r6_10",
+        "r6_ext1"
+      ],
+      "cited_rule_evidence_ids": [
+        "exp26_pmid_26305194_transfusion",
+        "exp26_pmid_32461995_transfusion",
+        "glcand_eras2025_anemia",
+        "phase2_cli_26558741",
+        "phase2_cli_31665375",
+        "phase2_pub_42222228",
+        "r6_01",
+        "r6_02",
+        "r6_03",
+        "r6_04",
+        "r6_05",
+        "r6_06",
+        "r6_07",
+        "r6_08",
+        "r6_09",
+        "r6_10",
+        "r6_ext1"
+      ],
+      "first_line_evidence_id": "r6_02",
+      "first_line_evidence_ids": [
+        "r6_02"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "malnutrition_albumin_risk",
+      "query": "请检索并总结规则 malnutrition_albumin_risk 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: r2_06\n\n**来源：** PMID:40002606 | DOI:10.3390/diagnostics15040455 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 40002606(2025)低白蛋白血症是CF-ALPS评分系统的独立预测因子(AUC 0.82)。\n\n---\n\nevidence_id: r2_11\n\n**来源：** PMID:36396374 | DOI:10.3760/cma.j.cn441530-20220927-00393 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 36396374中华胃肠外科杂志(2022)结直肠手术AL预测模型和预防策略(中文)。\n\n---\n\nevidence_id: r2_03\n\n**来源：** PMID:34824150 | DOI:10.1503/cjs.016820 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 该综述总结结直肠癌患者术前营养筛查和干预；NRS-2002、PNI、NRI、MUST、白蛋白和前白蛋白等工具可预测术后结局，评估并纠正营养不良可减少总体术后并发症。\n\n---\n\nevidence_id: r2_05\n\n**来源：** PMID:31658046 | DOI:10.3233/cbm-190470 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 31658046(2020)1068例老年患者CAR(CRP/白蛋白比值)预测AL(AUC 0.758)。\n\n---\n\nevidence_id: r2_02\n\n**来源：** PMID:27451010 | DOI:10.1016/j.asjsur.2016.07.009 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 在200例Ⅰ–Ⅲ期结直肠癌根治性腹腔镜手术患者中，术前白蛋白在AL与非AL组间无显著差异；术后第1和3天平均白蛋白较低是AL的独立指标（OR=7.53）。\n\n---\n\nevidence_id: r2_08\n\n**来源：** PMID:29411120 | DOI:10.1007/s00384-018-2970-5 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 29411120(2018)936例LAR患者术前白蛋白是AL独立预测因子。\n\n---\n\nevidence_id: r2_01\n\n**来源：** PMID:37256440 | DOI:10.1007/s00384-023-04450-5 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 在一个ERAS方案下的361例择期结直肠主吻合队列中，术前白蛋白和总蛋白在AL与非AL组间无显著差异，ROC分析显示两者均不是可靠的AL预测指标；白蛋白38 g/L阈值的AL阳性预测值为4.8%。\n\n---\n\nevidence_id: phase2_cli_41160284\n\n**来源：** PMID:41160284 | DOI:10.1007/s13304-025-02411-x | PubMed abstract | reviewed 2026-07-26\n\n**结论：** 多中心回顾性结直肠癌手术研究中，血清白蛋白<3 g/dL是急性吻合口漏的多因素相关预测因素（OR=16.249，95% CI 1.033–255.544，p=0.04）。\n\n---\n\nevidence_id: phase2_cli_41515289\n\n**来源：** PMID:41515289 | DOI:10.3390/nu18010173 | PubMed abstract | reviewed 2026-07-26\n\n**结论：** 结直肠癌随机对照试验的系统评价与荟萃分析中，ω-3多不饱和脂肪酸补充组的吻合口漏显著减少（p=0.0005）；该结果支持干预效应，不直接证明低白蛋白是致病因素。\n\n---\n\nevidence_id: phase2_cli_20404288\n\n**来源：** PMID:20404288 | DOI:10.1001/archsurg.2010.40 | PubMed abstract | reviewed 2026-07-26\n\n**结论：** 结直肠手术病例对照研究中，术前白蛋白<3.5 g/dL与吻合口漏相关（OR=2.8，95% CI 1.3–5.1，p=0.03）。\n\n---\n\nevidence_id: r2_07\n\n**来源：** PMID:40688986 | DOI:10.7759/cureus.86268 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 在105例CRC手术患者的单中心回顾性研究中，GNRI<94与Clavien–Dindo≥2级总并发症增多相关，调整后OR 2.90（P=0.049）；高低GNRI组的AL和切口感染率无显著差异。\n\n---\n\nevidence_id: phase2_cli_36820938\n\n**来源：** PMID:36820938 | DOI:10.1245/s10434-023-13265-1 | PubMed abstract | reviewed 2026-07-26\n\n**结论：** 胃肠道肿瘤手术的荟萃分析显示，围手术期肠内免疫营养与较低的吻合口漏发生比值相关（OR=0.67，95% CI 0.47–0.93）；该结果是干预关联，不等同于营养不良本身的风险效应。\n\n---\n\nevidence_id: exp26_pmid_32461995_albumin\n\n**来源：** PMID:32461995 | DOI:10.1155/2020/5059670 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 在382例直肠癌手术患者队列中，吻合口漏发生率为14.65%；多因素分析显示低术后白蛋白与吻合口漏独立相关（p=0.044）。\n\n---\n\nevidence_id: phase2_pub_26888783\n\n**来源：** PMID:26888783 | DOI:10.1007/s00384-016-2507-8 | PubMed abstract | reviewed 2026-07-26\n\n**结论：** 接受术前放化疗的直肠癌患者中，放化疗后的营养不良与治疗耐受性相关，手术时营养不良与吻合口漏显著相关；在I–III期患者中，吻合口漏与无病生存期显著相关。\n\n---\n\nevidence_id: phase2_pub_33277836\n\n**来源：** PMID:33277836 | PubMed abstract | reviewed 2026-07-26\n\n**结论：** 该研究未发现性别、术前白蛋白水平、原发癌部位或手术时长与吻合口漏存在显著相关。\n\n---\n\nevidence_id: phase2_cli_31621086\n\n**来源：** PMID:31621086 | DOI:10.1002/jso.25730 | PubMed abstract | reviewed 2026-07-26\n\n**结论：** 直肠癌前切除队列的多因素分析中，术前白蛋白≤35 g/L是吻合口漏的独立危险因素（OR=2.511）。\n\n### References\n\n- [1] 白蛋白/前白蛋白联合评估\n- [2] 围手术期白蛋白监测识别AL\n- [3] 低白蛋白-ERAS中仍是AL预测指标\n- [4] 低白蛋白与结直肠癌术后急性吻合口漏\n- [5] 术前低白蛋白与结直肠手术吻合口漏",
+      "cited_evidence_ids": [
+        "exp26_pmid_32461995_albumin",
+        "phase2_cli_20404288",
+        "phase2_cli_31621086",
+        "phase2_cli_36820938",
+        "phase2_cli_41160284",
+        "phase2_cli_41515289",
+        "phase2_pub_26888783",
+        "phase2_pub_33277836",
+        "r2_01",
+        "r2_02",
+        "r2_03",
+        "r2_05",
+        "r2_06",
+        "r2_07",
+        "r2_08",
+        "r2_11"
+      ],
+      "cited_rule_evidence_ids": [
+        "exp26_pmid_32461995_albumin",
+        "phase2_cli_20404288",
+        "phase2_cli_31621086",
+        "phase2_cli_36820938",
+        "phase2_cli_41160284",
+        "phase2_cli_41515289",
+        "phase2_pub_26888783",
+        "phase2_pub_33277836",
+        "r2_01",
+        "r2_02",
+        "r2_03",
+        "r2_05",
+        "r2_06",
+        "r2_07",
+        "r2_08",
+        "r2_11"
+      ],
+      "first_line_evidence_id": "r2_06",
+      "first_line_evidence_ids": [
+        "r2_06"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "multivisceral_resection_risk",
+      "query": "请检索并总结规则 multivisceral_resection_risk 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: r12_01\n\n**来源：** PMID:36811741 | DOI:10.1007/s00423-023-02835-2 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** Zaman（2023年）发表的系统综述与荟萃分析，以多脏器切除术后吻合口漏（AL）作为结局指标进行评估。\n\n---\n\nevidence_id: r12_02\n\n**来源：** PMID:34536987 | DOI:10.1111/codi.15911 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 荷兰全国审计显示，多脏器切除仅在2011-2013年结肠癌队列中被识别为吻合口漏风险因素；到2017-2019年该因素未再保留，风险因素随时间变化。\n\n---\n\nevidence_id: r12_04\n\n**来源：** PMID:33381928 | DOI:10.4111/icu.20200176 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 该研究（2021年）探讨了机器人盆腔廓清术与扩大切除的结局。\n\n---\n\nevidence_id: r12_05\n\n**来源：** PMID:31303376 | DOI:10.1016/j.ejso.2019.07.015 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 该研究（2019年）报告了670例30年盆腔廓清术的趋势与生存率。\n\n---\n\nevidence_id: r12_06\n\n**来源：** PMID:30952369 | DOI:10.1016/j.ygyno.2019.03.241 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 该多中心研究（2019年）纳入695例卵巢癌后盆腔廓清术患者，分析了术后吻合口漏的危险因素。\n\n---\n\nevidence_id: r12_ext1\n\n**来源：** PMID:37498208 | DOI:10.1097/sla.0000000000006043 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 该研究（2023年，Ann Surg）通过国际多中心STOMA评分预测造口后1年无造口率。\n\n---\n\nevidence_id: r12_ext2\n\n**来源：** PMID:32644308 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 疑似T4结直肠癌患者中44例接受多脏器切除，1例因转移被排除；分析人群的5年无病生存率和总生存率分别为46%和55%。\n\n---\n\nevidence_id: r12_ext3\n\n**来源：** PMID:35038368 | DOI:10.1111/codi.16054 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 该研究（2022年）纳入126例既往前列腺癌直肠癌术后患者，评估吻合安全性。\n\n---\n\nevidence_id: glcand_ascrs_colon_multivisceral\n\n**来源：** ASCRS 2022指南（Recommendation 10及T4b讨论部分）\n\n**结论：** ASCRS 2022强推荐对可切除且以治愈为目的、粘连或侵犯邻近器官的结肠癌实施R0整块联合切除；该指南支持多脏器切除的必要性和复杂度背景，但不提供吻合口漏效应量。\n\n### References\n\n- [1] 多脏器切除荟萃\n- [2] 荷兰人群-多脏器危险因素\n- [3] 机器人盆腔廓清术\n- [4] 盆腔廓清术30年趋势\n- [5] 卵巢癌术中AL危险因素",
+      "cited_evidence_ids": [
+        "glcand_ascrs_colon_multivisceral",
+        "r12_01",
+        "r12_02",
+        "r12_04",
+        "r12_05",
+        "r12_06",
+        "r12_ext1",
+        "r12_ext2",
+        "r12_ext3"
+      ],
+      "cited_rule_evidence_ids": [
+        "glcand_ascrs_colon_multivisceral",
+        "r12_01",
+        "r12_02",
+        "r12_04",
+        "r12_05",
+        "r12_06",
+        "r12_ext1",
+        "r12_ext2",
+        "r12_ext3"
+      ],
+      "first_line_evidence_id": "r12_01",
+      "first_line_evidence_ids": [
+        "r12_01"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "obesity_risk",
+      "query": "请检索并总结规则 obesity_risk 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: r10_ext3\n\n**来源：** PMID:37386211 | DOI:10.1007/s00423-023-02989-z | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 该证据为一项纳入115,462例患者的系统评价（2023年），系统评估了吻合口漏（AL）的危险因素，其中肥胖被列为AL的危险因素之一。证据等级为B级。\n\n---\n\n### 其他直接证据（obesity_risk 规则）\n\n**1. evidence_id: r10_01**\n- **来源：** PMID:33796958 | DOI:10.1007/s00384-021-03909-7 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n- **结论：** Nugent（2021）关于肥胖与结直肠癌术后吻合口漏的荟萃分析。证据等级为B级。\n\n**2. evidence_id: r10_02**\n- **来源：** PMID:33394767 | DOI:10.1097/dcr.0000000000001779 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n- **结论：** Verduin（2021）研究指出，内脏脂肪而非BMI与吻合口漏的相关性更强。证据等级为C级。\n\n**3. evidence_id: r10_03**\n- **来源：** PMID:28267012 | DOI:10.1097/dcr.0000000000000760 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n- **结论：** He（2017）研究显示，高BMI是腹腔镜结直肠手术不良术后结局的预测因素。证据等级为C级。\n\n**4. evidence_id: r10_04**\n- **来源：** PMID:37671054 | DOI:10.3389/fonc.2023.1224196 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n- **结论：** 纳入7项研究、2136例患者的荟萃分析显示，内脏肥胖与结直肠癌术后吻合口漏相关（OR=2.15，95%CI 1.46–3.15）。证据等级为B级。\n\n**5. evidence_id: r10_05**\n- **来源：** PMID:40412491 | DOI:10.1016/j.semcancer.2025.05.012 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n- **结论：** 系统评价纳入29项研究，其中17项进入荟萃分析；BMI≥30 kg/m²与手术部位感染增加相关（OR 1.49，低确定性），而死亡、出血和胃肠道并发症无显著差异。证据等级为B级。\n\n**6. evidence_id: r10_06**\n- **来源：** PMID:38231409 | DOI:10.1007/s00423-024-03231-0 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n- **结论：** 在544例非转移性结肠癌择期切除患者的单中心回顾性研究中，CT测量的肌少症性肥胖与AL显著相关（OR 2.95，95%CI 1.41–6.18），并是总体并发症和30日死亡的独立预测因素。证据等级为C级。\n\n**7. evidence_id: r10_07**\n- **来源：** PMID:40346009 | DOI:10.1002/cam4.70933 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n- **结论：** 2025年研究显示，内脏/皮下脂肪比与直肠癌吻合口漏存在性别差异。证据等级为C级。\n\n**8. evidence_id: r10_08**\n- **来源：** PMID:35502636 | DOI:10.1111/ans.17749 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n- **结论：** 2023年机器人结肠手术肥胖与非肥胖患者的荟萃分析。证据等级为B级。\n\n**9. evidence_id: r10_ext2**\n- **来源：** PMID:37133735 | DOI:10.1007/s10151-023-02769-3 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n- **结论：** 2023年英国多中心研究，利用CT肌肉量预测择期结直肠癌结局。证据等级为C级。\n\n**10. evidence_id: exp26_pmid_26305194_obesity**\n- **来源：** PMID:26305194 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n- **结论：** 一篇结直肠手术危险因素综述将肥胖列为多项研究报告的吻合口漏危险因素之一；由于属于综述性汇总，应结合更高等级荟萃分析解释。证据等级为C级。\n\n**11. evidence_id: exp26_pmid_26810563_obesity_meta**\n- **来源：** PMID:26810563 | DOI:10.1186/s12957-016-0775-y | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n- **结论：** 纳入10项观察性研究的荟萃分析显示，肥胖患者直肠癌手术后吻合口漏显著增加（OR 3.94，95%CI 1.88–8.24）；作者同时指出高质量证据仍有限。证据等级为B级。\n\n**12. evidence_id: exp26_pmid_34519249_bmi**\n- **来源：** PMID:34519249 | DOI:10.1177/00031348211041555 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n- **结论：** 977例距肛缘≥7 cm的中高位结直肠吻合队列中，总体吻合口漏率为2.1%；BMI>30 kg/m²是独立危险因素（p=0.02）。证据等级为C级。\n\n**13. evidence_id: exp26_pmid_39370740_visceral_fat**\n- **来源：** PMID:39370740 | DOI:10.1002/jcsm.13580 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n- **结论：** 45项研究、16,537例患者的系统评价中，可合并分析显示较高内脏脂肪与吻合口漏相关（OR 1.76，95%CI 1.17–2.65）；作者认为效应较弱且受方法异质性和偏倚限制。证据等级为B级。\n\n**14. evidence_id: phase2_cli_25902904**\n- **来源：** PMID:25902904 | DOI:10.1111/ans.13132 | PubMed abstract | reviewed 2026-07-26\n- **结论：** 荟萃分析显示，腹腔镜结直肠手术中，内脏肥胖与更多吻合口漏相关（OR=2.40，95% CI 1.06–5.44）。证据等级为B级。\n\n**15. evidence_id: phase2_cli_27254110**\n- **来源：** PMID:27254110 | DOI:10.1111/codi.13406 | PubMed abstract | reviewed 2026-07-26\n- **结论：** 系统性文献综述显示，接受腹腔镜结直肠恶性肿瘤手术的肥胖与非肥胖患者之间，吻合口漏发生率无显著差异。证据等级为B级。\n\n**16. evidence_id: phase2_cli_27778169**\n- **来源：** PMID:27778169 | DOI:10.1007/s00464-016-5209-y | PubMed abstract | reviewed 2026-07-26\n- **结论：** 系统评价显示，腹腔镜结直肠癌切除术中，肥胖组的吻合口漏显著增加（OR=1.65，95% CI 1.01–2.71）。证据等级为B级。\n\n**17. evidence_id: phase2_cli_38155439**\n- **来源：** PMID:38155439 | DOI:10.4103/ijc.ijc_903_21 | PubMed abstract | reviewed 2026-07-26\n- **结论：** 直肠癌切除队列的多因素分析中，肥胖是吻合口漏的独立危险因素（OR=7.256，p=0.032）。证据等级为C级。\n\n**18. evidence_id: phase2_cli_38853477**\n- **来源：** PMID:38853477 | DOI:10.5144/0256-4947.2024.135 | PubMed abstract | reviewed 2026-07-26\n- **结论：** 直肠癌根治性治疗的回顾性研究提示BMI是吻合口漏的显著预测因素；该结论受单项研究设计限制，且摘要未提供效应量或BMI阈值。证据等级为C级。\n\n**19. evidence_id: phase2_pub_37903996**\n- **来源：** PMID:37903996 | DOI:10.1007/s13304-023-01676-4 | PubMed abstract | reviewed 2026-07-26\n- **结论：** 肥胖的中低位直肠癌患者中，经肛全直肠系膜切除与腹腔镜全直肠系膜切除的主要并发症比例相似，包括吻合口漏（10%比19%，p=0.835）。证据等级为C级。\n\n### References\n\n- [1] 大样本荟萃115462例\n- [2] 肥胖与AL荟萃分析\n- [3] 内脏脂肪与AL更相关\n- [4] 高BMI-LRC术后不良预测\n- [5] 内脏肥胖与AL系统评价",
+      "cited_evidence_ids": [
+        "exp26_pmid_26305194_obesity",
+        "exp26_pmid_26810563_obesity_meta",
+        "exp26_pmid_34519249_bmi",
+        "exp26_pmid_39370740_visceral_fat",
+        "phase2_cli_25902904",
+        "phase2_cli_27254110",
+        "phase2_cli_27778169",
+        "phase2_cli_38155439",
+        "phase2_cli_38853477",
+        "phase2_pub_37903996",
+        "r10_01",
+        "r10_02",
+        "r10_03",
+        "r10_04",
+        "r10_05",
+        "r10_06",
+        "r10_07",
+        "r10_08",
+        "r10_ext2",
+        "r10_ext3"
+      ],
+      "cited_rule_evidence_ids": [
+        "exp26_pmid_26305194_obesity",
+        "exp26_pmid_26810563_obesity_meta",
+        "exp26_pmid_34519249_bmi",
+        "exp26_pmid_39370740_visceral_fat",
+        "phase2_cli_25902904",
+        "phase2_cli_27254110",
+        "phase2_cli_27778169",
+        "phase2_cli_38155439",
+        "phase2_cli_38853477",
+        "phase2_pub_37903996",
+        "r10_01",
+        "r10_02",
+        "r10_03",
+        "r10_04",
+        "r10_05",
+        "r10_06",
+        "r10_07",
+        "r10_08",
+        "r10_ext2",
+        "r10_ext3"
+      ],
+      "first_line_evidence_id": "r10_ext3",
+      "first_line_evidence_ids": [
+        "r10_ext3"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "patient_adjustment_context",
+      "query": "请检索并总结规则 patient_adjustment_context 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: phase2_pub_42516010\n\n**来源：** PMID:42516010；DOI:10.1177/00031348261472845；PubMed abstract；reviewed 2026-07-26\n\n**结论：** 低位直肠肿瘤、保护性造口、胰岛素抵抗等患者因素与吻合口漏风险相关，但其独立效应量多为间接或不一致。\n\n---\n\nevidence_id: phase2_pub_42498704\n\n**来源：** PMID:42498704；DOI:10.1177/00031348261471475；PubMed abstract；reviewed 2026-07-26\n\n**结论：** 肿瘤高度、保护性造口及胰岛素抵抗等患者校正变量与直肠手术后吻合口漏风险相关，但其独立预测价值在文献中多为间接证据。\n\n### References\n\n- [1] After the Platform Debate: Does Tumor Height Still Matter in Robotic Rectal Cancer Surgery?\n- [2] Protective Ileostomy After Low Anterior Resection for Rectal Cancer: Modifying the Clinical Course of Anastomotic Leakage at the Cost of Stoma-Related Morbidity.",
+      "cited_evidence_ids": [
+        "phase2_pub_42498704",
+        "phase2_pub_42516010"
+      ],
+      "cited_rule_evidence_ids": [
+        "phase2_pub_42498704",
+        "phase2_pub_42516010"
+      ],
+      "first_line_evidence_id": "phase2_pub_42516010",
+      "first_line_evidence_ids": [
+        "phase2_pub_42516010"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "poor_performance_status_risk",
+      "query": "请检索并总结规则 poor_performance_status_risk 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: r5_02\n\n**来源：** PMID:27474844 | DOI:10.1111/codi.13476 | PubMed abstract | Crossref/OpenAlex verification 2026-07-26\n\n**结论：** Parthasarathy(2017, PMID:27474844) 的大样本研究（n=17,518）验证了 ASA≥3 与吻合口漏（AL）显著相关（p<0.001）。\n\n---\n\n此外，规则 poor_performance_status_risk 还包含以下直接证据：\n\n- **evidence_id: r5_01** — 来源：PMID:32795348 | DOI:10.1186/s12957-020-01968-8。结论：Kryzauskas(2020) 研究显示 ASA III-IV 级是乙状结肠术后 AL 的独立风险因素（OR=10.54）。\n- **evidence_id: r5_03** — 来源：PMID:30239395 | DOI:10.1097/dcr.0000000000001202。结论：荷兰全国 36,929 例队列中，ASA III-V 是晚期吻合口漏（术后超过 6 日因漏接受再干预）的独立预测因素（OR 1.2，P=0.030）。\n- **evidence_id: r5_04** — 来源：PMID:38418633 | DOI:10.1007/s00464-024-10705-1。结论：Litchinko(2024) 系统综述显示 ASA 被 66.6% 的现有 AL 评分系统纳入。\n- **evidence_id: r5_06** — 来源：PMID:38774568 | DOI:10.3332/ecancer.2024.1696。结论：拉丁美洲多中心研究（2024）显示 ASA 与 AL 显著相关（OR=3.23）。\n- **evidence_id: r5_07** — 来源：PMID:40002606 | DOI:10.3390/diagnostics15040455。结论：单中心回顾性 CF-ALPS 开发研究将 ASA 列为 AL 独立预测因素（OR 1.85，P=0.004）；表观 ROC AUC 为 0.82（95%CI 0.75–0.89），但 10 折交叉验证 AUC 仅 0.44（SD 0.062），未经外部验证。\n- **evidence_id: phase2_cli_33481108** — 来源：PMID:33481108 | DOI:10.1007/s00384-021-03839-4。结论：系统评价与荟萃分析显示，结直肠癌患者中肌少症组与非肌少症组的吻合口漏发生率相当（OR=0.99，95% CI 0.72–1.36）。\n- **evidence_id: phase2_cli_37184771** — 来源：PMID:37184771 | DOI:10.1007/s10151-023-02812-3。结论：结直肠癌手术队列中，肌少症患者的吻合口漏率为 7.5%，非肌少症患者为 2.6%，但差异无统计学意义（p=0.064）。\n- **evidence_id: phase2_cli_34759240** — 来源：PMID:34759240 | DOI:10.1097/dcr.0000000000001998。结论：选择性结肠切除队列中，与非衰弱患者相比，衰弱患者发生吻合口漏的比值升高；改良衰弱评分为 1、2、3 时，OR 分别为 1.34、1.32 和 2.41。\n- **evidence_id: phase2_cli_35915378** — 来源：PMID:35915378 | DOI:10.1007/s11605-022-05427-5。结论：随机试验荟萃与元回归显示，在未行保护性造口的低位前切除患者中，ASA≥3 与吻合口漏显著相关。\n- **evidence_id: phase2_pub_35768313** — 来源：PMID:35768313 | DOI:10.1016/j.ejso.2022.06.016。结论：基于 13,175 例患者的预测模型中，性别、年龄、BMI、ASA 分级、新辅助放化疗、cT 分期、肿瘤距肛缘距离及转流回肠造口被识别为显著风险因素并纳入模型。\n\n### References\n\n- [1] PMID:27474844\n- [2] PMID:32795348\n- [3] PMID:30239395\n- [4] PMID:38418633\n- [5] PMID:38774568",
+      "cited_evidence_ids": [
+        "phase2_cli_33481108",
+        "phase2_cli_34759240",
+        "phase2_cli_35915378",
+        "phase2_cli_37184771",
+        "phase2_pub_35768313",
+        "r5_01",
+        "r5_02",
+        "r5_03",
+        "r5_04",
+        "r5_06",
+        "r5_07"
+      ],
+      "cited_rule_evidence_ids": [
+        "phase2_cli_33481108",
+        "phase2_cli_34759240",
+        "phase2_cli_35915378",
+        "phase2_cli_37184771",
+        "phase2_pub_35768313",
+        "r5_01",
+        "r5_02",
+        "r5_03",
+        "r5_04",
+        "r5_06",
+        "r5_07"
+      ],
+      "first_line_evidence_id": "r5_02",
+      "first_line_evidence_ids": [
+        "r5_02"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "prolonged_surgery_risk",
+      "query": "请检索并总结规则 prolonged_surgery_risk 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: r8_01\n\n**来源：** PMID:25703524；DOI:10.1002/bjs.9697；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** McDermott（2015，PMID:25703524）的AL风险因素系统综述指出，手术时间超过4小时（手术>4h）为术中风险因素。\n\n---\n\n此外，规则 `prolonged_surgery_risk` 还关联以下直接证据：\n\n- **evidence_id: r8_02**（来源：PMID:16500248；DOI:10.1016/j.jamcollsurg.2005.10.019）：Konishi（2006）前瞻性研究391例，较长手术时间独立预测AL（OR=9.9）。\n- **evidence_id: r8_03**（来源：PMID:38774568；DOI:10.3332/ecancer.2024.1696）：360例结直肠癌病例对照研究中，80.8%患者手术时间超过180分钟；但多因素分析未将手术时长列为独立因素。\n- **evidence_id: r8_04**（来源：PMID:37943801；DOI:10.1093/bjs/znad316）：中国52家三级医院前瞻性多中心队列（1854例右半结肠切除），30日吻合口漏率1.4%；独立因素为体外侧侧吻合、术中出血>50 ml和新辅助化疗。\n- **evidence_id: r8_05**（来源：PMID:31135786；DOI:10.24875/ciru.18000616）：576例结肠癌主吻合队列嵌套病例对照研究中，手术时间>180 min是AL的主要风险因素；整体预测方程敏感度64.1%、特异度67.5%。\n- **evidence_id: r8_06**（来源：PMID:33006668；DOI:10.1007/s00595-020-02133-0）：136例LAR患者中，较长手术时间为AL风险因素。\n- **evidence_id: r8_07**（来源：PMID:36381751；DOI:10.7759/cureus.29964）：系统综述汇总前瞻性和回顾性研究，将手术时间列为结直肠吻合口漏的风险因素之一。\n- **evidence_id: r8_08**（来源：PMID:38418633；DOI:10.1007/s00464-024-10705-1）：系统回顾显示多数AL预测评分系统包含手术时间变量。\n- **evidence_id: r8_ext1**（来源：PMID:34119377；DOI:10.1016/j.ejso.2021.05.042）：iCral同期肝切除手术时间与AL相关。\n- **evidence_id: r8_ext2**（来源：PMID:31302324；DOI:10.1016/j.jss.2019.06.050）：74例ICG灌注研究中，手术时间、出血等常见风险因素与切线改变无关。\n- **evidence_id: exp26_pmid_26305194_duration**（来源：PMID:26305194）：结直肠手术危险因素综述将较长手术时间列为多项研究报告的吻合口漏危险因素之一，但摘要未提供可用于设定阈值的具体时长。\n- **evidence_id: r1_09**（来源：PMID:34172053；DOI:10.1186/s12957-021-02303-5）：298例腹腔镜LAR患者中，多因素分析确认延长的手术时间是症状性吻合口漏的独立风险因素。\n- **evidence_id: phase2_cli_31713046**（来源：PMID:31713046；DOI:10.1007/s12029-019-00315-9）：单中心回顾性腹腔镜直肠癌手术研究中，手术时间每增加10 min，吻合口漏比值增加（OR=1.089，95% CI 1.012–1.172，p=0.022）。\n\n### References\n\n- [1] McDermott(2015,PMID:25703524)AL风险因素系统综述:手术>4h为术中风险因素\n- [2] Konishi(2006,PMID:16500248)前瞻性391例较长手术时间独立预测AL(OR=9.9)\n- [3] 80.8%AL患者手术>180min\n- [4] 中国多中心手术时长变量\n- [5] >180min敏感性64.1%",
+      "cited_evidence_ids": [
+        "exp26_pmid_26305194_duration",
+        "phase2_cli_31713046",
+        "r1_09",
+        "r8_01",
+        "r8_02",
+        "r8_03",
+        "r8_04",
+        "r8_05",
+        "r8_06",
+        "r8_07",
+        "r8_08",
+        "r8_ext1",
+        "r8_ext2"
+      ],
+      "cited_rule_evidence_ids": [
+        "exp26_pmid_26305194_duration",
+        "phase2_cli_31713046",
+        "r1_09",
+        "r8_01",
+        "r8_02",
+        "r8_03",
+        "r8_04",
+        "r8_05",
+        "r8_06",
+        "r8_07",
+        "r8_08",
+        "r8_ext1",
+        "r8_ext2"
+      ],
+      "first_line_evidence_id": "r8_01",
+      "first_line_evidence_ids": [
+        "r8_01"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "severe_malnutrition",
+      "query": "请检索并总结规则 severe_malnutrition 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: exp26_pmid_41401601_nutrition_trials\n\n**来源：** PMID:41401601；DOI:10.1016/j.ejso.2025.111321；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 纳入16项随机试验、2013例患者的系统评价中，81%的试验未发现营养干预改变吻合口漏发生率，且半数试验为高偏倚风险；作者认为目前不足以得出确定结论。\n\n---\n\nevidence_id: exp26_pmid_40155502_immunonutrition\n\n**来源：** PMID:40155502；DOI:10.1111/codi.70061；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 10项研究的系统评价与荟萃分析显示，术前肠内免疫营养对吻合口漏的相对风险估计为0.56（95%CI 0.28–1.10，p=0.09），未达到统计学显著性，且GRADE证据确定性为低或极低。\n\n---\n\nevidence_id: glcand_espen2025_enteral_route\n\n**来源：** Section 6.1, recommendation 21 and commentary | Recommendations 19, 20, 21 and 23\n\n**结论：** ESPEN 2025在术前营养中建议可行时优先经口或经管肠内途径，而非肠外营养；严重营养不良患者需同步防范再喂养综合征。\n\n---\n\nevidence_id: glcand_espen2025_ons\n\n**来源：** Section 6.3, recommendation 23 | Recommendations 19, 20, 21 and 23\n\n**结论：** ESPEN 2025建议正常饮食不能满足营养需求的患者在术前使用口服营养补充剂，不以既有营养诊断为前提；该结论适用于营养摄入不足的流程触发。\n\n---\n\nevidence_id: exp26_pmid_32461995_pg_sga\n\n**来源：** PMID:32461995；DOI:10.1155/2020/5059670；PubMed abstract；Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 同一382例直肠癌队列的多因素分析显示，较高PG-SGA营养评估分数与术后吻合口漏独立相关（p<0.001），提示应重视围手术期营养风险。\n\n---\n\nevidence_id: glcand_espen2025_preop_nutrition\n\n**来源：** Section 6.1, recommendation 20 | Recommendations 19, 20, 21 and 23\n\n**结论：** ESPEN 2025建议严重营养不良和/或高代谢风险患者术前接受营养治疗，即使手术需推迟；应考虑10–14天。\n\n---\n\nevidence_id: exp26_gl_eras2023_nutrition\n\n**来源：** Recommendation 5, journal p.19 (PDF p.5); recommendation 15, journal p.22 (PDF p.8)\n\n**结论：** ASCRS/SAGES增强康复指南建议营养不良患者在择期结直肠手术前补充口服营养（弱推荐、中等质量证据，2B），并说明可按蛋白1.2–1.5 g/kg/日持续1–2周。\n\n---\n\nevidence_id: phase2_cli_37204489\n\n**来源：** PMID:37204489；DOI:10.1007/s00423-023-02931-3；PubMed abstract\n\n**结论：** 多中心直肠癌切除并行器械吻合的研究中，预后营养指数<40与吻合口漏显著相关。\n\n---\n\nevidence_id: glcand_espen2025_immunonutrition\n\n**来源：** Section 5.5, recommendation 19; Section 6, recommendation 25 for gastrointestinal cancer | Recommendations 19, 20, 21 and 23\n\n**结论：** ESPEN 2025建议大肿瘤手术术前或围术期提供含精氨酸、ω-3脂肪酸和核苷酸的免疫营养；现有证据主要支持感染/总体并发症，不能写成已确定降低吻合口漏。\n\n### References\n\n- [1] exp26_pmid_41401601_nutrition_trials\n- [2] exp26_pmid_40155502_immunonutrition\n- [3] glcand_espen2025_enteral_route\n- [4] glcand_espen2025_ons\n- [5] exp26_pmid_32461995_pg_sga\n- [6] glcand_espen2025_preop_nutrition\n- [7] exp26_gl_eras2023_nutrition\n- [8] phase2_cli_37204489\n- [9] glcand_espen2025_immunonutrition",
+      "cited_evidence_ids": [
+        "exp26_gl_eras2023_nutrition",
+        "exp26_pmid_32461995_pg_sga",
+        "exp26_pmid_40155502_immunonutrition",
+        "exp26_pmid_41401601_nutrition_trials",
+        "glcand_espen2025_enteral_route",
+        "glcand_espen2025_immunonutrition",
+        "glcand_espen2025_ons",
+        "glcand_espen2025_preop_nutrition",
+        "phase2_cli_37204489"
+      ],
+      "cited_rule_evidence_ids": [
+        "exp26_gl_eras2023_nutrition",
+        "exp26_pmid_32461995_pg_sga",
+        "exp26_pmid_40155502_immunonutrition",
+        "exp26_pmid_41401601_nutrition_trials",
+        "glcand_espen2025_enteral_route",
+        "glcand_espen2025_immunonutrition",
+        "glcand_espen2025_ons",
+        "glcand_espen2025_preop_nutrition",
+        "phase2_cli_37204489"
+      ],
+      "first_line_evidence_id": "exp26_pmid_41401601_nutrition_trials",
+      "first_line_evidence_ids": [
+        "exp26_pmid_41401601_nutrition_trials"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "stapler_technique_context",
+      "query": "请检索并总结规则 stapler_technique_context 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: phase2_pub_42461999\n\n**来源：** PMID:42461999；DOI:10.1097/DCR.0000000000004219；PubMed abstract；审阅日期 2026-07-26\n\n**结论：** 吻合器击发次数与直肠横断技术参数对吻合口完整性的影响存在，但多次击发与吻合口漏的独立阈值在文献中尚未统一。\n\n---\n\nevidence_id: phase2_pub_42548154\n\n**来源：** PMID:42548154；DOI:10.1111/codi.70564；PubMed abstract；审阅日期 2026-07-26\n\n**结论：** 不同圆形吻合器平台对吻合口漏风险的影响存在差异，吻合器击发次数与漏的关联证据尚需统一阈值。\n\n### References\n\n- [1] Robotic Single-Port Trans-stomal Hartmann Reversal\n- [2] Circular stapler platform and the risk of anastomotic leakage after elective left colectomy and high anterior resection",
+      "cited_evidence_ids": [
+        "phase2_pub_42461999",
+        "phase2_pub_42548154"
+      ],
+      "cited_rule_evidence_ids": [
+        "phase2_pub_42461999",
+        "phase2_pub_42548154"
+      ],
+      "first_line_evidence_id": "phase2_pub_42461999",
+      "first_line_evidence_ids": [
+        "phase2_pub_42461999"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "surgeon_volume_context",
+      "query": "请检索并总结规则 surgeon_volume_context 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: phase2_pub_42321444\n\n**来源：** PMID:42321444；DOI:10.3390/ijerph19074038；PubMed abstract；审阅日期 2026-07-26\n\n**结论：** 手术量与结直肠癌手术结局的关系提示中心化可能改善结果，但手术量作为质量代理指标的局限性使得低例数与吻合口漏的独立关联尚不明确。\n\n---\n\nevidence_id: phase2_pub_42341213\n\n**来源：** PMID:42341213；DOI:10.1093/bjsopen/zrag074；PubMed abstract；审阅日期 2026-07-26\n\n**结论：** 手术量与结直肠癌手术结局呈反向关系，但手术量是质量的不良代理指标，最低手术量阈值尚不明确。\n\n### References\n\n- [1] Effects of exercise interventions on sarcopenia-related outcomes in cancer patients and survivors: an umbrella review of systematic reviews and meta-analyses.\n- [2] Hospital and surgeon volume versus outcomes after colorectal cancer surgery: umbrella review and meta-analysis.",
+      "cited_evidence_ids": [
+        "phase2_pub_42321444",
+        "phase2_pub_42341213"
+      ],
+      "cited_rule_evidence_ids": [
+        "phase2_pub_42321444",
+        "phase2_pub_42341213"
+      ],
+      "first_line_evidence_id": "phase2_pub_42321444",
+      "first_line_evidence_ids": [
+        "phase2_pub_42321444"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "surgical_approach_context",
+      "query": "请检索并总结规则 surgical_approach_context 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: phase2_pub_42579032; phase2_pub_42581199\n\n**来源：**\n- PMID:42579032；DOI:10.1007/s11701-025-02906-0；PubMed abstract；审阅日期2026-07-26\n- PMID:42581199；DOI:10.1007/s00464-025-12227-w；PubMed abstract；审阅日期2026-07-26\n\n**结论：**\n全机器人低位前切除术与常规腹腔镜手术的比较显示，机器人入路对吻合口漏的独立效应证据尚不一致，不应将机器人入路等同于保护性或有害因素。同样，机器人辅助与腹腔镜直肠手术的吻合口漏率比较结果也不一致，机器人入路既非自动保护也非自动有害。\n\n### References\n\n- [1] Totally robotic low anterior resection versus conventional laparoscopic surgery for rectal cancer: a systematic review and meta-analysis.\n- [2] Robot-assisted versus laparoscopic surgery for rectal cancer: a systematic review and meta-analysis of randomised trials with GRADE certainty rating.",
+      "cited_evidence_ids": [
+        "phase2_pub_42579032",
+        "phase2_pub_42581199"
+      ],
+      "cited_rule_evidence_ids": [
+        "phase2_pub_42579032",
+        "phase2_pub_42581199"
+      ],
+      "first_line_evidence_id": "phase2_pub_42579032",
+      "first_line_evidence_ids": [
+        "phase2_pub_42579032",
+        "phase2_pub_42581199"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "urgent_emergency",
+      "query": "请检索并总结规则 urgent_emergency 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: phase2_cli_23183301\n\n**来源：** PMID:23183301; PubMed abstract; reviewed 2026-07-26 | PMID:23183301; DOI:10.1016/j.suronc.2012.10.003; PubMed abstract\n\n**结论：** 恶性左半结肠或直肠梗阻的系统评价与荟萃分析显示，支架桥接手术组与急诊手术组的吻合口漏率分别为9%和3.7%，差异无统计学意义（p=0.35）。\n\n---\n\nevidence_id: phase2_cli_40552359\n\n**来源：** PMID:40552359; PubMed abstract; reviewed 2026-07-26 | PMID:40552359; DOI:10.1080/08941939.2025.2520992; PubMed abstract\n\n**结论：** 荟萃分析中，在穿孔性憩室炎（OR=3.80，p=0.19）和恶性梗阻（OR=5.40，p=0.23）情境下，一期吻合组并未显示吻合口漏风险增加。\n\n---\n\nevidence_id: exp26_pmid_36825639_emergency\n\n**来源：** PMID:36825639; DOI:10.1111/ans.18337; PubMed abstract; Crossref/OpenAlex verification 2026-07-26\n\n**结论：** 澳大利亚和新西兰登记研究纳入13,512例右半结肠切除，吻合口漏率为2.0%；多因素分析显示急诊手术与吻合口漏相关（OR 1.41，95%CI 1.04–1.92）。\n\n---\n\nevidence_id: phase2_pub_38084042\n\n**来源：** PMID:38084042; PubMed abstract; reviewed 2026-07-26 | PMID:38084042; DOI:10.5604/01.3001.0016.1602; PubMed abstract\n\n**结论：** 结肠癌患者中，急诊手术（p=0.015）、公立医院手术（p=0.002）和开放手术（p=0.021）均与更高吻合口漏风险相关；左半结肠切除漏率为4.4%，右半结肠切除为1.3%（p<0.001）。直肠癌患者中，吻合口漏与新辅助放化疗（p=0.038）和男性（p=0.002）相关。\n\n---\n\nevidence_id: glcand_ascrs_colon_left_obstruction\n\n**来源：** Colon cancer-related emergencies, recommendation 16 | Recommendations 10, 16, 17 and 18\n\n**结论：** ASCRS 2022建议对可治愈左侧梗阻性结肠癌，在支架减压、转流造口后延期切除和直接肿瘤学切除之间结合患者因素与机构经验个体化选择。\n\n---\n\nevidence_id: exp26_gl_wses2017_emergency\n\n**来源：** Management of perforation, Statement 2.1 and accompanying anastomosis discussion\n\n**结论：** WSES指南指出，穿孔急诊右侧结肠切除的吻合口漏约0.5%–4.6%，左侧约3.5%–30%，均高于相应择期范围；是否一期吻合应结合合并症、脓毒症状态和手术安全个体化决定。\n\n---\n\nevidence_id: phase2_pub_37194457\n\n**来源：** PMID:37194457; PubMed abstract; reviewed 2026-07-26 | PMID:37194457; DOI:10.1093/bjsopen/zrad038; PubMed abstract\n\n**结论：** 在左侧梗阻性结肠癌桥接手术队列中，回肠造口与结肠造口组在桥接期及一期切除后的并发症（包括吻合口漏）相似；切除时造口还纳在两组分别为9例（22.0%）和129例（46.1%），P=0.006。\n\n---\n\nevidence_id: phase2_cli_37990637\n\n**来源：** PMID:37990637; PubMed abstract; reviewed 2026-07-26 | PMID:37990637; DOI:10.1111/ans.18782; PubMed abstract\n\n**结论：** 结肠癌手术队列中，急诊手术仅在单因素分析中与吻合口漏相关；多因素分析后只有切除术式仍是显著预测因素，因此不能把急诊手术解释为独立危险因素。\n\n---\n\nevidence_id: glcand_acpgbi_proximal_obstruction\n\n**来源：** Malignant large-bowel obstruction, proximal obstruction recommendation and context | Malignant large-bowel obstruction; proximal obstruction operative strategy\n\n**结论：** ACPGBI 2021共识对近端结肠梗阻倾向切除加一期吻合，但生理状态明显紊乱时建议改用切除、黏液瘘和末端回肠造口；决策需把生理储备作为核心变量。\n\n---\n\nevidence_id: glcand_ascrs_colon_perforation\n\n**来源：** Colon cancer-related emergencies, recommendation 18 and commentary | Recommendations 10, 16, 17 and 18\n\n**结论：** ASCRS 2022建议结肠穿孔或即将穿孔时遵循肿瘤学原则切除，并对分期手术保持低阈值；仅在污染轻、组织健康且临床稳定的选择性患者考虑一期吻合。\n\n### References\n\n- [1] phase2_cli_23183301\n- [2] phase2_cli_40552359\n- [3] exp26_pmid_36825639_emergency\n- [4] phase2_pub_38084042\n- [5] glcand_ascrs_colon_left_obstruction\n- [6] exp26_gl_wses2017_emergency\n- [7] phase2_pub_37194457\n- [8] phase2_cli_37990637\n- [9] glcand_acpgbi_proximal_obstruction\n- [10] glcand_ascrs_colon_perforation",
+      "cited_evidence_ids": [
+        "exp26_gl_wses2017_emergency",
+        "exp26_pmid_36825639_emergency",
+        "glcand_acpgbi_proximal_obstruction",
+        "glcand_ascrs_colon_left_obstruction",
+        "glcand_ascrs_colon_perforation",
+        "phase2_cli_23183301",
+        "phase2_cli_37990637",
+        "phase2_cli_40552359",
+        "phase2_pub_37194457",
+        "phase2_pub_38084042"
+      ],
+      "cited_rule_evidence_ids": [
+        "exp26_gl_wses2017_emergency",
+        "exp26_pmid_36825639_emergency",
+        "glcand_acpgbi_proximal_obstruction",
+        "glcand_ascrs_colon_left_obstruction",
+        "glcand_ascrs_colon_perforation",
+        "phase2_cli_23183301",
+        "phase2_cli_37990637",
+        "phase2_cli_40552359",
+        "phase2_pub_37194457",
+        "phase2_pub_38084042"
+      ],
+      "first_line_evidence_id": "phase2_cli_23183301",
+      "first_line_evidence_ids": [
+        "phase2_cli_23183301"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    },
+    {
+      "rule_id": "vasopressor_exposure",
+      "query": "请检索并总结规则 vasopressor_exposure 的直接证据。回答第一行必须严格写成 evidence_id: <知识库中的原始ID>；随后列出该证据的来源并总结结论；不得补充知识库之外的结论。",
+      "retrieval_mode": "mix",
+      "response": "evidence_id: phase2_pub_42299539\n\n**来源：** PMID:42299539；PubMed abstract；reviewed 2026-07-26 | PMID:42299539；DOI:10.1097/MD.0000000000049257；PubMed abstract\n\n**结论：** 术中低血压预测指数作为实时动脉压力波形特征的早期预警算法，与术中低血压及组织灌注管理相关，但血管活性药暴露与吻合口漏的独立量化关系证据不足。\n\n---\n\nevidence_id: phase2_pub_42389053\n\n**来源：** PMID:42389053；PubMed abstract；reviewed 2026-07-26 | PMID:42389053；DOI:10.1155/2021/2161036；PubMed abstract\n\n**结论：** 术中血压管理策略及低血压预测指数与组织灌注相关，血管活性药暴露对吻合口灌注的影响证据尚不充分。\n\n### References\n\n- [1] Hypotension prediction index in surgical patients: A systematic review and meta-analysis of randomized controlled trials.\n- [2] Intraoperative blood pressure strategies and neurocognitive outcomes: A systematic review.",
+      "cited_evidence_ids": [
+        "phase2_pub_42299539",
+        "phase2_pub_42389053"
+      ],
+      "cited_rule_evidence_ids": [
+        "phase2_pub_42299539",
+        "phase2_pub_42389053"
+      ],
+      "first_line_evidence_id": "phase2_pub_42299539",
+      "first_line_evidence_ids": [
+        "phase2_pub_42299539"
+      ],
+      "contamination_hits": [],
+      "pass": true
+    }
+  ]
+}
