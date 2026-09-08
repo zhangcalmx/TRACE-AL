@@ -4,6 +4,7 @@ from __future__ import annotations
 import asyncio
 import json
 import os
+from dataclasses import fields
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +18,15 @@ except ImportError:
 
 class LightRAGAdapter:
     """Wrapper around lightrag.LightRAG with Ark chat + Ark embedding."""
+
+    # Query settings validated for the 2026-08-25 acceptance index
+    # (acceptance_manifest.json stats: mix mode, top_k 40, chunk_top_k 20,
+    # cosine threshold 0.20, rerank disabled). Values are pinned so library
+    # default changes cannot silently drift from the manuscript configuration.
+    DEFAULT_QUERY_MODE = "mix"
+    DEFAULT_QUERY_TOP_K = 40
+    DEFAULT_QUERY_CHUNK_TOP_K = 20
+    DEFAULT_QUERY_COSINE_THRESHOLD = 0.2
 
     def __init__(
         self,
@@ -141,7 +151,7 @@ class LightRAGAdapter:
     def query(
         self,
         question: str,
-        mode: str = "hybrid",
+        mode: str = DEFAULT_QUERY_MODE,
         *,
         only_need_context: bool = False,
         top_k: int | None = None,
@@ -150,13 +160,15 @@ class LightRAGAdapter:
         self._ensure_init()
         query_options: dict[str, Any] = {
             "mode": mode,
+            "top_k": self.DEFAULT_QUERY_TOP_K if top_k is None else top_k,
+            "chunk_top_k": self.DEFAULT_QUERY_CHUNK_TOP_K if chunk_top_k is None else chunk_top_k,
             "enable_rerank": False,
             "only_need_context": only_need_context,
         }
-        if top_k is not None:
-            query_options["top_k"] = top_k
-        if chunk_top_k is not None:
-            query_options["chunk_top_k"] = chunk_top_k
+        # Older lightrag builds have no query-level cosine cut-off; pass it
+        # only where the installed version supports it.
+        if "cosine_threshold" in {f.name for f in fields(self._QueryParam)}:
+            query_options["cosine_threshold"] = self.DEFAULT_QUERY_COSINE_THRESHOLD
         param = self._QueryParam(**query_options)
         return self._run(self.rag.aquery(question, param=param))
 

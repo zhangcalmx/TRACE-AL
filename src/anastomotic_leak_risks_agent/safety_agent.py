@@ -222,7 +222,7 @@ class SafetyAgent:
                         patient_flags=patient_flags,
                         surgery_flags=surgery_flags,
                         triggered_rule_ids=rule_keys,
-                        mode="hybrid",
+                        mode="mix",
                     )
                 else:
                     question = (
@@ -231,7 +231,7 @@ class SafetyAgent:
                         f"患者风险标签：{', '.join(patient_flags) or '无'}；"
                         f"手术风险标签：{', '.join(surgery_flags) or '无'}"
                     )
-                    result = self.lightrag.query(question, mode="hybrid")
+                    result = self.lightrag.query(question, mode="mix")
                 lightrag_context = str(result)[: self.config.max_context_chars]
             except Exception:
                 lightrag_context = ""
