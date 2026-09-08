@@ -135,7 +135,7 @@ rules:
   evidence_scope:
     claim_kind: intraoperative_safety_guardrail
     threshold_status: not_applicable
-    boolean_logic_status: corrected_vs_persistent_closed_loop_v1_1
+    boolean_logic_status: corrected_vs_persistent_closed_loop_
     clinical_expert_signoff: false
   signal_class: safety_guardrail
   severity_overrides:
@@ -218,7 +218,7 @@ rules:
   evidence_scope:
     claim_kind: risk_association
     threshold_status: directly_supported
-    boolean_logic_status: single_factor_review_not_independent_high_v1_1
+    boolean_logic_status: single_factor_review_not_independent_high_
     clinical_expert_signoff: false
   signal_class: risk_marker
 - id: major_blood_loss_risk
@@ -259,7 +259,7 @@ rules:
   evidence_scope:
     claim_kind: risk_association
     threshold_status: direction_supported_project_cutoff_needs_expert_signoff
-    boolean_logic_status: single_factor_review_not_independent_high_v1_1
+    boolean_logic_status: single_factor_review_not_independent_high_
     clinical_expert_signoff: false
   signal_class: risk_marker
 - id: intraoperative_hypoperfusion_risk
@@ -378,7 +378,7 @@ rules:
   evidence_scope:
     claim_kind: risk_marker_with_heterogeneous_cutoffs
     threshold_status: heterogeneous_cutoffs_need_expert_signoff_and_local_calibration
-    boolean_logic_status: research_marker_context_only_v1_1
+    boolean_logic_status: research_marker_context_only_
     clinical_expert_signoff: false
   signal_class: context_review
 - id: obesity_risk
@@ -580,7 +580,7 @@ patient_factor_rules:
     evidence_scope:
       claim_kind: management_trigger_plus_risk_marker
       threshold_status: composite_severe_malnutrition_definition_needs_expert_signoff
-      boolean_logic_status: management_priority_not_independent_high_v1_1
+      boolean_logic_status: management_priority_not_independent_high_
       clinical_expert_signoff: false
     signal_class: context_review
   urgent_emergency:
@@ -626,7 +626,7 @@ patient_factor_rules:
     evidence_scope:
       claim_kind: emergency_management_and_risk_association
       threshold_status: not_applicable
-      boolean_logic_status: obstruction_vs_contaminated_perforation_split_v1_1
+      boolean_logic_status: obstruction_vs_contaminated_perforation_split_
       clinical_expert_signoff: false
     signal_class: safety_guardrail
     severity_overrides:
@@ -1016,7 +1016,5 @@ patient_factor_rules:
       boolean_logic_status: descriptive_covariate
       clinical_expert_signoff: true
     signal_class: context_review
-policy_version: '1.1'
-policy_status: engineering_candidate_pending_clinical_signoff
-aggregation_semantics: highest_triggered_priority is displayed separately; cumulative primary alert uses weighted score >=4 (HIGH=2, MEDIUM=1, LOW/UNKNOWN=0); unresolved safety guardrails remain independently
+aggregation_semantics: highest_triggered_priority is displayed separately; base-layer cumulative scoring uses weighted score >=4 (HIGH=2, MEDIUM=1, LOW/UNKNOWN=0); unresolved safety guardrails remain independently
   actionable; not a calibrated leak probability

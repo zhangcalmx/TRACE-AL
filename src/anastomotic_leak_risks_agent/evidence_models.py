@@ -1,4 +1,4 @@
-"""Canonical, traceable evidence records used by the v2 evidence corpus."""
+"""Canonical, traceable evidence records used by the evidence corpus."""
 from __future__ import annotations
 
 from typing import Literal

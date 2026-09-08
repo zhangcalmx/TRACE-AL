@@ -161,7 +161,7 @@ class RiskRuleEngine:
                     location=f"patient_factor_rules.{factor_id}",
                 )
             )
-        return definitions, patient_definitions, str(payload.get("policy_version", "legacy"))
+        return definitions, patient_definitions, str(payload.get("policy_label", "")).strip()
 
     def evidence_key(self, rule_id: str) -> str:
         return self._evidence_keys.get(rule_id, rule_id.removeprefix("patient_factor."))

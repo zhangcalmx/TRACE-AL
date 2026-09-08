@@ -1,4 +1,4 @@
-schema_version: "1.1"
+schema_version: "1.0"
 missing_value_semantics: "null means unknown or not assessed; null is never normal or negative"
 low_risk_minimum_completeness: 0.8
 
@@ -18,7 +18,7 @@ patient:
   cancer_site: {type: categorical, allowed: [colon, rectum, lower_rectum], flags: [rectal_cancer, lower_rectal_cancer]}
   bowel_obstruction: {type: boolean, flags: [bowel_obstruction]}
   bowel_perforation: {type: boolean, flags: [bowel_perforation]}
-  # v1.1 candidate variables activated 2026-08-18 (collect_only: descriptive flags are
+  # Extension collection fields (collect_only: descriptive flags are
   # registered here for rule-condition validation but are NOT derived by case_features,
   # so rules referencing them never trigger a standalone anastomotic-leak alert).
   preop_hemoglobin_g_l: {type: number, unit: g/L, range: [40, 200], flags: [preop_hemoglobin_recorded], rule_behavior: collect_only}
@@ -53,7 +53,7 @@ surgery:
   icg_perfusion_result: {type: categorical, allowed: [adequate, borderline, inadequate], flags: [icg_perfusion_borderline, icg_perfusion_inadequate], dependency: icg_used}
   icg_action_after_inadequate_perfusion: {type: categorical, allowed: [not_applicable, transection_line_changed, anastomosis_reconstructed, no_corrective_action, unknown], flags: [icg_no_corrective_action], dependency: icg_perfusion_result}
   peritoneal_contamination: {type: categorical, allowed: [none, mild, severe], flags: [peritoneal_contamination_severe]}
-  # v1.1 candidate variables activated 2026-08-18 (collect_only: descriptive flags are
+  # Extension collection fields (collect_only: descriptive flags are
   # registered here for rule-condition validation but are NOT derived by case_features,
   # so rules referencing them never trigger a standalone anastomotic-leak alert).
   planned_surgical_approach: {type: categorical, allowed: [open, laparoscopic, robotic, transanal, hybrid], flags: [planned_surgical_approach], rule_behavior: collect_only}

@@ -1,33 +1,32 @@
-"""Frozen deterministic rule-policy 1.0 and active local research engine."""
+"""Active local research rule engine and its aggregation policy."""
 
 from __future__ import annotations
 
 from pathlib import Path
 
-from .candidate_rule_policy_v1_4 import CandidateRulePolicyV14
+from .candidate_rule_policy import CandidateRulePolicy
 from .paths import project_root
 from .risk_rules import RiskRuleEngine
 from .schemas import DerivedCaseFeatures, RiskAssessment
 
 PROJECT_ROOT = project_root()
-DEFAULT_FROZEN_CONFIG_PATH = PROJECT_ROOT / "configs" / "rule_policy.yaml"
+DEFAULT_CONFIG_PATH = PROJECT_ROOT / "configs" / "rule_policy.yaml"
 
 
-class FrozenRulePolicyV14(CandidateRulePolicyV14):
-    """Apply the investigator-authorized, hash-frozen v1.0 aggregation policy."""
+class RulePolicy(CandidateRulePolicy):
+    """Apply the investigator-authorized aggregation policy."""
 
-    DEFAULT_CONFIG_PATH = DEFAULT_FROZEN_CONFIG_PATH
-    EXPECTED_POLICY_VERSION = "1.0"
-    EXPECTED_POLICY_STATUS = "frozen_research_validation_policy"
-    PRIMARY_ALERT_INTERPRETATION = "达到冻结规则1.0累计主预警阈值。"
+    DEFAULT_CONFIG_PATH = DEFAULT_CONFIG_PATH
+    EXPECTED_POLICY_STATUS = "research_validation_policy"
+    PRIMARY_ALERT_INTERPRETATION = "达到规则累计主预警阈值。"
 
 
-class FrozenRiskRuleEngineV14:
-    """Expose the frozen policy as the system rule engine while running the
+class RiskRulePolicyEngine:
+    """Expose the rule policy as the system rule engine while running the
     Boolean trigger layer.
 
     ``configs/rules.yaml`` remains the evidence-bound Boolean trigger layer.
-    The frozen policy replaces only cumulative scoring, interactions, and the
+    The policy layer performs cumulative scoring, interactions, and the
     main-alert threshold. Immediate-action safety behavior remains independent
     of the cumulative score.
     """
@@ -39,7 +38,7 @@ class FrozenRiskRuleEngineV14:
     ) -> None:
         self.base_engine = RiskRuleEngine(rules_path)
         self.rules_path = self.base_engine.rules_path
-        self.policy = FrozenRulePolicyV14(policy_path, self.rules_path)
+        self.policy = RulePolicy(policy_path, self.rules_path)
         self.policy_version = self.policy.policy_version
 
     def evidence_key(self, rule_id: str) -> str:

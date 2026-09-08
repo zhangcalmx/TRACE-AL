@@ -88,7 +88,7 @@ class PatientProfileInput(BaseModel):
     cancer_site: Literal["colon", "rectum", "lower_rectum"] | None = None
     bowel_obstruction: bool | None = None
     bowel_perforation: bool | None = None
-    # v1.1 candidate variables (collect_only: no trigger flags, no standalone alert).
+    # Extension collection fields (collect_only: no trigger flags, no standalone alert).
     preop_hemoglobin_g_l: float | None = Field(default=None, ge=40, le=200)
     smoking_status: Literal["never", "former", "current"] | None = None
     smoking_pack_years: float | None = Field(default=None, ge=0, le=300)
@@ -136,7 +136,7 @@ class SurgeryProfileInput(BaseModel):
         | None
     ) = None
     peritoneal_contamination: Literal["none", "mild", "severe"] | None = None
-    # v1.1 candidate variables (collect_only: no trigger flags, no standalone alert).
+    # Extension collection fields (collect_only: no trigger flags, no standalone alert).
     planned_surgical_approach: Literal["open", "laparoscopic", "robotic", "transanal", "hybrid"] | None = None
     conversion_status: Literal["none", "to_open", "to_other_mis"] | None = None
     procedure_name: (

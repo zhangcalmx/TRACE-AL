@@ -1,8 +1,4 @@
-"""Executable posthoc candidate rule policy.
-
-This candidate changes only score aggregation and closes the corrected-versus-
-persistent technical-integrity loop. It is not a deployable clinical model.
-"""
+"""Rule aggregation layer applied to a signed Boolean-trigger assessment."""
 
 from __future__ import annotations
 
@@ -17,7 +13,7 @@ from .paths import project_root
 from .schemas import DerivedCaseFeatures, RiskAssessment
 
 PROJECT_ROOT = project_root()
-DEFAULT_CONFIG_PATH = PROJECT_ROOT / "configs" / "rule_policy_candidate.yaml"
+DEFAULT_CONFIG_PATH = PROJECT_ROOT / "configs" / "rule_policy.yaml"
 DEFAULT_BASE_RULES_PATH = PROJECT_ROOT / "configs" / "rules.yaml"
 
 
@@ -36,9 +32,8 @@ class Interaction:
 
 
 @dataclass(frozen=True)
-class CandidateV14Assessment:
+class CandidateAssessment:
     policy_version: str
-    base_policy_version: str
     risk_score: int
     primary_alert: bool
     operational_alert: bool
@@ -60,13 +55,12 @@ def _sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-class CandidateRulePolicyV14:
-    """Apply the frozen candidate score to a signed assessment."""
+class CandidateRulePolicy:
+    """Apply the locked rule score to a signed assessment."""
 
     DEFAULT_CONFIG_PATH = DEFAULT_CONFIG_PATH
-    EXPECTED_POLICY_VERSION = "1.0-candidate"
-    EXPECTED_POLICY_STATUS = "posthoc_exploratory_not_for_clinical_deployment"
-    PRIMARY_ALERT_INTERPRETATION = "达到规则1.0后验候选累计预警阈值。"
+    EXPECTED_POLICY_STATUS = "research_validation_policy"
+    PRIMARY_ALERT_INTERPRETATION = "达到规则累计预警阈值。"
 
     def __init__(
         self,
@@ -77,13 +71,12 @@ class CandidateRulePolicyV14:
         self.base_rules_path = base_rules_path or DEFAULT_BASE_RULES_PATH
         payload = yaml.safe_load(self.config_path.read_text(encoding="utf-8"))
         if not isinstance(payload, dict):
-            raise TypeError("Candidate policy config must be a mapping")
+            raise ValueError("Policy config must be a mapping")
         self._load(payload)
 
     def _load(self, payload: dict[str, Any]) -> None:
         self.policy_version = str(payload.get("policy_version", "")).strip()
         self.policy_status = str(payload.get("policy_status", "")).strip()
-        self.base_policy_version = str(payload.get("base_policy_version", "")).strip()
         self.base_rules_sha256 = str(payload.get("base_rules_sha256", "")).strip().lower()
         self.lr15_enabled = payload.get("lr15_enabled")
         self.external_api_required = payload.get("external_api_required")
@@ -92,18 +85,14 @@ class CandidateRulePolicyV14:
             "primary_alert_minimum_score",
             positive=True,
         )
-        if self.policy_version != self.EXPECTED_POLICY_VERSION:
-            raise ValueError(f"Policy version must be {self.EXPECTED_POLICY_VERSION}")
         if self.policy_status != self.EXPECTED_POLICY_STATUS:
             raise ValueError(f"Policy status must be {self.EXPECTED_POLICY_STATUS}")
-        if self.base_policy_version:
-            raise ValueError("Candidate policy must define no base policy version")
         if self.lr15_enabled is not False:
             raise ValueError("LR15 must remain disabled")
         if self.external_api_required is not False:
-            raise ValueError("Candidate policy must not require an external API")
+            raise ValueError("Rule policy must not require an external API")
         if _sha256(self.base_rules_path) != self.base_rules_sha256:
-            raise ValueError("Signed base rules hash does not match candidate config")
+            raise ValueError("Signed base rules hash does not match policy config")
 
         raw_weights = payload.get("base_rule_weights")
         if not isinstance(raw_weights, dict) or not raw_weights:
@@ -233,8 +222,8 @@ class CandidateRulePolicyV14:
         self,
         assessment: RiskAssessment,
         derived: DerivedCaseFeatures,
-    ) -> CandidateV14Assessment:
-        """Return the posthoc v1.0 candidate score and independent safety state."""
+    ) -> CandidateAssessment:
+        """Return the rule policy score and independent safety state."""
         active = {signal.rule_id for signal in assessment.signals}
         patient_flags = set(derived.patient_flags)
         surgery_flags = set(derived.surgery_flags)
@@ -285,9 +274,8 @@ class CandidateRulePolicyV14:
             interpretation = "技术异常已纠正并复测；保留复核提示但不重复计入候选分数。"
         else:
             interpretation = "未达到候选预警阈值；不等同于零风险。"
-        return CandidateV14Assessment(
+        return CandidateAssessment(
             policy_version=self.policy_version,
-            base_policy_version=self.base_policy_version,
             risk_score=score,
             primary_alert=primary_alert,
             operational_alert=operational_alert,

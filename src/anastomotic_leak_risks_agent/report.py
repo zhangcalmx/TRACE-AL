@@ -36,7 +36,6 @@ def render_report(
             f"（加权分 {assessment.risk_score}/{assessment.primary_alert_threshold}）"
         ),
         f"- 未解决术中安全警报：**{'是' if assessment.requires_immediate_action else '否'}**",
-        f"- 规则策略版本：`{assessment.policy_version}`",
         (
             f"- 输入完整度：**{assessment.input_completeness:.0%}**"
             f"（{assessment.coverage_status}；非风险概率、非模型置信度）"

@@ -14,7 +14,7 @@ from .naive_rag import NaiveRAG
 from .normalize import find_entity_a, find_entity_b
 from .report import render_report
 from .risk_rules import RiskRuleEngine
-from .rule_policy_v1_4 import FrozenRiskRuleEngineV14
+from .rule_policy import RiskRulePolicyEngine
 from .schemas import ClinicalCaseInput, RiskLevel, SafetyReport
 
 
@@ -48,7 +48,7 @@ class SafetyAgent:
         self.lightrag = lightrag
         self.llm_client = llm_client or LLMClient(provider="stub")
         self.config = config or SafetyAgentConfig()
-        self.rule_engine = rule_engine or FrozenRiskRuleEngineV14()
+        self.rule_engine = rule_engine or RiskRulePolicyEngine()
 
     def evaluate(
         self,
@@ -107,7 +107,7 @@ class SafetyAgent:
     def _audit_evidence_anchor(self, *, assessment, evidence, lightrag_context):
         """LLM advisory audit of the evidence anchor (Methods; Fig. 5a step 4).
 
-        Reviews the frozen triggered rules together with the retrieved anchor
+        Reviews the locked triggered rules together with the retrieved anchor
         evidence and returns an audit score between 0 and 1 plus an
         accept/disagree outcome. Advisory only: it never alters the
         rule-derived score, alert or risk grade; disagreements are returned
@@ -134,13 +134,13 @@ class SafetyAgent:
                 f" (PMID: {anchor.pmid or 'N/A'})\n{anchor.text[:800]}"
             )
         prompt = (
-            "你是医学决策支持系统的证据锚点审计器。规则引擎已按冻结规则产生风险分级，"
-            "请审阅冻结的触发规则与检索到的锚点证据，给出你自己的风险评估与审核结论。\n"
+            "你是医学决策支持系统的证据锚点审计器。规则引擎已按既定规则产生风险分级，"
+            "请审阅已触发的规则与检索到的锚点证据，给出你自己的风险评估与审核结论。\n"
             "必须严格按以下格式输出：\n"
             "audit_score: <0到1之间的小数，代表你在这些信息下的自评风险>\n"
             "outcome: <accept 或 disagree>\n"
             "随后附不超过120字的理由。该审核仅供建议，不得改变规则分级。\n\n"
-            f"冻结触发规则（引擎分级）：{rules_desc}\n"
+            f"触发规则（引擎分级）：{rules_desc}\n"
             f"引擎风险分级：{assessment.risk_level.value}"
             f"（累计分 {assessment.risk_score}/{assessment.primary_alert_threshold}）\n"
             f"锚点证据：\n{anchor_desc or '无'}\n"
@@ -284,7 +284,6 @@ class SafetyAgent:
             "n_evidence": len(evidence),
             "input_completeness": assessment.input_completeness,
             "coverage_status": assessment.coverage_status,
-            "rule_policy_version": assessment.policy_version,
             "primary_alert": assessment.primary_alert,
             "risk_score": assessment.risk_score,
             "primary_alert_threshold": assessment.primary_alert_threshold,

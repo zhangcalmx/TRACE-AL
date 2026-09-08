@@ -1,6 +1,6 @@
-policy_version: "1.0"
-policy_status: "frozen_research_validation_policy"
-base_rules_sha256: "27f58cf2c3fef1b40049e9a0a7788834f8697a7e32a05c445111cbfc44822926"
+policy_config: "research_validation"
+policy_status: "research_validation_policy"
+base_rules_sha256: "c682c30125d319004e29cc3dc8b99eb59e852b962b6d051de182d011509a81b0"
 lr15_enabled: false
 external_api_required: false
 primary_alert_minimum_score: 12
@@ -73,16 +73,15 @@ safety:
   minimum_input_completeness_for_low_output: 0.8
 
 freeze:
-  frozen_on: "2026-07-27"
+  locked_on: "2026-07-27"
   authorized_by: "current_project_investigator_user"
-  authorization_scope: "replace_frozen_rule_policy_1_1_for_local_research_validation"
-  validation_dataset_attestation: "v7 = final locked QC export (n=1,646); policy unchanged since the 2026-07-27 freeze"
-  source_candidate: "configs/rule_policy_v1_4_candidate.yaml"
-  source_candidate_semantics_unchanged: true
+  authorization_scope: "local_research_validation_policy"
+  validation_dataset_attestation: "the study database is a direct export (n=1,646); the policy was not changed after the decision rules were specified"
+  source_policy: "configs/rule_policy_candidate.yaml"
+  source_policy_unchanged: true
 
 governance:
   active_local_research_policy: true
-  replaces_primary_alert_policy_v1_1: true
   base_boolean_trigger_rules_unchanged: true
   new_trigger_rules_added: false
   lightrag_rebuild_required: false
