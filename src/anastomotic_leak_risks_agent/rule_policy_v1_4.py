@@ -1,4 +1,4 @@
-"""Frozen deterministic rule-policy 1.4 and active local research engine."""
+"""Frozen deterministic rule-policy 1.0 and active local research engine."""
 
 from __future__ import annotations
 
@@ -10,25 +10,26 @@ from .risk_rules import RiskRuleEngine
 from .schemas import DerivedCaseFeatures, RiskAssessment
 
 PROJECT_ROOT = project_root()
-DEFAULT_FROZEN_CONFIG_PATH = PROJECT_ROOT / "configs" / "rule_policy_v1_4.yaml"
+DEFAULT_FROZEN_CONFIG_PATH = PROJECT_ROOT / "configs" / "rule_policy.yaml"
 
 
 class FrozenRulePolicyV14(CandidateRulePolicyV14):
-    """Apply the investigator-authorized, hash-frozen v1.4 aggregation policy."""
+    """Apply the investigator-authorized, hash-frozen v1.0 aggregation policy."""
 
     DEFAULT_CONFIG_PATH = DEFAULT_FROZEN_CONFIG_PATH
-    EXPECTED_POLICY_VERSION = "1.4"
+    EXPECTED_POLICY_VERSION = "1.0"
     EXPECTED_POLICY_STATUS = "frozen_research_validation_policy"
-    PRIMARY_ALERT_INTERPRETATION = "达到冻结规则1.4累计主预警阈值。"
+    PRIMARY_ALERT_INTERPRETATION = "达到冻结规则1.0累计主预警阈值。"
 
 
 class FrozenRiskRuleEngineV14:
-    """Expose v1.4 as the system rule engine while preserving v1.1 signals.
+    """Expose the frozen policy as the system rule engine while running the
+    Boolean trigger layer.
 
     ``configs/rules.yaml`` remains the evidence-bound Boolean trigger layer.
-    The frozen v1.4 policy replaces only cumulative scoring, interactions, and
-    the main-alert threshold. Immediate-action safety behavior remains
-    independent of the cumulative score.
+    The frozen policy replaces only cumulative scoring, interactions, and the
+    main-alert threshold. Immediate-action safety behavior remains independent
+    of the cumulative score.
     """
 
     def __init__(

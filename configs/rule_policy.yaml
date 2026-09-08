@@ -1,6 +1,5 @@
-policy_version: "1.4"
+policy_version: "1.0"
 policy_status: "frozen_research_validation_policy"
-base_policy_version: "1.1"
 base_rules_sha256: "27f58cf2c3fef1b40049e9a0a7788834f8697a7e32a05c445111cbfc44822926"
 lr15_enabled: false
 external_api_required: false

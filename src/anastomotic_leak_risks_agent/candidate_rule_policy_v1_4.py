@@ -1,7 +1,6 @@
-"""Executable posthoc candidate rule policy v1.4.
+"""Executable posthoc candidate rule policy.
 
-The signed v1.1 rule file remains the source of Boolean rule signals. This
-candidate only changes score aggregation and closes the corrected-versus-
+This candidate changes only score aggregation and closes the corrected-versus-
 persistent technical-integrity loop. It is not a deployable clinical model.
 """
 
@@ -18,7 +17,7 @@ from .paths import project_root
 from .schemas import DerivedCaseFeatures, RiskAssessment
 
 PROJECT_ROOT = project_root()
-DEFAULT_CONFIG_PATH = PROJECT_ROOT / "configs" / "rule_policy_v1_4_candidate.yaml"
+DEFAULT_CONFIG_PATH = PROJECT_ROOT / "configs" / "rule_policy_candidate.yaml"
 DEFAULT_BASE_RULES_PATH = PROJECT_ROOT / "configs" / "rules.yaml"
 
 
@@ -62,12 +61,12 @@ def _sha256(path: Path) -> str:
 
 
 class CandidateRulePolicyV14:
-    """Apply the v1.4 candidate score to a signed v1.1 assessment."""
+    """Apply the frozen candidate score to a signed assessment."""
 
     DEFAULT_CONFIG_PATH = DEFAULT_CONFIG_PATH
-    EXPECTED_POLICY_VERSION = "1.4-candidate"
+    EXPECTED_POLICY_VERSION = "1.0-candidate"
     EXPECTED_POLICY_STATUS = "posthoc_exploratory_not_for_clinical_deployment"
-    PRIMARY_ALERT_INTERPRETATION = "达到规则1.4后验候选累计预警阈值。"
+    PRIMARY_ALERT_INTERPRETATION = "达到规则1.0后验候选累计预警阈值。"
 
     def __init__(
         self,
@@ -97,8 +96,8 @@ class CandidateRulePolicyV14:
             raise ValueError(f"Policy version must be {self.EXPECTED_POLICY_VERSION}")
         if self.policy_status != self.EXPECTED_POLICY_STATUS:
             raise ValueError(f"Policy status must be {self.EXPECTED_POLICY_STATUS}")
-        if self.base_policy_version != "1.1":
-            raise ValueError("Candidate policy must be layered on signed v1.1")
+        if self.base_policy_version:
+            raise ValueError("Candidate policy must define no base policy version")
         if self.lr15_enabled is not False:
             raise ValueError("LR15 must remain disabled")
         if self.external_api_required is not False:
@@ -235,11 +234,7 @@ class CandidateRulePolicyV14:
         assessment: RiskAssessment,
         derived: DerivedCaseFeatures,
     ) -> CandidateV14Assessment:
-        """Return the posthoc v1.4 candidate score and independent safety state."""
-        if assessment.policy_version != self.base_policy_version:
-            raise ValueError(
-                f"Expected base policy {self.base_policy_version}, got {assessment.policy_version}"
-            )
+        """Return the posthoc v1.0 candidate score and independent safety state."""
         active = {signal.rule_id for signal in assessment.signals}
         patient_flags = set(derived.patient_flags)
         surgery_flags = set(derived.surgery_flags)
