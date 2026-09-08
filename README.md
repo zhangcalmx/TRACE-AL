@@ -3,7 +3,7 @@
 Explainable, rule-based decision-support prototype for anastomotic-leak risk
 stratification after curative colorectal cancer surgery.
 
-**论文**：TRACE-AL: a rule-anchored, evidence-traceable clinical decision support system for anastomotic leakage after colorectal cancer surgery（投稿中）
+TRACE-AL: a rule-anchored, evidence-traceable clinical decision support system for anastomotic leakage after colorectal cancer surgery
 **在线演示**：https://trace-al-cdss.streamlit.app （访问码：TRACE-AL）
 
 ## 功能
@@ -11,26 +11,14 @@ stratification after curative colorectal cancer surgery.
 - **风险评估**：录入患者与手术字段，输出规则优先级、触发依据与证据链
 - **证据问答**：基于项目证据库的检索问答（无证据不作答）
 
-## 与论文的对应关系
-
-- **确定性评分策略**：`configs/rule_policy.yaml` —— 15 个计分组件（10 条基础规则 + 1 项营养风险复合 + 4 项交互加分），理论满分 40 分，主要预警阈值 ≥12
-- **变量字典**：`configs/clinical_variables.yaml` —— 其中前 15 个患者字段与前 16 个手术/吻合字段即论文的 **31 个核心输入变量**（顺序与论文 Supplementary Table S2 一致）；其余字段为研究扩展采集字段，不参与评分
-- **规则触发条件与逐条证据引用**：`configs/rules.yaml`
-- **证据库**：275 个经核验证据片段（证据等级 A/B/C/D/E 分布 30/84/155/1/5），见 `data/seed/evidence_chunks.jsonl` 与 `data/processed/lightrag_index_*/`（知识图谱 1,307 实体 / 1,726 关系）
-- **检索配置**：mix 模式；实体/关系 top-k = 40；文本片段 top-k = 20；相似度阈值 0.20；未启用重排序
-- **评分层级说明**：`configs/rules.yaml` 的 `aggregation_semantics` 描述的是基础触发引擎自身的内部聚合（严重度加权、≥4），演示与论文的累计评分（满分 40）与主预警（≥12）由策略层执行。`rules.yaml` 为哈希锚定文件（sha256 与验收记录一致），保持字节不变
-- **LLM 证据锚点审核（advisory audit）**：`src/anastomotic_leak_risks_agent/safety_agent.py` —— 审核分值 0–1 与 accept/disagree 结论仅供建议，不改变规则分级；不一致结论随规则分级保留供复核
-
 ## 快照范围
 
-本快照包含确定性评分核心（确定性策略评分：15 组件、满分 40、≥12 主预警）、变量字典、证据库与检索配置与论文所述 LLM 证据锚点审核（advisory audit）。基线比较评估脚本与五种子评估流程未随本快照归档，需要时可联系通讯作者。
+本快照包含确定性评分核心（确定性策略评分：15 组件、满分 40、≥12 主预警）、变量字典、证据库与检索配置，以及 LLM 证据锚点审核（advisory audit）。基线比较评估脚本与五种子评估流程未随本快照归档，需要时可联系通讯作者。
 
 ## 数据来源与锁存状态（Provenance）
 
 - 规则策略于 **2026-07-27** 锁存，此后未做任何修改；
 - 验证数据库为直接导出（n = 1,646），未做任何修改或处理；策略从未使用任何结局数据进行拟合或调优；
-- 本仓库为研究原型的确定性评分核心与证据库快照；验证数据库为直接导出（n = 1,646）。
-
 ## 声明
 
 研究原型，未完成临床验证。输出仅供研究参考，不能替代临床医生判断，
