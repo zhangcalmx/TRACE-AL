@@ -19,8 +19,10 @@
     "phase3": {
       "rule_count": 12,
       "patient_factor_rule_count": 14,
-      "rules_yaml_sha256": "27f58cf2c3fef1b40049e9a0a7788834f8697a7e32a05c445111cbfc44822926",
-      "citations_verified": true
+      "rules_yaml_sha256": "c682c30125d319004e29cc3dc8b99eb59e852b962b6d051de182d011509a81b0",
+      "citations_verified": true,
+      "recertified_on": "2026-09-08",
+      "recertification_note": "Annotation-only cleanup of rules.yaml (commit b446df6) changed the file hash without changing triggers, weights, citations or evidence. Hash records realigned to the cleaned file; evidence content/metadata fingerprints and the 2026-08-25 LightRAG index are unchanged, so no rebuild was required."
     },
     "phase4": {
       "status": "complete",

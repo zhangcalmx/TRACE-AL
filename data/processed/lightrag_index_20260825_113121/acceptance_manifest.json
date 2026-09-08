@@ -865,5 +865,14 @@
       "contamination_hits": [],
       "pass": true
     }
-  ]
+  ],
+  "recertification": {
+    "date": "2026-09-08",
+    "reason": "Annotation-only cleanup of rules.yaml (commit b446df6) changed the file bytes/hash without semantic change to triggers, weights, citations or evidence.",
+    "rules_yaml_sha256_at_build": "27f58cf2c3fef1b40049e9a0a7788834f8697a7e32a05c445111cbfc44822926",
+    "rules_yaml_sha256_recertified": "c682c30125d319004e29cc3dc8b99eb59e852b962b6d051de182d011509a81b0",
+    "evidence_fingerprints_rechecked_match": true,
+    "index_rebuilt": false,
+    "probes": "26/26 acceptance probes passed 2026-08-25; probe re-run not required for an annotation-only rule change against an unchanged evidence corpus."
+  }
 }
